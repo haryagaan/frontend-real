@@ -1,0 +1,121 @@
+.deed {
+    display: flex;
+    gap: 100px;
+  }
+  .top {
+    display: flex;
+    gap: 100px;
+    align-items: center;
+    justify-content: center;
+  }
+  .dood {
+    display: flex;
+    gap: 100px;
+  }
+  .text {
+    font-weight: bold;
+    color: gray;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .icon {
+    width: 30px;
+    height: 30px;
+    color: gray;
+  }
+  .social {
+    display: flex;
+    gap: 100px;
+    align-items: center;
+    justify-content: center;
+  }
+  hr {
+    width: 80%;
+    opacity: 0.2;
+  }
+  .all {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  .text:hover {
+    text-decoration: underline;
+  }
+  .icon:hover {
+    color: black;
+  }
+  .bottom{
+      margin-bottom: 50px;
+  }
+  .svgContainer{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .drop{
+      opacity: 0;
+  }
+  @media only screen and (max-width: 1280px) {
+    .top {
+      flex-direction: column;
+    }
+  }
+  @media only screen and (max-width: 710px) {
+  .deed{
+      flex-direction: column;
+      gap: 0;
+  }
+  .dood{
+      flex-direction: column;
+      gap: 0;
+  }
+  .text{
+      display: none;
+  }
+  .top{
+      gap: 0;
+  }
+  .social{
+      gap: 20px;
+  }
+  .drop{
+      opacity: 1 ;
+  }
+  .title1{
+    gap: 200px;
+  }
+  .title2{
+    gap: 240px;
+  }
+  .title3{
+  
+    gap: 225px;
+  }
+  .title4{
+    gap: 205px;
+  }
+  .title5{
+    gap: 180px;
+  }
+    }
+    @media only screen and (max-width: 330px) {
+      .title1{
+        gap: 160px;
+      }
+      .title2{
+        gap: 200px;
+      }
+      .title3{
+      
+        gap: 185px;
+      }
+      .title4{
+        gap: 165px;
+      }
+      .title5{
+        gap: 140px;
+      }
+    }

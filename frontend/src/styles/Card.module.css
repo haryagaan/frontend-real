@@ -1,0 +1,99 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    flex-direction: column;
+}
+.card {
+    width: 50vw;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    display: flex;
+    flex-direction: row ;
+    padding: 10px;
+    border-radius: 15px;
+    justify-content: center;
+    margin: 5vh
+}
+.row {
+    display: flex;
+    flex-direction: row;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+}
+.mainColumn {
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+}
+.mainColumn2 {
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+    align-items: center;
+}
+.font {
+    margin: 3px;
+}
+.star {
+    fill: plum;
+}
+.mainRow {
+    display: flex;
+    flex-direction: row;
+    width: 20vw;
+}
+.button {
+    width: 10vw;
+    border-radius: 20px !important;
+    border: 1px solid plum !important;
+    background-color: white !important;
+    color: rgb(103, 40, 103) !important;
+    margin-bottom: 30px !important;
+}
+.more {
+    margin-left: 5%;
+    color:steelblue;
+    cursor: pointer;
+    text-decoration: underline;
+    font-style: italic;
+}
+.more:hover {
+    color: blue;
+}
+@media only screen and (max-width: 1020px) {
+    .card {
+      width: 80vw;
+    }
+    .mainColumn {
+        width: 58vw;
+        margin-right: 2vw;
+    }
+    .mainColumn2 {
+        width: 20vw;
+    }
+    .button {
+        width: 17vw !important;
+    }
+  }
+  @media only screen and (max-width: 580px) {
+    .card {
+        width: 95vw;
+        flex-direction: column;
+        align-items: center;
+      }
+      .mainColumn {
+          width: 85vw;
+          margin-right: 2vw;
+      }
+      .mainColumn2 {
+          width: 90vw;
+      }
+      .button {
+          width: 30vw !important;
+
+    
+      }
+  }

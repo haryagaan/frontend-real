@@ -1,0 +1,153 @@
+.container{
+    border: 1px solid gray;
+    border-radius: 10px;
+    /* width: 1100px; */
+    display: flex;
+}
+.all{
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+.main{
+    margin-left: 50px;
+    margin-right: 70px;
+}
+.navlink1{
+    display: flex;
+    gap: 10px;
+    padding: 30px;
+    border: 1px solid transparent;
+    width: 238px;
+    background-color: transparent;
+    text-decoration: none;
+    color: black;
+}
+.navlink{
+    display: flex;
+    gap: 10px;
+    padding: 30px;
+    border: 1px solid transparent;
+    width: 300px;
+    background-color: #c0abf5;
+}
+.user{
+    width: 30px;
+    height: 30px;
+    color: #7246e5;
+}
+.text1{
+    font-weight: 400;
+    font-size: 20px;
+}
+.navlink1:hover{
+    background-color: #c0abf5;
+}
+.nameInput{
+    display: flex;
+    gap: 40px;
+}
+.input{
+    width: 300px;
+    height: 40px;
+    border: 1px solid #c0abf5;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.input:focus{
+    border: 1px solid #7246e5;
+    outline: none;
+}
+.inputEmail{
+    width: 650px;
+    height: 40px;
+    border: 1px solid #c0abf5;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.inputEmail:focus{
+    border: 1px solid #7246e5;
+    outline: none;
+}
+.important{
+    display: flex;
+    font-weight: 300;
+    background-color: #c0abf5;
+    border-radius: 10px;
+    gap: 20px;
+    height: 70px;
+    width: 620px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.saveButton{
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 15px;
+    width: 120px;
+    background-color: #7246e5;
+    color: white;
+    border: 1px solid transparent;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+h2{
+    padding-top: 20px;
+}
+@media only screen and (max-width: 1100px) {
+    .nameInput{
+        flex-direction: column;
+    }
+    .inputEmail{
+        width: 300px;
+    }
+    .important{
+        width: 270px;
+        height: 110px;
+    }
+    .navlink1{
+        width: 138px;
+    }
+    .navlink{
+        width: 200px;
+    }
+}
+@media only screen and (max-width: 750px) {
+    .text1{
+        display: none;
+        height: 0;
+        line-height: 0;
+    }
+    .navlink{
+        width: 80px;
+    }
+    .navlink1{
+        width: 18px;
+    }
+    .input{
+        width: 150px;
+    }
+    .inputEmail{
+        width: 150px;
+    }
+    .important{
+        width: 120px;
+        font-size: 10px;
+    }
+    .user{
+        width: 25px;
+        height: 25px;
+    }
+    .main{
+        margin-left: 30px;
+        margin-right: 50px;
+    }
+}
+@media only screen and (max-width: 290px) {
+    .main{
+        margin-left: 10px;
+        margin-right: 30px;
+    }
+}

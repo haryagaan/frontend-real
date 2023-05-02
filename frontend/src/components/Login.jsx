@@ -30,10 +30,6 @@ export const Login = () => {
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
 
-    // function facebook(){
-    //     window.open("http://localhost:9999/auth/facebook");
-    // }
-
     function facebookAuth() {
         signInWithPopup(auth, providerFacebook)
             .then((result) => {
@@ -99,8 +95,17 @@ export const Login = () => {
             .post('/auth/login', { email: email.current.value, password: password.current.value })
             .then(async (res) => {
                 console.log(res.data);
-                setUser(res.data.user);
-                setIsVerified(res.data.isVerified);
+                localStorage.setItem("token" , res.data.token);
+
+                await client.post("/decode")
+                    .then(async(res)=>{
+                        console.log(res.data)
+                    }).catch((err)=>{
+                        console.log(err)
+                    })
+
+                // setUser(res.data.user);
+                // setIsVerified(res.data.isVerified);
             })
             .catch((err) => {
                 console.log(err.response.data);
@@ -111,31 +116,6 @@ export const Login = () => {
     function togglePassword() {
         setShowPassword(!showPassword);
     }
-
-    // useEffect(() => {
-    //     const getUser = () => {
-    //         fetch("http://localhost:9999/auth/login/success", {
-    //         method: "GET",
-    //         credentials: "include",
-    //         headers: {
-    //             Accept: "application/json",
-    //             "Content-Type": "application/json",
-    //             "Access-Control-Allow-Credentials": true,
-    //         },
-    //         })
-    //         .then((response) => {
-    //             if (response.status === 200) return response.json();
-    //             throw new Error("authentication has been failed!");
-    //         })
-    //         .then((resObject) => {
-    //             setUser(resObject.user);
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    //     };
-    //     getUser();
-    // }, []);
 
     useEffect(() => {
         // console.log(errors)

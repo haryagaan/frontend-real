@@ -1,0 +1,264 @@
+.navbar1Sticky {
+    background: transparent;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: all 0.5s ease;
+    animation: smoothScroll 1s forwards;
+  }
+  @keyframes smoothScroll {
+    0% {
+      transform: translateY(-142px);
+    }
+  
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  .navbar1 {
+    background: transparent;
+  }
+  .logo {
+    width: 50px;
+    height: 50px;
+    padding-left: 200px;
+  }
+  .buttons {
+    display: flex;
+    gap: 10px;
+    /* padding-right: 200px; */
+  }
+  .container {
+    display: flex;
+    height: 60px;
+    width: 100%;
+    padding-top: 10px;
+    box-shadow: -2px 21px 40px -13px rgba(0, 0, 0, 0.14);
+    -webkit-box-shadow: -2px 21px 40px -13px rgba(0, 0, 0, 0.14);
+    -moz-box-shadow: -2px 21px 40px -13px rgba(0, 0, 0, 0.14); 
+  }
+  button {
+    border: 1px solid transparent;
+    background-color: transparent;
+  }
+  .icon {
+    padding-top: 10px;
+    width: 30px;
+    height: 30px;
+    color: #7246e5;
+  }
+  .icon1:hover {
+    transition: 200ms;
+    color: #5335a0;
+  }
+  .icon1 {
+    padding-top: 10px;
+    width: 30px;
+    height: 30px;
+    color: #c0abf5;
+    transition: 250ms;
+  }
+  /* .dropdown {
+    background-color: white;
+    border-radius: 5px;
+    height: 80px;
+    width: 300px;
+    box-shadow: 0px 8px 0px -1px rgba(0,0,0,0.27);
+    -webkit-box-shadow: 0px 8px 0px -1px rgba(0,0,0,0.27);
+    -moz-box-shadow: 0px 8px 0px -1px rgba(0,0,0,0.27);
+  } */
+  h3 {
+    /* display: none; */
+    color: #7246e5;
+  }
+  .icon:hover {
+    color: #492e8c;
+  }
+  
+  .drop1 {
+    position: absolute;
+    left: 700px;
+  }
+  .drop2 {
+    position: absolute;
+    left: 1560px;
+  }
+  
+  .drop3 {
+    position: absolute;
+    left: 1630px;
+  }
+  
+  .drop4 {
+    position: absolute;
+    left: 1690px;
+  }
+  input {
+    background-color: #f8f8ef;
+    width: 450px;
+    height: 40px;
+    border: 1px solid rgb(63, 63, 63);
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 16px;
+    padding-left: 10px;
+  }
+  input:focus {
+    outline: none;
+  }
+  .icon2 {
+    width: 20px;
+    height: 20px;
+    color: #7246e5;
+    position: absolute;
+    top: 17px;
+    right: 25px;
+  }
+  .settings{
+    width: 300px;
+    height: 370px;
+    margin-left: -200px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .accName1{
+    display: flex;
+    gap: 65px;
+  }
+  .accName2{
+    display: flex;
+    gap: 20px;
+  }
+  
+  .set{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    gap: 5px;
+  }
+  hr{
+    background-color: #5335a0;
+    border: none;
+    height: 1px;
+    width: 280px;
+    
+  }
+  .logout{
+   text-decoration: none;
+   color: black;
+  }
+  .a{
+    color: black;
+  }
+  .messages{
+    width: 300px;
+    margin-left: -200px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 1px 0px 9px 0px rgba(133,128,128,0.75);
+    -webkit-box-shadow: 1px 0px 9px 0px rgba(133,128,128,0.75);
+    -moz-box-shadow: 1px 0px 9px 0px rgba(133,128,128,0.75);
+  }
+  .view{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    font-weight: 400;
+  }
+  .message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+  @media screen and (max-width: 1740px) {
+    .drop1{
+      left: 500px;
+    }
+    .drop2{
+      left: 1100px;
+    }
+    .drop3{
+      left: 1150px;
+    }
+    .drop4{
+      left: 1200px;
+    }
+  }
+  @media screen and (max-width: 1260px) {
+    .drop1{
+      left: 200px;
+    }
+    .drop2{
+      left: 850px;
+    }
+    .drop3{
+      left: 900px;
+    }
+    .drop4{
+      left: 950px;
+    }
+    .logo{
+      padding-left: 80px;
+    }
+    h3{
+      display: none;
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    .logo{
+      padding-left: 50px;
+    }
+    .drop1{
+      left: 200px;
+    }
+    .drop2{
+      left: 600px;
+    }
+    .drop3{
+      left: 650px;
+    }
+    .drop4{
+      left: 700px;
+    }
+    input{
+      width: 350px;
+    }
+  }
+  @media screen and (max-width: 740px) {
+   input::placeholder{
+      opacity: 0;
+    }
+    input{
+      width: 160px;
+    }
+    .icon2{
+      opacity: 0;
+    }
+    .drop1{
+      left: 100px;
+    }
+    .drop2{
+      left: 300px;
+    }
+    .drop3{
+      left: 350px;
+    }
+    .drop4{
+      left: 400px;
+    }
+    .logo{
+      padding-left: 20px;
+    }
+    .settings{
+      margin-left: -280px;
+      margin-top: 10px;
+    }
+    .messages{
+      margin-left: -280px;
+      margin-top: 10px;
+    }
+  }
