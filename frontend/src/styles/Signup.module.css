@@ -1,303 +1,305 @@
-.container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
+.container{
+  /* border: 1px solid red; */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.leftSide{
+  /* border: 1px solid blue; */
+  width: 67%;
+  height: 100%;
+}
+
+.rightSide{
+  /* border: 1px solid red; */
+  width: 33%;
+  height: 100%;
+  background-image: url("../assets/abstract.png ");
+  background-size: cover;
+}
+
+.header{
+  /* border: 1px solid red; */
+  width: 100%;
+  height: 10%;
+  box-shadow: 2px -1px 10px -3px rgba(0,0,0,0.7);
+  -webkit-box-shadow: 2px -1px 10px -3px rgba(0,0,0,0.7);
+  -moz-box-shadow: 2px -1px 10px -3px rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+}
+
+.logoDiv{
+  /* border: 1px solid blue; */
+  /* width: 15%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5%;
+}
+
+.logo{
+  width: 100px;
+}
+
+.logoSmall{
+  width: 42px;
+}
+
+.main{
+  /* border: 1px solid red; */
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bigText{
+  color: #3c3c3c;
+  font-family: 'Gowun Batang',Georgia,"Times New Roman",Times,serif;
+  font-weight: 400;
+  font-size: 32px;
+}
+
+.socialContainer{
+  /* border: 1px solid red; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.facebook{
+  width: 400px;
+  height: 40px;
+  background-color: #3669b7;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: row;
+  margin-top: 1%;
+}
+
+.google{
+  border: 1px solid rgb(191, 191, 191);
+  width: 400px;
+  height: 40px;
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: row;
+  margin: 1%;
+}
+
+.apple{
+  width: 400px;
+  height: 40px;
+  background-color: black;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: row;
+  margin-bottom: 1%;
+}
+
+.Icon{
+  color: white;
+  font-size: 20px;
+}
+
+.socialText{
+  color: white;
+  margin-left: 2%;
+  font-weight: 400;
+}
+
+.socialTextBlack{
+  color: black;
+  margin-left: 2%;
+  font-weight: 400;
+}
+
+.lineContainer{
+  /* border: 1px solid blue; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.lineText{
+  color: #898989;
+}
+
+.line{
+  width: 18%;
+  border:1px solid  #ded2ff;
+  margin: 0.5%;
+}
+
+.lineLong{
+  width: 40%;
+  border:1px solid  #ded2ff;
+  margin-bottom:1.5%;
+}
+
+.signupContainer{
+  /* border: 1px solid red; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input{
+  border: 1px solid #ded2ff;
+  padding: 5px;
+  padding-left: 10px;
+  width: 400px;
+  height: 40px;
+  font-size: 14px;
+  color: #3c3c3c;
+  border-radius: 10px;
+  margin: 1%;
+}
+
+.inputPassword{
+  border: 1px solid #ded2ff;
+  padding: 5px;
+  padding-left: 10px;
+  width: 400px;
+  height: 40px;
+  font-size: 14px;
+  color: #3c3c3c;
+  border-radius: 10px;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.passwordContainer{
+  position: relative;
+}
+
+.eyeIconContainer{
+  position: absolute;
+  color: #ded2ff;
+  font-size: 23px;
+  top: 30%;
+  right: 3%;
+}
+
+.eyeShow{
+  width: 100%;
+}
+
+.eyeHide{
+  width: 0;
+}
+
+.checkboxContainer{
+  /* border: 1px solid red; */
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.termsandpolicytext{
+  color: #3c3c3c;
+  word-wrap: break-word;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  width: 300px;
+}
+
+.buttonContainer{
+  /* border: 1px solid red; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5%;
+}
+
+.button{
+  border: none;
+  background-color: #7246E5;
+  font-size: 16px;
+  border-radius: 20px;
+  font-weight: 400;
+  color: white;
+  width: 400px;
+  padding: 12px;
+}
+
+.loggedinContainer{
+  /* border: 1px solid red; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.text{
+  margin-right: 1%;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #3c3c3c;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 800px) {
+  .rightSide{
+    width: 0px;
   }
-  
-  .innerContainer {
-    width: 70%;
-    height: 75%;
-    border: 1px solid grey;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .rightSide {
-    /* background-color: red; */
-    width: 60%;
-    height: 100%;
-    border-radius: 15px 0px 0px 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1%;
-  }
-  
-  .box {
-    /* border: 1px solid red; */
+
+  .leftSide{
     width: 100%;
-    height: 90%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
   }
-  
-  .textBig {
-    font-size: 28px;
-    font-weight: 700;
-    color: rgb(60, 60, 60);
-    /* border: 1px solid blue; */
-    height: 10%;
+}
+
+@media only screen and (max-width: 500px) {
+  .rightSide{
+    width: 0px;
+  }
+
+  .leftSide{
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
-  
-  .namesContainer {
-    /* border: 1px solid black; */
-    height: 15%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    /* justify-content: center; */
+
+  .facebook{
+    width: 300px;
   }
-  
-  .inputContainer {
-    /* border: 1px solid blue; */
-    display: flex;
-    flex-direction: column;
-    /* margin-left: 5%; */
-    width: 45%;
-    position: relative;
+
+  .google{
+    width: 300px;
   }
-  
-  .inputContainerEmail {
-    /* border: 1px solid blue; */
-    display: flex;
-    flex-direction: column;
-    /* margin-left: 5%; */
-    width: 94%;
-    position: relative;
+
+  .apple{
+    width: 300px;
   }
-  
-  .inputCont{
-    /* border: 1px solid red; */
+
+  .input{
+    width:300px
   }
-  
-  .name {
-    font-size: 10px;
-    font-weight: 500;
-    margin-left: 5px;
+
+  .inputPassword{
+    width: 300px;
   }
-  
-  .input {
-    /* width: 100%; */
-    border-radius: 10px;
-    padding: 10px;
-    border: 1px solid #7f7893;
+
+  .button{
+    width: 300px;
   }
-  
-  .inputErr {
-    border-radius: 10px;
-    padding: 10px;
-    border: 1px solid red;
-  }
-  
-  .inputEmail {
-    width: 80%;
-    border-radius: 10px;
-    padding: 10px;
-    border: 1px solid #7f7893;
-  }
-  
-  .inputEmailErr {
-    width: 80%;
-    border-radius: 10px;
-    padding: 10px;
-    border: 1px solid red;
-  }
-  
-  .emailContainer {
-    /* border: 1px solid red; */
-    height: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* width: 80%; */
-    /* padding-left: 4.5%; */
-  }
-  
-  .lineContainer {
-    /* border: 1px solid red; */
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .line {
-    border: 1px solid grey;
-    width: 43%;
-  }
-  
-  .lineText {
-    color: grey;
-    margin: 1%;
-  }
-  
-  .socialContainer {
-    /* border: 1px solid green; */
-    width: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .socialInnerContainer {
-    /* border: 1px solid red; */
-    width: 97%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .googleIcon {
-    font-size: 40px;
-    color: rgb(221, 75, 57);
-    margin: 2%;
-  }
-  
-  .facebookIcon {
-    font-size: 34px;
-    color: rgb(59, 89, 152);
-    margin: 2%;
-  }
-  
-  .socialBtn {
-    border-radius: 30px;
-    /* color: blac; */
-  }
-  
-  .checkboxContainer {
-    /* border: 1px solid red; */
-    padding: 1.8%;
-    display: flex;
-    align-items: center;
-    padding-left: 5%;
-  }
-  
-  .checkboxText {
-    margin-left: 2%;
-    margin-top: -1%;
-  }
-  
-  .buttonContainer {
-    /* border: 1px solid blue; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* padding: 1%; */
-  }
-  
-  .button {
-    background-color: #7246e5;
-    border-radius: 30px;
-    color: white;
-    border: none;
-    padding: 3%;
-    padding-left: 15%;
-    padding-right: 15%;
-    font-size: medium;
-    font-weight: 500;
-    transition: 0.2s;
-  }
-  
-  .button:hover {
-    background-color: #4d2d9f;
-    transition: 0.2s;
-  }
-  
-  .button:active {
-    background-color: #221444;
-  }
-  
-  .errContainer {
-    /* border: 1px solid red; */
-    height: 10%;
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    color: red;
-    font-size: small;
-  }
-  
-  .errIcon {
-    position: absolute;
-    top: 45%;
-    right: 4%;
-    font-size: 20px;
-    color: red;
-  }
-  
-  .errIconEmail {
-    position: absolute;
-    top: 45%;
-    right: 2%;
-    font-size: 20px;
-    color: red;
-  }
-  
-  .errIconInvisible {
-    font-size: 0;
-  }
-  
-  .leftSide {
-    /* background-color: blue; */
-    background-image: url("../assets/signup.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 40%;
-    height: 100%;
-    border-radius: 0px 15px 15px 0px;
-  }
-  
-  @media only screen and (width<1050px) {
-    .innerContainer {
-      width: 70%;
-    }
-  }
-  
-  @media only screen and (width<725px) {
-    .innerContainer {
-      width: 70%;
-    }
-  
-    .leftSide {
-      width: 0%;
-    }
-  }
-  
-  @media only screen and (width<550px) {
-    .innerContainer {
-      width: 80%;
-      height: 70%;
-    }
-  
-    .leftSide {
-      width: 0%;
-    }
-  }
-  
-  @media only screen and (width<350px) {
-    .innerContainer {
-      width: 80%;
-      height: 95%;
-    }
-  
-    .leftSide {
-      width: 0%;
-    }
-  
-    .errIcon {
-      display: none;
-    }
-  
-    .errIconEmail {
-      display: none;
-    }
-  }
+}

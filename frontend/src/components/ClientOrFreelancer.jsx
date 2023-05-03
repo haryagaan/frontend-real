@@ -2,8 +2,42 @@ import style from "../styles/ClientOrFreelancer.module.css";
 import worker from "../assets/worker.gif";
 import codeImg from "../assets/image.jpeg";
 import team from "../assets/team.jpeg";
+
+import logo from "../assets/logo.png"
+
+import { Link } from "react-router-dom";
+
+
+import { useNavigate } from "react-router-dom";
+
+
 export const Client = () => {
+
+  const navigate=useNavigate();
+
+  function SignupFreelancer(){
+    navigate("/signup")
+    localStorage.setItem("code" , 300)
+  }
+
+  function SignupClient(){
+    navigate("/signup")
+    localStorage.setItem("code" , 200)
+  }
+
   return (
+    <div className={style.container}>
+
+    <div className={style.header}>
+      <div className={style.headerImgDiv}>
+        <img src={logo} className={style.headerLogo}/>
+      </div>
+
+      <div className={style.headerTextDiv}>
+        <Link to="/login" className={style.headerText}>Login</Link>
+      </div>
+    </div>
+
     <div className={style.home}>
       <div className={style.main}>
         <div className={style.column1}>
@@ -13,12 +47,12 @@ export const Client = () => {
             Бид хамгийн сайн ажилчдыг шилдэг компаниудад холбодог.
           </p>
           <div className={style.row}>
-            <div className={style.button1}>чөлөөт ажилчнаар элсэх</div>
-            <div className={style.button2}>ажилчин авах</div>
+            <div onClick={SignupFreelancer} className={style.button1}>Чөлөөт ажилчнаар элсэх</div>
+            <div onClick={SignupClient} className={style.button2}>Ажилчин авах</div>
           </div>
         </div>
-        <div className={style.column2}>
-          <img className={style.img} src={worker}></img>
+        <div className={style.column2s}>
+          <img className={style.img} src={worker}/>
         </div>
       </div>
       <div className={style.main2}>
@@ -86,6 +120,7 @@ export const Client = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
