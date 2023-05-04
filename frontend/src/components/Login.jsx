@@ -1,34 +1,46 @@
 import style from '../styles/Login.module.css';
+
+import logo from "../assets/logo.png"
+
+import { Link } from 'react-router-dom';
+
 import { Verification } from './Verification';
 
-import { AiOutlineEye } from 'react-icons/ai';
-import { AiOutlineEyeInvisible } from 'react-icons/ai';
-import { HiMail } from 'react-icons/hi';
-import { BiErrorCircle } from 'react-icons/bi';
+import {AiFillFacebook} from "react-icons/ai"
+import {FcGoogle} from "react-icons/fc"
+import {AiFillApple} from "react-icons/ai"
+import {AiFillEye} from "react-icons/ai"
+import {AiFillEyeInvisible} from "react-icons/ai"
 
 import { client } from '../client/client';
 
 import { useEffect, useRef, useState } from 'react';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { signInWithPopup } from 'firebase/auth';
 import { auth, providerFacebook, providerGoogle } from '../firebaseConfig/firebaseConfig';
 
-import { AiFillGoogleCircle } from 'react-icons/ai';
-import { BsFacebook } from 'react-icons/bs';
-import { BsTelephoneFill } from 'react-icons/bs';
-
 export const Login = () => {
-    const [user, setUser] = useState();
-    const [isVerified, setIsVerified] = useState();
 
-    const email = useRef();
-    const password = useRef();
+    const [email,setEmail]=useState();
+    const [password,setPassword]=useState();
 
-    const [showPassword, setShowPassword] = useState(false);
+    const [togglePassword , setTogglePassword]=useState(true); 
 
-    const [errors, setErrors] = useState();
-    const [emailError, setEmailError] = useState(false);
-    const [passwordError, setPasswordError] = useState(false);
+    const [err,setErr]=useState();
+    const [allErr,setAllErr]=useState(false);
+    const [emailErr,setEmailErr]=useState(false);
+    const [passwordErr,setPasswordErr]=useState(false);
+
+    const toastSuccess = (string) => toast.success(string);
+
+    const toastError= (string) => toast.error(string);
+
+    function changePassword(){
+        setTogglePassword(prev=>!prev);
+    }
 
     function facebookAuth() {
         signInWithPopup(auth, providerFacebook)
@@ -49,10 +61,12 @@ export const Login = () => {
                         socialType: 'Facebook',
                     })
                     .then(async (res) => {
-                        console.log(res.data);
+                        // console.log(res.data);
+                        localStorage.setItem("token" , res.data.token)
                     })
                     .catch((err) => {
-                        console.log(err);
+                        console.log(err.response.data);
+                        toastError(err.response.data)
                     });
             })
             .catch((err) => {
@@ -79,10 +93,12 @@ export const Login = () => {
                         socialType: 'Google',
                     })
                     .then(async (res) => {
-                        console.log(res.data);
+                        // console.log(res.data);
+                        localStorage.setItem("token" , res.data.token)
                     })
                     .catch((err) => {
                         console.log(err);
+                        toastError(err.response.data)
                     });
             })
             .catch((err) => {
@@ -91,111 +107,77 @@ export const Login = () => {
     }
 
     async function Login() {
-        await client
-            .post('/auth/login', { email: email.current.value, password: password.current.value })
-            .then(async (res) => {
-                console.log(res.data);
-                localStorage.setItem("token" , res.data.token);
-
-                await client.post("/decode")
-                    .then(async(res)=>{
-                        console.log(res.data)
-                    }).catch((err)=>{
-                        console.log(err)
-                    })
-
-                // setUser(res.data.user);
-                // setIsVerified(res.data.isVerified);
-            })
-            .catch((err) => {
-                console.log(err.response.data);
-                setErrors(err.response.data);
-            });
+       await client.post("/auth/login" , {email , password})
+        .then(async(res)=>{
+            console.log(res.data)
+            localStorage.setItem("token" , res.data.token)
+        }).catch((err)=>{
+            console.log(err.response.data)
+            setErr(err.response.data);
+            toastError(err.response.data)
+        })
     }
 
-    function togglePassword() {
-        setShowPassword(!showPassword);
-    }
-
-    useEffect(() => {
-        // console.log(errors)
-        if (errors == 'Fill in all forms') {
-            setEmailError(true);
-            setPasswordError(true);
+    useEffect(()=>{
+        if(err!=null){
+            if(err=="Fill in all forms"){
+                setAllErr(true);
+                setEmailErr(true);
+                setPasswordErr(true);
+            }else if(err=="Couldnt find user"){
+                setAllErr(false);
+                setEmailErr(true);
+                setPasswordErr(false);
+            }else if(err=="Password incorrect"){
+                setAllErr(false);
+                setEmailErr(false);
+                setPasswordErr(true);
+            }
         }
+    },[err])
 
-        if (errors == 'Couldnt find user') {
-            setEmailError(true);
-            setPasswordError(false);
-        }
-
-        if (errors == 'Password incorrect') {
-            setEmailError(false);
-            setPasswordError(true);
-        }
-    }, [errors]);
-
-    console.log(isVerified);
-
-    return isVerified == null ? (
+    return (
         <div className={style.container}>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false} 
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                />
+            <ToastContainer />
+
             <div className={style.innerContainer}>
-                <div className={style.login}>
-                    <div className={style.textBig}>Login</div>
 
-                    <div className={style.inputContainer}>
-                        <div className={style.inputEl}>
-                            <input ref={email} placeholder="Email" className={style.input} />
-                            <div className={style.eyeIconContainer}>
-                                <HiMail className={style.icon}></HiMail>
-                            </div>
-                        </div>
+                <div className={style.logoContainer}>
+                    <img src={logo} className={style.logo}/>
+                </div>
 
-                        <div className={emailError ? style.errorContainer : ''}>
-                            {emailError ? (
-                                <div>
-                                    <BiErrorCircle></BiErrorCircle>
-                                    Couldnt find user
-                                </div>
-                            ) : (
-                                ''
-                            )}
-                        </div>
+                <div className={style.main}>
 
-                        <div className={style.inputEl}>
-                            <input
-                                ref={password}
-                                type={showPassword ? 'text' : 'password'}
-                                placeholder="Password"
-                                className={style.input}
-                            />
-                            <button className={style.eyeIconContainer} onClick={togglePassword}>
-                                <div className={style.icon}>
-                                    {showPassword ? (
-                                        <AiOutlineEye></AiOutlineEye>
-                                    ) : (
-                                        <AiOutlineEyeInvisible></AiOutlineEyeInvisible>
-                                    )}
-                                </div>
-                            </button>
-                        </div>
-
-                        <div className={passwordError ? style.errorContainer : ''}>
-                            {passwordError ? (
-                                <div>
-                                    <BiErrorCircle></BiErrorCircle>
-                                    Password incorrect
-                                </div>
-                            ) : (
-                                ''
-                            )}
-                        </div>
+                    <div className={style.bigText}>
+                        Login
                     </div>
 
-                    <div className={style.buttonContainer}>
-                        <button onClick={Login} className={style.button}>
-                            Login
-                        </button>
+                    <div className={style.socialContainer}>
+                        <div onClick={facebookAuth} className={style.facebook}>
+                            <AiFillFacebook className={style.Icon}></AiFillFacebook>
+                            <div className={style.socialText}>Continue with Facebook</div>
+                        </div>
+
+                        <div onClick={googleAuth} className={style.google}>
+                            <FcGoogle className={style.Icon}></FcGoogle>
+                            <div className={style.socialTextBlack}>Continue with Google</div>
+                        </div>
+
+                        <div className={style.apple}>
+                            <AiFillApple className={style.Icon}></AiFillApple>
+                            <div className={style.socialText}>Continue with Apple</div>
+                        </div>
                     </div>
 
                     <div className={style.lineContainer}>
@@ -204,19 +186,44 @@ export const Login = () => {
                         <div className={style.line}></div>
                     </div>
 
-                    <div className={style.socialContainer}>
-                        <div className={style.socialInnerContainer}>
-                            <BsFacebook className={style.facebookIcon} onClick={facebookAuth}></BsFacebook>
+                    <div className={style.login}>
+                        <input type='email' value={email} onChange={e=>setEmail(e.target.value)} placeholder='Email' className={emailErr ? style.inputErr : style.input}/>
 
-                            <AiFillGoogleCircle className={style.googleIcon} onClick={googleAuth}></AiFillGoogleCircle>
+                        <div className={allErr || emailErr ? style.errDivVisible : style.errDivInvisible}>{allErr ? "This field is required" : emailErr ? "Couldn't find user" : ""}</div>
+
+                        <div className={style.passwordContainer}>
+                            <input type={togglePassword ? "password" : "text"} value={password} onChange={e=>setPassword(e.target.value)} placeholder='Password' className={passwordErr ? style.inputPasswordErr : style.inputPassword}/>
+
+                            <div onClick={changePassword} className={style.eyeIconContainer}>
+                               <AiFillEye className={togglePassword ? style.eyeShow : style.eyeHide}></AiFillEye>
+                               <AiFillEyeInvisible className={togglePassword ? style.eyeHide : style.eyeShow}></AiFillEyeInvisible>
+                            </div>
+
+                            <div className={allErr || passwordErr ? style.errDivVisible : style.errDivInvisible}>{allErr ? "This field is required" : passwordErr ? "Password incorrect" : ""}</div>
                         </div>
+
                     </div>
+
+                    <div className={style.forgotPasswordCont}>
+                        <a className={style.forgotPassword} href=''>Forgot your password?</a>
+                    </div>
+
+                    <div className={style.buttonContainer}>
+                        <button onClick={Login} className={style.button}>Login</button>
+                    </div>
+
+                    <div className={style.lineContainer}>
+                        <div className={style.lineLong}></div>
+                    </div>
+
+                    <div className={style.loggedinContainer}>
+                        <div className={style.text}>Still haven’t created a MEET account?</div>
+                        <Link to="/signup">Signup</Link>
+                    </div>
+
                 </div>
+
             </div>
         </div>
-    ) : isVerified == false ? (
-        <Verification user={user}></Verification>
-    ) : (
-        <div>Enter</div>
-    );
+    )
 };

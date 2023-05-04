@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import style from "../styles/Signup.module.css"
 
+import { useNavigate } from 'react-router-dom'
+
 import logo from "../assets/logo.png"
 import logoCut from "../assets/logoCut.png"
 
@@ -20,7 +22,10 @@ import {Link} from "react-router-dom"
 import { signInWithPopup, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth"
 import { auth, app, providerFacebook, providerGoogle } from "../firebaseConfig/firebaseConfig"
 
+
 export const Signup = () => {
+    const navigate=useNavigate();
+
     const [logoSmall,setLogoSmall]=useState(false);
     const code=localStorage.getItem("code");
 
@@ -30,12 +35,16 @@ export const Signup = () => {
     const [lastname,setLastname]=useState();
 
     const [togglePassword,setTogglePassword]=useState(true);
+    const [checkbox,setCheckbox]=useState(false);
 
     const [error,setError]=useState();
-    const [emailErr,setEmailErr]=useState();
-    const [passwordErr,setPasswordErr]=useState();
-    const [firstnameErr,setFirstnameErr]=useState();
-    const [lastnameErr ,setLastnameErr]=useState(); 
+    const [allErr,setAllErr]=useState(false);
+    const [emailErr,setEmailErr]=useState(false);
+    const [emailExistErr,setEmailExistErr]=useState(false);
+    const [passwordErr,setPasswordErr]=useState(false);
+    const [firstnameErr,setFirstnameErr]=useState(false);
+    const [lastnameErr ,setLastnameErr]=useState(false); 
+    const [termsErr,setTermsErr]=useState(false);
 
     const toastSuccess = (string) => toast.success(string);
 
@@ -43,6 +52,10 @@ export const Signup = () => {
 
     function changePassword(){
         setTogglePassword(prev=>!prev);
+    }
+
+    function toggleCheckbox(){
+        setCheckbox(prev=>!prev);
     }
 
     window.addEventListener("resize" , (event)=>{
@@ -68,10 +81,11 @@ export const Signup = () => {
                 imageUrl,
                 socialUid,
                 socialType: "Facebook",
-                role:{user:code}
+                role:code
             }).then(async (res) => {
-                console.log(res.data);
-                toastSuccess("Created!!");
+                // console.log(res.data);
+                localStorage.setItem("token" , res.data.token)
+                toastSuccess("Success!!");
             }).catch((err) => {
                 console.log(err);
                 setError(err.response.data)
@@ -98,10 +112,11 @@ export const Signup = () => {
                 imageUrl,
                 socialUid,
                 socialType: "Google",
-                role:{user:code}
+                role:code
             }).then(async (res) => {
-                console.log(res.data)
-                toastSuccess("Created!!");
+                // console.log(res.data)
+                localStorage.setItem("token" , res.data.token)
+                toastSuccess("Success!!");
             }).catch((err) => {
                 console.log(err)
                 setError(err.response.data)
@@ -115,48 +130,78 @@ export const Signup = () => {
 
 
     async function Signup() {
-        await client.post("/auth/signup", {
-            firstName: firstname,
-            lastName: lastname,
-            email: email,
-            password: password,
-            role:{user:code}
-        }).then(async (res) => {
-            console.log(res.data);
-        }).catch((err) => {
-            console.log(err.response.data)
-            setError(err.response.data)
-            toastError(err.response.data)
-        })
+        if(checkbox==true){
+            await client.post("/auth/signup", {
+                firstName: firstname,
+                lastName: lastname,
+                email: email,
+                password: password,
+                role:code
+            }).then(async (res) => {
+                toastSuccess("Created");
+                navigate("/login")
+                // console.log(res.data);
+            }).catch((err) => {
+                // console.log(err.response.data)
+                setError(err.response.data)
+                toastError(err.response.data)
+            })
+        }else{
+            setTermsErr(true);
+            toastError("Pls agree to our terms and conditions");
+        }
     }
 
     useEffect(()=>{
         if(error!=null){
             if(error=="Fill in all the forms"){
-                setEmailErr(true)
-                setPasswordErr(true)
-                setFirstnameErr(true)
-                setLastnameErr(true)
-            }else if(error=="Email already exists" || error=="Invalid email") {
-                setEmailErr(true)
+                setAllErr(true);
+                setEmailExistErr(false);
+                setEmailErr(false);
                 setPasswordErr(false)
                 setFirstnameErr(false)
                 setLastnameErr(false)
+                setTermsErr(false);
+            }else if(error=="Email already exists") {
+                setAllErr(false);
+                setEmailExistErr(true);
+                setEmailErr(false);
+                setPasswordErr(false)
+                setFirstnameErr(false)
+                setLastnameErr(false)
+                setTermsErr(false);
             }else if(error=="Password must be longer than 6 characters and less than 30 characters") {
-                setEmailErr(false)
+                setAllErr(false);
+                setEmailExistErr(false);
+                setEmailErr(false);
                 setPasswordErr(true)
                 setFirstnameErr(false)
                 setLastnameErr(false)
+                setTermsErr(false);
             }else if(error=="Lastname must be longer than 2 characters and less than 30 characters"){
+                setAllErr(false);
+                setEmailExistErr(false);
                 setEmailErr(false);
-                setPasswordErr(false);
-                setFirstnameErr(false);
+                setPasswordErr(false)
+                setFirstnameErr(false)
                 setLastnameErr(true)
+                setTermsErr(false);
             }else if(error=="Firstname must be longer than 2 characters and less than 30 characters"){
+                setAllErr(false);
+                setEmailExistErr(false);
                 setEmailErr(false);
-                setPasswordErr(false);
-                setFirstnameErr(true);
+                setPasswordErr(false)
+                setFirstnameErr(true)
                 setLastnameErr(false)
+                setTermsErr(false);
+            }else if(error=="Invalid email"){
+                setAllErr(false);
+                setEmailExistErr(false);
+                setEmailErr(true);
+                setPasswordErr(false)
+                setFirstnameErr(false)
+                setLastnameErr(false)
+                setTermsErr(false);
             }
         }
     },[error])
@@ -211,24 +256,32 @@ export const Signup = () => {
                     </div>
 
                     <div className={style.signupContainer}>
-                        <input value={firstname} onChange={e=>setFirstname(e.target.value)} className={style.input} placeholder="Firstname"/>
-                        <input value={lastname} onChange={e=>setLastname(e.target.value)} className={style.input}  placeholder='Lastname'/>
-                        <input type="email" value={email} onChange={e=>setEmail(e.target.value)} className={style.input}  placeholder='Email'/>
+                        <input value={firstname} onChange={e=>setFirstname(e.target.value)} className={ allErr || firstnameErr ? style.inputErr : style.input} placeholder="Firstname"/>
+                        <div className={firstnameErr || allErr ? style.errDivVisible : style.errDivInvisible}>{allErr ? "This field is required" : firstnameErr ? "Firstname must be longer than 2 characters and less than 30 characters" : ""}</div>
+                        <input value={lastname} onChange={e=>setLastname(e.target.value)} className={allErr || lastnameErr ? style.inputErr : style.input} placeholder='Lastname'/>
+                        <div className={lastnameErr || allErr ? style.errDivVisible : style.errDivInvisible}>{allErr ? "This is a required field" : lastnameErr ? "Lastname must be longer than 2 characters and less than 30 characters" : ""}</div>
+                        <input type="email" value={email} onChange={e=>setEmail(e.target.value)} className={allErr || emailErr || emailExistErr ? style.inputErr : style.input}  placeholder='Email'/>
+                        <div className={emailExistErr || allErr || emailErr ? style.errDivVisible : style.errDivInvisible}>{allErr ? "This is a required field" : emailErr ? "Invalid email" : emailExistErr ? "Email already registered" : ""}</div>
                         <div className={style.passwordContainer}>
-                            <input type={togglePassword ? "password" : "text"} value={password} onChange={e=>setPassword(e.target.value)} className={style.inputPassword}  placeholder='Password'/>
+                            <input type={togglePassword ? "password" : "text"} value={password} onChange={e=>setPassword(e.target.value)} className={allErr || passwordErr ? style.inputPasswordErr : style.inputPassword}  placeholder='Password'/>
 
                             <div onClick={changePassword} className={style.eyeIconContainer}>
                                <AiFillEye className={togglePassword ? style.eyeShow : style.eyeHide}></AiFillEye>
                                <AiFillEyeInvisible className={togglePassword ? style.eyeHide : style.eyeShow}></AiFillEyeInvisible>
                             </div>
-
                         </div>
-                        <div className={style.checkboxContainer}>
+                        <div className={passwordErr || allErr ? style.errDivVisible : style.errDivInvisible}>{ allErr ? "This is a required field" : passwordErr ? "Password must be longer than 6 characters and less than 30 characters" : ""}</div>
+
+                        <div onClick={toggleCheckbox} className={style.checkboxContainer}>
                             <input type='checkbox'/>
                             <div className={style.termsandpolicytext}>
                                 By creating an account, you agree to MEET's terms of Service and Privacy Policy
                             </div>
                         </div>
+
+                        <div className={termsErr ? style.errDivVisible : style.errDivInvisible}>Pls agree to our terms and conditions</div>
+
+
                     </div>
 
                     <div className={style.buttonContainer}>

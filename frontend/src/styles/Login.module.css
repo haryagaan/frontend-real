@@ -1,4 +1,5 @@
-.container {
+.container{
+    /* border: 1px solid red; */
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -6,162 +7,282 @@
     align-items: center;
 }
 
-.innerContainer {
-    border: 1px solid grey;
-    width: 35%;
-    height: 40%;
-    border-radius: 30px;
-    /* padding: 1%; */
-}
-
-.login {
+.innerContainer{
     /* border: 1px solid red; */
-    width: 100%;
-    height: 100%;
+    /* width: 30%; */
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
+    padding: 20px;
 }
 
-.textBig {
-    /* border: 1px solid blue; */
-    font-size: 28px;
-    font-weight: 700;
-    color: rgb(60, 60, 60);
-    height: 10%;
+.logoContainer{
+    /* border: 1px solid blue ; */
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.inputContainer {
-    /* border: 1px solid red; */
-    width: 100%;
+.logo{
+    width: 200px;
+    height: auto;
+}
+
+.main{
+    border: 1px solid #d6d6d6;
     display: flex;
+    justify-content: center;
+    width: 100%;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    border-radius: 10px;
+    padding: 10px;
 }
 
-.inputEl {
-    /* border: 1px solid black; */
-    margin-top: 2%;
-    width: 80%;
-    display: flex;
-}
-
-.input {
-    padding: 2%;
-    border-radius: 7px 0px 0px 7px;
-    border: 1px solid grey;
-    width: 90%;
-}
-
-.eyeIconContainer {
-    /* border: 1px solid blue; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 10%;
-    background-color: rgb(220, 210, 210);
-    border-radius: 0px 7px 7px 0px;
-    border: 1px solid grey;
-}
-
-.errorContainer {
-    /* border: 1px solid black; */
-    display: flex;
-    align-items: center;
-    width: 80%;
-    font-size: 15px;
-    color: red;
-}
-
-.icon {
-    font-size: 18px;
-    color: rgb(63, 63, 63);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.buttonContainer {
-    /* border: 1px solid blue; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2%;
-}
-
-.button {
-    background-color: #7246e5;
-    border-radius: 30px;
-    color: white;
-    border: none;
-    padding: 2%;
-    padding-left: 15%;
-    padding-right: 15%;
-    font-size: medium;
+.bigText{
+    color: #3c3c3c;
+    font-family: 'Gowun Batang',Georgia,"Times New Roman",Times,serif;
     font-weight: 500;
-    transition: 0.2s;
+    font-size: 25px;;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
-.lineContainer {
+.socialContainer{
+    /* border: 1px solid red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2%;
+}
+
+.facebook{
+    width: 370px;
+    height: 40px;
+    background-color: #3669b7;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: row;
+    margin-top: 2%;
+}
+
+.google{
+    border: 1px solid rgb(191, 191, 191);
+    width: 370px;
+    height: 40px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: row;
+    margin: 2%;
+}
+
+.apple{
+    width: 370px;
+    height: 40px;
+    background-color: black;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: row;
+    margin-bottom: 2%;
+}
+
+.Icon{
+    color: white;
+    font-size: 20px;
+}
+
+.socialText{
+    color: white;
+    margin-left: 2%;
+    font-weight: 400;
+}
+
+.socialTextBlack{
+    color: black;
+    margin-left: 2%;
+    font-weight: 400;
+}
+
+.lineContainer{
+    /* border: 1px solid blue; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.lineText{
+    color: #898989;
+}
+
+.line{
+    width: 42%;
+    border:1px solid  #ded2ff;
+    margin: 0.5%;
+}
+
+.login{
     /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-.line {
-    border: 1px solid grey;
-    width: 34%;
+.input{
+    border: 1px solid #ded2ff;
+    padding: 5px;
+    padding-left: 10px;
+    width: 355px;
+    height: 40px;
+    font-size: 14px;
+    color: #3c3c3c;
+    border-radius: 10px;
+    margin: 1%;
+}
+
+.inputErr{
+    border: 1px solid red;
+    padding: 5px;
+    padding-left: 10px;
+    width: 355px;
+    height: 40px;
+    font-size: 14px;
+    color: #3c3c3c;
+    border-radius: 10px;
+    margin: 1%;
+}
+
+.inputPassword{
+    border: 1px solid #ded2ff;
+    padding: 5px;
+    padding-left: 10px;
+    width: 355px;
+    height: 40px;
+    font-size: 14px;
+    color: #3c3c3c;
+    border-radius: 10px;
+    /* margin: 1%; */
+}
+
+.inputPasswordErr{
+    border: 1px solid red;
+    padding: 5px;
+    padding-left: 10px;
+    width: 355px;
+    height: 40px;
+    font-size: 14px;
+    color: #3c3c3c;
+    border-radius: 10px;
+    /* margin: 1%; */
+}
+
+.errDivVisible{
+    color: red;
+    opacity: 1;
+    font-size: 13px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.errDivInvisible{
+    width: 0px;
     height: 0px;
+    opacity: 0;
 }
 
-.lineText {
-    color: grey;
-    margin-left: 1%;
-    margin-right: 1%;
+
+.passwordContainer{
+    position: relative;
+  }
+
+.eyeIconContainer{
+    position: absolute;
+    color: #ded2ff;
+    font-size: 23px;
+    top: 25%;
+    right: 3%;
 }
 
-.socialContainer {
-    /* border: 1px solid black; */
+.eyeShow{
+    width: 100%;
+}
+
+.eyeHide{
+    width: 0;
+}
+
+.forgotPasswordCont{
+    /* border: 1px solid blue; */
+    margin-top: 2%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    width: 350px;
 }
 
-.socialInnerContainer {
+.forgotPassword{
+    color: black;
+    font-size: 11.9px;
+    font-weight: 600;
+}
+
+.buttonContainer{
     /* border: 1px solid red; */
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 82%;
-}
-
-.googleIcon {
-    font-size: 40px;
-    color: rgb(221, 75, 57);
     margin: 2%;
 }
-
-.facebookIcon {
-    font-size: 34px;
-    color: rgb(59, 89, 152);
-    margin: 2%;
+  
+.button{
+    border: none;
+    background-color: #7246E5;
+    font-size: 16px;
+    border-radius: 20px;
+    font-weight: 400;
+    color: white;
+    width: 150px;
+    padding: 12px;
 }
 
-@media only screen and (width<=700px) {
-    .innerContainer {
-        width: 60%;
-    }
+.lineLong{
+    width: 360px;
+    border:1px solid  #ded2ff;
+    margin-top:3%;
 }
 
-@media only screen and (width<=350px) {
-    .innerContainer {
-        width: 60%;
-        height: 65%;
-    }
+.loggedinContainer{
+    /* border: 1px solid red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 10px;
+}
+
+.text{
+    margin-right: 1%;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #3c3c3c;
+    font-weight: 500;
 }
