@@ -7,24 +7,28 @@ import { client } from '../client/client';
 import OTPInput, { ResendOTP } from 'otp-input-react';
 
 import phoneLogo from '../assets/phone.png';
+import { useNavigate } from 'react-router-dom';
 
 export const OTP = ({ id }) => {
+    const navigate=useNavigate();
+
     const [OTP, setOTP] = useState('');
 
-    function verifyCode(code) {
+    async function verifyCode(code) {
         window.confirmationResult
             .confirm(code)
             .then(async (result) => {
                 // User signed in successfully.
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 console.log('verification done');
 
-                client
+                await client
                     .post('/auth/verify/' + id)
                     .then(async (res) => {
                         console.log(res.data);
-                        //navigate to home
+                        //success phone auth
+                        navigate("/login")
                     })
                     .catch((err) => {
                         console.log(err);

@@ -58,26 +58,6 @@ export const Phone = ({ id }) => {
             });
     }
 
-    // function verifyCode(code) {
-
-    //     window.confirmationResult.confirm(code).then(async (result) => {
-    //         // User signed in successfully.
-    //         const user = result.user;
-    //         console.log(user)
-    //         console.log("verification done");
-
-    //         client.post("/auth/verify/"+id)
-    //             .then(async(res)=>{
-    //                 console.log(res.data);
-    //                 //navigate to home
-    //             }).catch((err)=>{
-    //                 console.log(err);
-    //             })
-    //     }).catch((error) => {
-    //         console.log(error)
-    //         console.log("Error")
-    //     });
-    // }
 
     function phoneCheck() {
         if (phone.length == 11) {
@@ -89,17 +69,8 @@ export const Phone = ({ id }) => {
 
     phoneCheck();
 
-    // if(OTP.length==6){
-    //     verifyCode(OTP)
-    // }
 
     return goToOTP ? (
-        // <div className={style.phoneCont}>
-        //     <div className={style.phoneInnerCont}>
-        //         <OTPInput value={OTP} onChange={setOTP} autoFocus OTPLength={6} otpType="number" disabled={false}/>
-        //     </div>
-        // </div>
-
         <OTP id={id}></OTP>
     ) : (
         <div className={style.phoneCont}>

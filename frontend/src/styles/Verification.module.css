@@ -111,18 +111,25 @@
 @media only screen and (width<=1040px) {
     .verInnerContainer {
         flex-direction: column;
+        width: 50%;
+        height: 30%;
     }
 
     .rightCont {
         width: 100%;
+    }
+
+    .logoCont{
+        width: 0%;
+        height: 0%;
     }
 }
 
 @media only screen and (width<=700px) {
     .verInnerContainer {
         flex-direction: column;
-        width: 60%;
-        height: 50%;
+        width: 50%;
+        height: 20%;
     }
 
     .rightCont {
@@ -131,6 +138,11 @@
 
     .logo {
         width: 150%;
+    }
+
+    .logoCont{
+        width: 0%;
+        height: 0%;
     }
 }
 
@@ -149,7 +161,8 @@
         width: 100%;
     }
 
-    .logoCont {
-        height: 50%;
+    .logoCont{
+        width: 0%;
+        height: 0%;
     }
 }

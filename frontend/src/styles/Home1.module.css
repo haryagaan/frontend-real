@@ -1,0 +1,121 @@
+.home {
+    width: 100%;
+    display: flex;
+    height: 620px;
+    background-size: cover;
+    animation-duration: 20s;
+    animation-name: example;
+    animation-iteration-count: infinite;
+}   
+.bckgrnd {
+    width: 1400px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+.col1 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.title {
+    font-family: 'Gowun Batang',Georgia,"Times New Roman",Times,serif;
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    margin: 0px;
+    color: white;
+    margin-bottom: 30px;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 20px;
+}
+.title2 {
+    font-style: italic;
+}
+.input {
+    width: 30vw;
+    height: 48px;
+    border-radius: 12px;
+    font-size: 15px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border: none;
+
+}
+.button {
+    background-color: #7246E5;
+    height:50px;
+    padding: 12 24px;
+    width: 50px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-width: 2px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search {
+    position: relative;
+    height: 20px;
+    width: 20px;
+}
+
+.searchIcon{
+    color: white;
+    font-size: 22px;
+}
+
+.font {
+    color: white;
+    font-size: 17px;
+}
+.butt {
+    color: white;
+    margin: 10px;
+    cursor: pointer;
+    border: 1px solid white;
+    padding: 8px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bolder;
+
+}
+@keyframes example {
+    0%   {background-image: url("../assets/homePerson1.webp");}
+    25%  {background-image: url("../assets/homePerson2.webp");}
+    50%  {background-image: url("../assets/homePerson3.webp");}
+    75% {background-image: url("../assets/homePerson4.webp");}
+    100% {background-image: url("../assets/homePerson1.webp");}
+}
+@media only screen and (max-width: 1100px) {
+    .home {
+        background-color: rgb(27, 26, 29);
+        animation: none;
+    }
+    .col1 {
+        width: 80vw;
+        margin: auto;
+    }
+    .col2 {
+        width: 0vw;
+    }
+    .input {
+        width: 50vw;
+    }
+    
+  }
+  @media only screen and (max-width: 480px) {
+    .col1 {
+        width: 95vw;
+    }
+    .input {
+        width: 80vw;
+    }
+  }

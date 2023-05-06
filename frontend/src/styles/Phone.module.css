@@ -79,6 +79,8 @@
         flex-direction: column;
         /* height: 50%; */
         background-color: rgb(247, 251, 247);
+        width: 40%;
+        height: 30%;
     }
 
     .logoContainer {
@@ -98,7 +100,7 @@
 @media only screen and (width<=400px) {
     .phoneInnerCont {
         width: 80%;
-        height: 50%;
+        height: 37%;
         background-color: rgb(247, 251, 247);
     }
 

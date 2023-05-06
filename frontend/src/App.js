@@ -5,6 +5,7 @@ import { Client } from "./components/ClientOrFreelancer";
 import { Home } from "./components/Home";
 import { DataProvider } from "./context/DataProvider";
 import { Password } from "./components/Password";
+import { MyProfile } from "./components/MyProfile";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/password" element={<Password/>}/>
                     <Route path="/home" element={<Home/>}/>
+                    <Route path="/myprofile" element={<MyProfile/>}/>
                 </Routes>
             </BrowserRouter>
         </DataProvider>
