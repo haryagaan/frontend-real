@@ -12,7 +12,7 @@ export const Password = () => {
           <div className={styles.nav}>
             <Link
               className={styles.navlink}
-              to={"/settings"}
+              // to={"/settings"}
               style={{ borderTopLeftRadius: 10 }}
             >
               <div>

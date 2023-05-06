@@ -2,7 +2,7 @@ import style from '../styles/Login.module.css';
 
 import logo from "../assets/logo.png"
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Verification } from './Verification';
 
@@ -22,7 +22,22 @@ import 'react-toastify/dist/ReactToastify.css';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, providerFacebook, providerGoogle } from '../firebaseConfig/firebaseConfig';
 
+import { DataContext } from "../context/DataProvider"
+import { useContext } from "react"
+
 export const Login = () => {
+    const {
+        isAuth,
+        setIsAuth
+    }=useContext(DataContext);
+
+    const navigate=useNavigate()
+
+
+    const [user,setUser]=useState();
+    const [isVerified,setIsVerified]=useState();
+
+
 
     const [email,setEmail]=useState();
     const [password,setPassword]=useState();
@@ -110,8 +125,12 @@ export const Login = () => {
        await client.post("/auth/login" , {email , password})
         .then(async(res)=>{
             console.log(res.data)
-            localStorage.setItem("token" , res.data.token)
+            localStorage.setItem("token", res.data.token)
+            setIsAuth(true);
+            setUser(res.data.user)
+            setIsVerified(res.data.isVerified);
         }).catch((err)=>{
+            console.log(err)
             console.log(err.response.data)
             setErr(err.response.data);
             toastError(err.response.data)
@@ -136,7 +155,10 @@ export const Login = () => {
         }
     },[err])
 
+    console.log(isAuth)
+
     return (
+        isVerified ==null ?
         <div className={style.container}>
 
             <ToastContainer
@@ -205,7 +227,7 @@ export const Login = () => {
                     </div>
 
                     <div className={style.forgotPasswordCont}>
-                        <a className={style.forgotPassword} href=''>Forgot your password?</a>
+                        <Link className={style.forgotPassword} to="/password">Forgot your password?</Link>
                     </div>
 
                     <div className={style.buttonContainer}>
@@ -225,5 +247,11 @@ export const Login = () => {
 
             </div>
         </div>
+
+        : isVerified==false ?
+
+        <Verification user={user}></Verification>
+
+        : <div>Welcome</div>
     )
 };

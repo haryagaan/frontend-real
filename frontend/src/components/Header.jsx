@@ -4,7 +4,11 @@ import { BsFillBellFill } from "react-icons/bs";
 import { BsFillChatDotsFill } from "react-icons/bs";
 import { TbMoodSmileBeam } from "react-icons/tb";
 import { ImSearch } from "react-icons/im";
-import logo from "../assets/1.png";
+import logo from "../assets/logo.png";
+import logoCut from "../assets/logoCut.png";
+
+
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
@@ -38,22 +42,31 @@ export const Header = () => {
   const [showDropdown1, setShowDropdown1] = useState(false);
   const [showDropdown2, setShowDropdown2] = useState(false);
   const [showDropdown3, setShowDropdown3] = useState(false);
-  
+  const [showDropdown4, setShowDropdown4] = useState(false);
 
   const handleButtonClick1 = () => {
     setShowDropdown1(!showDropdown1);
     setShowDropdown2(false);
     setShowDropdown3(false);
+    setShowDropdown4(false);
   };
   const handleButtonClick2 = () => {
     setShowDropdown2(!showDropdown2);
     setShowDropdown1(false);
     setShowDropdown3(false);
+    setShowDropdown4(false);
   };
   const handleButtonClick3 = () => {
     setShowDropdown3(!showDropdown3);
     setShowDropdown1(false);
     setShowDropdown2(false);
+    setShowDropdown4(false);
+  };
+  const handleButtonClick4 = () => {
+    setShowDropdown4(!showDropdown4);
+    setShowDropdown1(false);
+    setShowDropdown2(false);
+    setShowDropdown3(false);
   };
 
   return (
@@ -63,41 +76,53 @@ export const Header = () => {
         ref={headerRef}
       >
         <div className={styles.container}>
-          <div style={{ display: "flex", gap: 10 }}>
+          <a href="/" style={{ display: "flex", gap: 10 }}>
             <img src={logo} className={styles.logo} />
-            <h3>This is not logo</h3>
-          </div>
+            <img src={logoCut} className={styles.logoCut} />
+          </a>
 
           <div className={styles.drop1}>
-            <input
-              type="text"
-              placeholder="What service are you looking for today?"
-            ></input>
             <button>
-              <ImSearch className={styles.icon2}></ImSearch>
+              <ImSearch
+                className={styles.icon}
+                onClick={handleButtonClick4}
+              ></ImSearch>
             </button>
+            {showDropdown4 && (
+              <div className={styles.input}>
+                <input
+                  type="text"
+                  placeholder="What service are you looking for today?"
+                ></input>
+              </div>
+            )}
           </div>
           <div className={styles.drop2}>
             <button onClick={handleButtonClick1}>
               <BsFillBellFill className={styles.icon}></BsFillBellFill>
             </button>
             {showDropdown1 && (
-             <div className={styles.messages}>
-             <div>
-               <div>
-                 <div className={styles.view}>
-                   <div>Notifications</div>
-                   <a href="/" className={styles.a}>View all</a>
-                 </div>
-                 <hr />
-                 <div className={styles.message}>
-                   <div>NO NOTIFICATIONS</div>
-                 </div>
-               </div>
-             </div>
-           </div>
+              <div className={styles.messages}>
+                <div>
+                  <div>
+                    <div className={styles.view}>
+                      <div>Notifications</div>
+                      <a href="/" className={styles.a}>
+                        View all
+                      </a>
+                    </div>
+                    <hr />
+                    <div className={styles.message}>
+                      <div>No notifications</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             )}
           </div>
+          <a href="/nofications" className={styles.dropRes2}>
+          <BsFillBellFill className={styles.icon}></BsFillBellFill>
+            </a>
           <div className={styles.drop3}>
             <button onClick={handleButtonClick2}>
               <BsFillChatDotsFill className={styles.icon}></BsFillChatDotsFill>
@@ -108,17 +133,24 @@ export const Header = () => {
                   <div>
                     <div className={styles.view}>
                       <div>Messages</div>
-                      <a href="/" className={styles.a}>View all</a>
+                      <a href="/" className={styles.a}>
+                        View all
+                      </a>
                     </div>
                     <hr />
                     <div className={styles.message}>
-                      <div>NO MESSAGES</div>
+                      <div>No messages</div>
                     </div>
                   </div>
                 </div>
               </div>
             )}
           </div>
+          <a href="/messages" className={styles.dropRes1}>
+              <BsFillChatDotsFill
+                className={styles.icon}
+              ></BsFillChatDotsFill>
+            </a>
           <div>
             <div className={styles.drop4}>
               <button onClick={handleButtonClick3}>
@@ -131,8 +163,8 @@ export const Header = () => {
                       <h4>Account name</h4>
                       <hr />
                       <div className={styles.accName1}>
-                        <div>My account</div>
-                        <div>My profile</div>
+                        {/* <div>My account</div> */}
+                        <Link to="/myprofile">My profile</Link>
                       </div>
                     </div>
                     <hr />

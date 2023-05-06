@@ -22,8 +22,17 @@ import {Link} from "react-router-dom"
 import { signInWithPopup, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth"
 import { auth, app, providerFacebook, providerGoogle } from "../firebaseConfig/firebaseConfig"
 
+import { DataContext } from "../context/DataProvider"
+import { useContext } from "react"
 
 export const Signup = () => {
+    const {
+        user,
+        setUser,
+        isAuth,
+        setIsAuth
+    }=useContext(DataContext);
+
     const navigate=useNavigate();
 
     const [logoSmall,setLogoSmall]=useState(false);
@@ -44,7 +53,6 @@ export const Signup = () => {
     const [passwordErr,setPasswordErr]=useState(false);
     const [firstnameErr,setFirstnameErr]=useState(false);
     const [lastnameErr ,setLastnameErr]=useState(false); 
-    const [termsErr,setTermsErr]=useState(false);
 
     const toastSuccess = (string) => toast.success(string);
 
@@ -83,7 +91,7 @@ export const Signup = () => {
                 socialType: "Facebook",
                 role:code
             }).then(async (res) => {
-                // console.log(res.data);
+                console.log(res.data);
                 localStorage.setItem("token" , res.data.token)
                 toastSuccess("Success!!");
             }).catch((err) => {
@@ -114,7 +122,7 @@ export const Signup = () => {
                 socialType: "Google",
                 role:code
             }).then(async (res) => {
-                // console.log(res.data)
+                console.log(res.data)
                 localStorage.setItem("token" , res.data.token)
                 toastSuccess("Success!!");
             }).catch((err) => {
@@ -147,7 +155,6 @@ export const Signup = () => {
                 toastError(err.response.data)
             })
         }else{
-            setTermsErr(true);
             toastError("Pls agree to our terms and conditions");
         }
     }
@@ -161,7 +168,6 @@ export const Signup = () => {
                 setPasswordErr(false)
                 setFirstnameErr(false)
                 setLastnameErr(false)
-                setTermsErr(false);
             }else if(error=="Email already exists") {
                 setAllErr(false);
                 setEmailExistErr(true);
@@ -169,7 +175,6 @@ export const Signup = () => {
                 setPasswordErr(false)
                 setFirstnameErr(false)
                 setLastnameErr(false)
-                setTermsErr(false);
             }else if(error=="Password must be longer than 6 characters and less than 30 characters") {
                 setAllErr(false);
                 setEmailExistErr(false);
@@ -177,7 +182,6 @@ export const Signup = () => {
                 setPasswordErr(true)
                 setFirstnameErr(false)
                 setLastnameErr(false)
-                setTermsErr(false);
             }else if(error=="Lastname must be longer than 2 characters and less than 30 characters"){
                 setAllErr(false);
                 setEmailExistErr(false);
@@ -185,7 +189,6 @@ export const Signup = () => {
                 setPasswordErr(false)
                 setFirstnameErr(false)
                 setLastnameErr(true)
-                setTermsErr(false);
             }else if(error=="Firstname must be longer than 2 characters and less than 30 characters"){
                 setAllErr(false);
                 setEmailExistErr(false);
@@ -193,7 +196,6 @@ export const Signup = () => {
                 setPasswordErr(false)
                 setFirstnameErr(true)
                 setLastnameErr(false)
-                setTermsErr(false);
             }else if(error=="Invalid email"){
                 setAllErr(false);
                 setEmailExistErr(false);
@@ -201,7 +203,6 @@ export const Signup = () => {
                 setPasswordErr(false)
                 setFirstnameErr(false)
                 setLastnameErr(false)
-                setTermsErr(false);
             }
         }
     },[error])
@@ -278,9 +279,6 @@ export const Signup = () => {
                                 By creating an account, you agree to MEET's terms of Service and Privacy Policy
                             </div>
                         </div>
-
-                        <div className={termsErr ? style.errDivVisible : style.errDivInvisible}>Pls agree to our terms and conditions</div>
-
 
                     </div>
 

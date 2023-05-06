@@ -1,264 +1,380 @@
 .navbar1Sticky {
-    background: transparent;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    transition: all 0.5s ease;
-    animation: smoothScroll 1s forwards;
+  background: transparent;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: all 0.5s ease;
+  animation: smoothScroll 1s forwards;
+}
+@keyframes smoothScroll {
+  0% {
+    transform: translateY(-142px);
   }
-  @keyframes smoothScroll {
-    0% {
-      transform: translateY(-142px);
-    }
-  
-    100% {
-      transform: translateY(0px);
-    }
+
+  100% {
+    transform: translateY(0px);
   }
-  .navbar1 {
-    background: transparent;
-  }
-  .logo {
-    width: 50px;
-    height: 50px;
-    padding-left: 200px;
-  }
-  .buttons {
-    display: flex;
-    gap: 10px;
-    /* padding-right: 200px; */
-  }
-  .container {
-    display: flex;
-    height: 60px;
-    width: 100%;
-    padding-top: 10px;
-    box-shadow: -2px 21px 40px -13px rgba(0, 0, 0, 0.14);
-    -webkit-box-shadow: -2px 21px 40px -13px rgba(0, 0, 0, 0.14);
-    -moz-box-shadow: -2px 21px 40px -13px rgba(0, 0, 0, 0.14); 
-  }
-  button {
-    border: 1px solid transparent;
-    background-color: transparent;
-  }
-  .icon {
-    padding-top: 10px;
-    width: 30px;
-    height: 30px;
-    color: #7246e5;
-  }
-  .icon1:hover {
-    transition: 200ms;
-    color: #5335a0;
-  }
-  .icon1 {
-    padding-top: 10px;
-    width: 30px;
-    height: 30px;
-    color: #c0abf5;
-    transition: 250ms;
-  }
-  /* .dropdown {
-    background-color: white;
-    border-radius: 5px;
-    height: 80px;
-    width: 300px;
-    box-shadow: 0px 8px 0px -1px rgba(0,0,0,0.27);
-    -webkit-box-shadow: 0px 8px 0px -1px rgba(0,0,0,0.27);
-    -moz-box-shadow: 0px 8px 0px -1px rgba(0,0,0,0.27);
-  } */
-  h3 {
-    /* display: none; */
-    color: #7246e5;
-  }
-  .icon:hover {
-    color: #492e8c;
-  }
-  
+}
+.navbar1 {
+  background: transparent;
+}
+.logo {
+  padding-left: 200px;
+}
+.logoCut {
+  display: none;
+}
+.container {
+  display: flex;
+  height: 60px;
+  width: 100%;
+  padding-top: 10px;
+  box-shadow: -2px 21px 40px -13px rgba(0, 0, 0, 0.14);
+  -webkit-box-shadow: -2px 21px 40px -13px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: -2px 21px 40px -13px rgba(0, 0, 0, 0.14);
+}
+button {
+  border: 1px solid transparent;
+  background-color: transparent;
+}
+.icon {
+  padding-top: 10px;
+  width: 23px;
+  height: 23px;
+  color: #7246e5;
+}
+.icon1:hover {
+  transition: 200ms;
+  color: #5335a0;
+}
+.icon1 {
+  padding-top: 10px;
+  width: 25px;
+  height: 25px;
+  color: #c0abf5;
+  transition: 250ms;
+}
+h3 {
+  /* display: none; */
+  color: #7246e5;
+}
+.icon:hover {
+  color: #492e8c;
+}
+
+.drop1 {
+  position: absolute;
+  left: 1500px;
+}
+.drop2 {
+  position: absolute;
+  left: 1550px;
+}
+
+.drop3 {
+  position: absolute;
+  left: 1600px;
+}
+
+.drop4 {
+  position: absolute;
+  left: 1650px;
+}
+input {
+  background-color: #f8f8ef;
+  width: 350px;
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding-left: 10px;
+}
+.input {
+  width: 370px;
+  height: 60px;
+  background-color: white;
+  padding: 10px;
+  margin-left: -350px;
+  border-radius: 10px;
+  box-shadow: 1px 0px 9px 0px rgba(133, 128, 128, 0.75);
+  -webkit-box-shadow: 1px 0px 9px 0px rgba(133, 128, 128, 0.75);
+  -moz-box-shadow: 1px 0px 9px 0px rgba(133, 128, 128, 0.75);
+  margin-top: 10px;
+}
+input:focus {
+  outline: none;
+}
+.settings {
+  width: 310px;
+  height: 370px;
+  margin-left: -200px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-shadow: 1px 0px 9px 0px rgba(133, 128, 128, 0.75);
+  -webkit-box-shadow: 1px 0px 9px 0px rgba(133, 128, 128, 0.75);
+  -moz-box-shadow: 1px 0px 9px 0px rgba(133, 128, 128, 0.75);
+  margin-top: 10px;
+}
+.accName1 {
+  display: flex;
+  gap: 65px;
+}
+.accName2 {
+  display: flex;
+  gap: 20px;
+}
+.dropRes1{
+  display: none;
+  position: absolute;
+  left: 1600px;
+}
+.dropRes2{
+  display: none;
+  position: absolute;
+  left: 1600px;
+}
+.set {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-right: 15px;
+  gap: 5px;
+}
+hr {
+  background-color: #5335a0;
+  border: none;
+  height: 1px;
+  width: 280px;
+}
+.logout {
+  text-decoration: none;
+  color: black;
+}
+.a {
+  color: black;
+}
+.messages {
+  width: 300px;
+  margin-left: -200px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 1px 0px 9px 0px rgba(133, 128, 128, 0.75);
+  -webkit-box-shadow: 1px 0px 9px 0px rgba(133, 128, 128, 0.75);
+  -moz-box-shadow: 1px 0px 9px 0px rgba(133, 128, 128, 0.75);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 10px;
+}
+.view {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  font-weight: 400;
+}
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+@media screen and (max-width: 1740px) {
   .drop1 {
-    position: absolute;
-    left: 700px;
+    left: 1050px;
   }
   .drop2 {
-    position: absolute;
-    left: 1560px;
+    left: 1100px;
   }
-  
   .drop3 {
-    position: absolute;
-    left: 1630px;
+    left: 1150px;
   }
-  
   .drop4 {
-    position: absolute;
-    left: 1690px;
+    left: 1200px;
+  }
+}
+@media screen and (max-width: 1260px) {
+  .drop1 {
+    left: 800px;
+  }
+  .drop2 {
+    left: 850px;
+  }
+  .drop3 {
+    left: 900px;
+  }
+  .drop4 {
+    left: 950px;
+  }
+  .logo {
+    padding-left: 80px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .logo {
+    padding-left: 50px;
+  }
+  .drop1 {
+    left: 550px;
+  }
+  .drop2 {
+    left: 600px;
+  }
+  .drop3 {
+    left: 650px;
+  }
+  .drop4 {
+    left: 700px;
   }
   input {
-    background-color: #f8f8ef;
-    width: 450px;
-    height: 40px;
-    border: 1px solid rgb(63, 63, 63);
-    border-radius: 5px;
-    margin-top: 5px;
-    font-size: 16px;
-    padding-left: 10px;
+    width: 350px;
   }
-  input:focus {
-    outline: none;
+  .logoCut {
+    display: block;
+    padding-left: 80px;
+  }
+  .logo {
+    display: none;
+  }
+}
+@media screen and (max-width: 740px) {
+  .input {
+    margin-left: -250px;
   }
   .icon2 {
-    width: 20px;
-    height: 20px;
-    color: #7246e5;
-    position: absolute;
-    top: 17px;
-    right: 25px;
+    opacity: 0;
   }
-  .settings{
-    width: 300px;
-    height: 370px;
-    margin-left: -200px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    background-color: white;
+  .drop1 {
+    left: 250px;
   }
-  .accName1{
-    display: flex;
-    gap: 65px;
+  .drop2 {
+    left: 300px;
   }
-  .accName2{
-    display: flex;
-    gap: 20px;
+  .drop3 {
+    left: 350px;
   }
-  
-  .set{
-    display: flex;
-    flex-direction: column;
-    padding-left: 10px;
-    padding-right: 10px;
-    gap: 5px;
+  .drop4 {
+    left: 400px;
+  }
+  .logoCut {
+    padding-left: 20px;
+  }
+  .settings {
+    margin-left: -280px;
+    margin-top: 10px;
+  }
+  .messages {
+    margin-left: -230px;
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width: 420px) {
+  .drop1 {
+    left: 200px;
+  }
+  .dropRes2 {
+    left: 260px;
+    display: block;
+    top: 12px;
+  }
+  .dropRes1 {
+    left: 310px;
+    display: block;
+    top: 12px;
+  }
+  .drop4 {
+    left: 350px;
+  }
+  .input {
+    margin-left: -190px;
+  }
+  .drop3{
+    display: none;
+  }
+  .drop2 {
+    display: none;
+  }
+}
+@media screen and (max-width: 393px) {
+  .input {
+    margin-left: -180px;
+  }
+  .drop1 {
+    left: 180px;
+  }
+  .dropRes2 {
+    left: 240px;
+  }
+  .dropRes1 {
+    left: 290px;
+  }
+  .drop4 {
+    left: 330px;
+  }
+}
+@media screen and (max-width: 375px) {
+  input {
+    width: 340px;
+  }
+  .input {
+    width: 360px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .drop1 {
+    left: 160px;
+  }
+  .dropRes2 {
+    left: 220px;
+  }
+  .dropRes1 {
+    left: 270px;
+  }
+  .drop4 {
+    left: 310px;
+  }
+  input {
+    width: 320px;
+  }
+  .input {
+    width: 340px;
+    margin-left: -160px;
+  }
+  .messages {
+    margin-left: -210px;
+  }
+}
+@media screen and (max-width: 280px) {
+  .drop1 {
+    left: 100px;
+  }
+  .dropRes2 {
+    left: 145px;
+  }
+  .dropRes1 {
+    left: 183px;
+  }
+  .drop4 {
+    left: 210px;
+  }
+  input {
+    width: 220px;
+  }
+  .input {
+    width: 240px;
+    margin-left: -90px;
+  }
+  input::placeholder {
+    opacity: 0;
+  }
+  .settings {
+    width: 270px;
+    margin-left: -205px;
+    height: 385px;
   }
   hr{
-    background-color: #5335a0;
-    border: none;
-    height: 1px;
-    width: 280px;
-    
-  }
-  .logout{
-   text-decoration: none;
-   color: black;
-  }
-  .a{
-    color: black;
-  }
-  .messages{
-    width: 300px;
-    margin-left: -200px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    background-color: white;
-    box-shadow: 1px 0px 9px 0px rgba(133,128,128,0.75);
-    -webkit-box-shadow: 1px 0px 9px 0px rgba(133,128,128,0.75);
-    -moz-box-shadow: 1px 0px 9px 0px rgba(133,128,128,0.75);
-  }
-  .view{
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-    font-weight: 400;
-  }
-  .message{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-  }
-  @media screen and (max-width: 1740px) {
-    .drop1{
-      left: 500px;
-    }
-    .drop2{
-      left: 1100px;
-    }
-    .drop3{
-      left: 1150px;
-    }
-    .drop4{
-      left: 1200px;
-    }
-  }
-  @media screen and (max-width: 1260px) {
-    .drop1{
-      left: 200px;
-    }
-    .drop2{
-      left: 850px;
-    }
-    .drop3{
-      left: 900px;
-    }
-    .drop4{
-      left: 950px;
-    }
-    .logo{
-      padding-left: 80px;
-    }
-    h3{
-      display: none;
-    }
-  }
-  @media screen and (max-width: 1000px) {
-    .logo{
-      padding-left: 50px;
-    }
-    .drop1{
-      left: 200px;
-    }
-    .drop2{
-      left: 600px;
-    }
-    .drop3{
-      left: 650px;
-    }
-    .drop4{
-      left: 700px;
-    }
-    input{
-      width: 350px;
-    }
-  }
-  @media screen and (max-width: 740px) {
-   input::placeholder{
-      opacity: 0;
-    }
-    input{
-      width: 160px;
-    }
-    .icon2{
-      opacity: 0;
-    }
-    .drop1{
-      left: 100px;
-    }
-    .drop2{
-      left: 300px;
-    }
-    .drop3{
-      left: 350px;
-    }
-    .drop4{
-      left: 400px;
-    }
-    .logo{
-      padding-left: 20px;
-    }
-    .settings{
-      margin-left: -280px;
-      margin-top: 10px;
-    }
-    .messages{
-      margin-left: -280px;
-      margin-top: 10px;
-    }
-  }
+  width: 240px;
+}
+}
