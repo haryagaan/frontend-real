@@ -78,6 +78,7 @@ export const Login = () => {
                     .then(async (res) => {
                         // console.log(res.data);
                         localStorage.setItem("token" , res.data.token)
+                        navigate("/home")
                     })
                     .catch((err) => {
                         console.log(err.response.data);
@@ -110,6 +111,7 @@ export const Login = () => {
                     .then(async (res) => {
                         // console.log(res.data);
                         localStorage.setItem("token" , res.data.token)
+                        navigate("/home")
                     })
                     .catch((err) => {
                         console.log(err);
@@ -124,14 +126,17 @@ export const Login = () => {
     async function Login() {
        await client.post("/auth/login" , {email , password})
         .then(async(res)=>{
-            console.log(res.data)
+            // console.log(res.data)
             localStorage.setItem("token", res.data.token)
             setIsAuth(true);
             setUser(res.data.user)
             setIsVerified(res.data.isVerified);
+            if(res.data.isVerified==true){
+                navigate("/home")
+            }
         }).catch((err)=>{
-            console.log(err)
-            console.log(err.response.data)
+            // console.log(err)
+            // console.log(err.response.data)
             setErr(err.response.data);
             toastError(err.response.data)
         })
@@ -155,7 +160,7 @@ export const Login = () => {
         }
     },[err])
 
-    console.log(isAuth)
+    // console.log(isAuth)
 
     return (
         isVerified ==null ?

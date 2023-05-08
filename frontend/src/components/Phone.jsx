@@ -18,7 +18,7 @@ export const Phone = ({ id }) => {
     const [phone, setPhone] = useState('');
     const [goToOTP, setGoToOTP] = useState(false);
 
-    console.log(id);
+    // console.log(id);``
 
     function onCaptchVerify() {
         if (!window.recaptchaVerifier) {

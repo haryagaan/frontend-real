@@ -28,7 +28,7 @@ export const OTP = ({ id }) => {
                     .then(async (res) => {
                         console.log(res.data);
                         //success phone auth
-                        navigate("/login")
+                        navigate("/home")
                     })
                     .catch((err) => {
                         console.log(err);

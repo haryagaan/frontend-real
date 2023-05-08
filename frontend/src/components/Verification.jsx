@@ -13,7 +13,7 @@ import verifyImg from '../assets/verify.png';
 export const Verification = ({ user }) => {
     const [phone, setPhone] = useState(false);
 
-    console.log(user);
+    // console.log(user);
 
     function verifyPhone() {
         setPhone((prev) => !prev);

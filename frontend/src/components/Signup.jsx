@@ -93,6 +93,7 @@ export const Signup = () => {
             }).then(async (res) => {
                 console.log(res.data);
                 localStorage.setItem("token" , res.data.token)
+                navigate("/home")
                 toastSuccess("Success!!");
             }).catch((err) => {
                 console.log(err);
@@ -124,6 +125,7 @@ export const Signup = () => {
             }).then(async (res) => {
                 console.log(res.data)
                 localStorage.setItem("token" , res.data.token)
+                navigate("/home")
                 toastSuccess("Success!!");
             }).catch((err) => {
                 console.log(err)
@@ -147,7 +149,8 @@ export const Signup = () => {
                 role:code
             }).then(async (res) => {
                 toastSuccess("Created");
-                navigate("/login")
+                localStorage.removeItem("code");
+                navigate("/login");
                 // console.log(res.data);
             }).catch((err) => {
                 // console.log(err.response.data)
@@ -274,7 +277,7 @@ export const Signup = () => {
                         <div className={passwordErr || allErr ? style.errDivVisible : style.errDivInvisible}>{ allErr ? "This is a required field" : passwordErr ? "Password must be longer than 6 characters and less than 30 characters" : ""}</div>
 
                         <div onClick={toggleCheckbox} className={style.checkboxContainer}>
-                            <input type='checkbox'/>
+                            <input className={style.checkbox} type='checkbox'/>
                             <div className={style.termsandpolicytext}>
                                 By creating an account, you agree to MEET's terms of Service and Privacy Policy
                             </div>

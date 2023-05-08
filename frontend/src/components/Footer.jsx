@@ -26,8 +26,8 @@ export const Footer = () => {
                 </div>
               </div>
 
-              {categories.map((category) => (
-                <div className={styles.text}>{category}</div>
+              {categories.map((category , i) => (
+                <div key={i} className={styles.text}>{category}</div>
               ))}
             </div>
             <div className={styles.column}>
@@ -38,8 +38,8 @@ export const Footer = () => {
                 </div>
               </div>
 
-              {about.map((ab) => (
-                <div className={styles.text}>{ab}</div>
+              {about.map((ab , i) => (
+                <div key={i} className={styles.text}>{ab}</div>
               ))}
             </div>
             <div className={styles.column}>
@@ -50,8 +50,8 @@ export const Footer = () => {
                 </div>
               </div>
 
-              {support.map((sup) => (
-                <div className={styles.text}>{sup}</div>
+              {support.map((sup,i) => (
+                <div key={i} className={styles.text}>{sup}</div>
               ))}
             </div>
           </div>
@@ -64,8 +64,8 @@ export const Footer = () => {
                 </div>
               </div>
 
-              {comminity.map((com) => (
-                <div className={styles.text}>{com}</div>
+              {comminity.map((com,i) => (
+                <div key={i} className={styles.text}>{com}</div>
               ))}
             </div>
             <div className={styles.column}>
@@ -75,8 +75,8 @@ export const Footer = () => {
                   <IoMdArrowDropdown className={styles.drop}/>
                 </div>
               </div>
-              {more.map((mor) => (
-                <div className={styles.text}>{mor}</div>
+              {more.map((mor,i) => (
+                <div key={i} className={styles.text}>{mor}</div>
               ))}
             </div>
           </div>

@@ -16,11 +16,11 @@ export const Header = () => {
 
   const handleScroll = (elTopOffset, elHeight) => {
     var yoff = window.pageYOffset;
-    console.log(elTopOffset);
-    console.log(elHeight);
+    // console.log(elTopOffset);
+    // console.log(elHeight);
     if (yoff > elTopOffset + elHeight) {
       setSticky({ isSticky: true, offset: elHeight });
-      console.log(sticky.isSticky);
+      // console.log(sticky.isSticky);
     } else {
       setSticky({ isSticky: false, offset: 0 });
     }
@@ -164,7 +164,7 @@ export const Header = () => {
                       <hr />
                       <div className={styles.accName1}>
                         {/* <div>My account</div> */}
-                        <Link to="/myprofile">My profile</Link>
+                        <Link to="/profile">My profile</Link>
                       </div>
                     </div>
                     <hr />

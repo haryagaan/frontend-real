@@ -1,87 +1,207 @@
 .container{
-    border: 1px solid blue;
+    /* border: 1px solid red; */
     width: 100vw;
     height: 100vh;
+    /* background-color: #d7d7d7; */
 }
 
 .main{
-    border: 1px solid red;
+    /* border: 1px solid blue; */
     height: 90vh;
     display: flex;
     flex-direction: row;
 }
 
 .leftSide{
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    width: 30vw;
     height: 100%;
-    width: 30%;
-    display: flex;  
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
 }
 
-.profileImgContainer{
-    border: 1px solid blue;
+.imgContainer{
+    /* border: 1px solid blue; */
     width: 100%;
-    height: 45%;
+    height: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background-color: white; */
 }
 
 .profileImg{
-    border-radius: 50%;
-    width: 300px;
+    width: 250px;
     height: auto;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+}
+
+.jobContainer{
+    /* border: 1px solid blue; */
+    /* width: 100%; */
+    height: 30%;
+    padding: 20px;
 }
 
 .nameContainer{
     /* border: 1px solid blue; */
+    /* height: 10%; */
     display: flex;
-    padding: 10px;
-    font-size: 20px;
-    font-weight: 600;
-    flex-direction: row;
-    gap: 5px;
-}
-
-.editProdfileCont{
-    border: 1px solid red;
-    padding: 10px;
-}
-
-.button{
-    border: 1px solid rgb(96, 92, 92);
-    padding: 10px;
-    border-radius: 10px;
-    width: 200px;
-}
-
-.ratingCont{
-    border: 1px solid red;
-    display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
+.name{
+    font-weight: 700;
+    color: #222325;
+    font-size: 20px;
+}
+
+.ratingContainer{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
 .ratingIcon{
-    color: #02c2a9;
-    font-size: 25px;
-}
-
-.ratingText{
-    font-weight: 500;
-}
-
-.ratingNumber{
-    color: #02c2a9;
-    font-weight: 600;
-    margin-left: 5px;
+    color: #1dbf73;
+    font-size: 23px;
 }
 
 .rating{
+    font-size: 16px;
+    font-weight: 600;
+    color: #1dbf73;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.memberContainer{
+    /* border: 1px solid blue; */
+    height: 20%;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+
+.locationContainer{
+    /* border: 1px solid red; */
+    width: 80%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.Icon1{
+    color: #74767e;
+    font-size: 25px;
+}
+
+.text1{
+    color: #74767e;
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.text2{
+    color: #74767e;
+    font-size: 15px;
+    font-weight: 600;
+    position: absolute;
+    right: 10%;
+}
+
+.socialContainer{
+    /* border: 1px solid red; */
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    flex-direction: column;
+}
+
+.socialEl{
+    /* border: 1px solid blue; */
+    padding-left: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.socialIconFb{
+    color: #3669b7;
+    font-size: 20px;
+}
+
+.socialIconInsta{
+    font-size: 20px;
+    color: rgb(227, 156, 226);
+}
+
+.socialIconPhone{
+    color: rgb(103, 182, 103);
+    font-size: 20px;
+}
+
+.socialText{
+    font-size: 15px;
+    margin-left: 20px;
+    color: #74767e;
+}
+
+.rightSide{
+    /* border: 1px solid red; */
+    width: 70vw;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.picContainer{
+    /* border: 1px solid blue; */
+}
+
+.pic{
+    height: 200px;
+    width: auto;
+    margin-left: 10px;
+}
+
+.infoContainer{
+    /* border: 1px solid red; */
+    padding: 10px;
+}
+
+.text3{
+    /* border: 1px solid red; */
+    padding: 10px;
+    font-size: 23px;
+    font-weight: 500;
+    /* background-color: white; */
+}
+
+.jobContainer{
+    /* border: 1px solid blue; */
+    padding: 10px;
+}
+
+.jobText{
+    font-size: 20px;
+    font-weight: 500;
+    /* border: 1px solid red; */
+}
+
+.jobList{
+    /* border: 1px solid red; */
+}
+
+.job{
+    margin: 5px;
+    /* display: inline; */
 }

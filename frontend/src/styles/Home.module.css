@@ -7,7 +7,7 @@
 }
 
 .carouselContainer{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: 100%;
     display: flex;
     /* justify-content: center;
@@ -17,7 +17,7 @@
 .card{
    width: 100px;
    height: 100%;
-   border: 1px solid red;
+   /* border: 1px solid red; */
 }
 
 .image{
@@ -26,4 +26,57 @@
     height: auto;
     border-radius: 10%;
     z-index: 0;
+}
+
+.popularFreelancers{
+    /* border: 1px solid red; */
+    color: #404145;
+    font-family: Macan,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+.categories{
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+}
+
+.categoryContainer{
+    display: flex;
+    border: 1px solid red;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.categoryContainer:hover{
+    color: rgb(72, 72, 72);
+}
+
+@media only screen and (max-width: 1230px) {
+    .categories{
+        grid-template-columns: auto auto auto auto;
+    }
+}
+
+@media only screen and (max-width: 930px) {
+    .categories{
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .categories{
+        grid-template-columns: auto auto;
+    }
+}
+
+@media only screen and (max-width: 530px) {
+    .categories{
+        grid-template-columns: auto;
+    }
 }
