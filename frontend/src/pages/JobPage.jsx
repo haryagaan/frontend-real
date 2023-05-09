@@ -6,7 +6,7 @@ import { CarouselCard } from "../components/CarouselCard";
 
 import { client } from "../client/client";
 
-import { useParams } from "react-router-dom"
+import { useParams , Link } from "react-router-dom"
 import { useEffect, useState } from "react";
 
 import {BsHouseDoor} from "react-icons/bs"
@@ -17,6 +17,8 @@ export const JobPage=()=>{
     const [job,setJob]=useState();
     const [showFreelancer,setShowFreelancer]=useState(true);
     const [showClient,setShowClient]=useState(false);
+    const [freelancerPosts,setFreelancerPosts]=useState([]);
+    const [clientPosts,setClientPosts]=useState([]);
 
     useEffect(()=>{
         client.get("/job/get/"+jobId)
@@ -31,25 +33,41 @@ export const JobPage=()=>{
     useEffect(()=>{
         client.get("/job/get/freelancer/"+jobId)
             .then(async(res)=>{
-                console.log(res.data)
-            }).catch((err)=>{
+                // console.log(res.data);
+                setFreelancerPosts(res.data);
+            }).catch((err)=>{ 
                 console.log(err);
             })
-    },[])
+    },[]);
+
 
     function Freelancer(){
-        if(showFreelancer==false){
-            setShowFreelancer(true);
-            setShowClient(false);
-        }
+        setShowFreelancer(true);
+        setShowClient(false);
+
+        client.get("/job/get/freelancer/"+jobId)
+        .then(async(res)=>{
+            // console.log(res.data);
+            setFreelancerPosts(res.data);
+        }).catch((err)=>{ 
+            console.log(err);
+        })
     }
 
     function Client(){
-        if(showClient==false){
-            setShowFreelancer(false);
-            setShowClient(true);
-        }
+        setShowFreelancer(false);
+        setShowClient(true);
+
+        client.get("/job/get/client/"+jobId)
+        .then(async(res)=>{
+            // console.log(res.data);
+            setClientPosts(res.data);
+        }).catch((err)=>{
+            console.log(err);
+        })
     }
+
+    // console.log(showFreelancer , showClient)
 
     return(
         <div className={style.container}>
@@ -70,39 +88,38 @@ export const JobPage=()=>{
                     </div>
 
                     <div className={style.modeContainer}>
-                        <div className={style.modeFreelancer}>
+                        <div onClick={Freelancer} className={style.modeFreelancer}>
                             <p>Freelancer</p>
                         </div>
 
-                        <div className={style.modeClient}>
+                        <div onClick={Client} className={style.modeClient}>
                             <p>Client</p>
                         </div>
                     </div>
                 </div>
 
                 <div className={style.postContainer}>
-                    {/* {
-                        showFreelancer ? 
+                    {
+                        showFreelancer ?
 
-                        job && job.freelancerPosts.map((item,i)=>{
+                        freelancerPosts && freelancerPosts.map((post,i)=>{
                             return(
-                                <div key={i} className={style.freelancerContainer}>
-                                    <CarouselCard></CarouselCard>
-                                </div>
+                                <Link to={`/post/freelancer/${post._id}`} className={style.freelancerClientContainer} key={i}>
+                                    <CarouselCard post={post}></CarouselCard>
+                                </Link>
                             )
                         })
 
                         :
 
-                        job && job.freelancerPosts.map((item,i)=>{
+                        clientPosts && clientPosts.map((post,i)=>{
                             return(
-                                <div key={i}>
-                                    <CarouselCard></CarouselCard>
-                                </div>
+                                <Link to={`/post/client/${post._id}`} className={style.freelancerClientContainer} key={i}>
+                                    <CarouselCard post={post}></CarouselCard>
+                                </Link>
                             )
                         })
-
-                    } */}
+                    }
                 </div>
 
             </div>

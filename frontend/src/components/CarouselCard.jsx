@@ -1,13 +1,28 @@
 import style from '../styles/CarouselCard.module.css';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+
+
 import { BsStarFill } from 'react-icons/bs';
 import { BsList } from 'react-icons/bs';
 import { VscHeartFilled } from 'react-icons/vsc';
 import { HiPlus } from 'react-icons/hi';
+import {MdOutlineAttachMoney} from "react-icons/md"
 
-export const CarouselCard = (props) => {
+export const CarouselCard = ({post}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
+
+    const creator=useRef();
+
+    if(post.creatorId!=null && post!=undefined){
+        creator.current=post.creatorId
+    }else if(post.creatorSocialId!=null && post!=undefined){
+        creator.current=post.creatorSocialId
+    }
+
+    // console.log(post)
+
+    // console.log(creator)
 
     const handleItemClick = (item) => {
         setSelectedItem(item);
@@ -19,21 +34,28 @@ export const CarouselCard = (props) => {
             <div className={style.card}>
                 {/* img */}
                 <a className={style.imgBtn}>
+                    {/* ene img deer post image urliig bichne */}
                     <img src="https://picsum.photos/400/300" alt="..." className={style.image} />
                 </a>
                 {/* title */}
                 <div className={style.title}>
                     <div className={style.profileImgCont}>
-                        <img className={style.profileImg}></img>
+                        <img src={creator && creator.current.imageUrl} className={style.profileImg}></img>
                     </div>
-                    <div className={style.titleTxt}>eveeelin</div>
+                    <div className={style.titleTxt}>{creator && creator.current.firstName}</div>
                 </div>
                 {/* intro */}
                 <div className={style.cardBody}>
                     <h1 className={style.bodyTitle}>
-                        <a className={style.bodyPr}>I will design pro, minimal product catalog, magazine</a>
+                        <a className={style.bodyPr}>{post.title}</a>
                     </h1>
                 </div>
+
+                <div className={style.priceContainer}>
+                    <p>{post.price}</p>
+                    <MdOutlineAttachMoney></MdOutlineAttachMoney>
+                </div>
+
                 {/* review */}
                 <div className={style.review}>
                     <div className={style.rating}>

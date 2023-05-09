@@ -1,10 +1,10 @@
 .container{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 100vw;
 }
 
 .main{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -13,12 +13,12 @@
 }
 
 .innerContainer{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 80%;
 }
 
 .categoryContainer{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     padding-left: 10px;
     display: flex;
     flex-direction: row;
@@ -45,7 +45,7 @@
 }
 
 .jobNameContainer{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     padding: 10px;
     /* background-color: white; */
 }
@@ -58,7 +58,7 @@
 }
 
 .modeContainer{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
@@ -94,15 +94,39 @@
 }
 
 .postContainer{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 100%;
     display: grid;
     grid-template-columns: auto auto auto auto auto;
 }
 
-.freelancerContainer{
-    border: 1px solid red;
+.freelancerClientContainer{
+    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media only screen and (max-width: 1235px) {
+    .postContainer{
+        grid-template-columns: auto auto auto auto;
+    }
+}
+
+@media only screen and (max-width: 1210px) {
+    .postContainer{
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media only screen and (max-width: 910px) {
+    .postContainer{
+        grid-template-columns: auto auto;
+    }
+}
+
+@media only screen and (width<=900px) {
+    .postContainer{
+        grid-template-columns: auto;
+    }
 }

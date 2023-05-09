@@ -15,9 +15,10 @@
     color: #62646a;
 }
 .card {
-    border: 1px solid #e4e5e7;
+    border: 1px solid #c8c9ca;
     max-width: 260px;
     margin: 20px;
+    border-radius: 10px;
 }
 .cardBody {
     padding: none;
@@ -27,6 +28,7 @@
     height: 156px;
     object-fit: fill;
     /* border: 1px solid black; */
+    border-radius: 10px;
 }
 .imgBtn {
     display: block;
@@ -184,4 +186,13 @@ a:hover {
 }
 .iconPadding {
     padding-right: 18px;
+}
+
+.priceContainer{
+    margin-left: 10px;
+    font-size: 22px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

@@ -11,6 +11,7 @@ import { MyProfile } from "./components/MyProfile";
 
 import { CategoryPage } from "./pages/CategoryPage";
 import { JobPage } from "./pages/JobPage";
+import { PostPage } from "./pages/PostPage";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
                     <Route path="/profile/:id" element={<MyProfile/>}/>
                     <Route path="/category/:category" element={<CategoryPage/>}/>
                     <Route path="/job/:job" element={<JobPage/>}/>
+                    <Route path="/post/:type/:post" element={<PostPage/>}/>
                 </Routes>
             </BrowserRouter>
         </DataProvider>

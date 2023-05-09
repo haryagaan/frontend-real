@@ -60,6 +60,7 @@ export const Carousel=()=>{
         speed={400}
         easing="linear"
       >
+       {/* <CarouselCard></CarouselCard>
        <CarouselCard></CarouselCard>
        <CarouselCard></CarouselCard>
        <CarouselCard></CarouselCard>
@@ -67,8 +68,7 @@ export const Carousel=()=>{
        <CarouselCard></CarouselCard>
        <CarouselCard></CarouselCard>
        <CarouselCard></CarouselCard>
-       <CarouselCard></CarouselCard>
-       <CarouselCard></CarouselCard>
+       <CarouselCard></CarouselCard> */}
       </ReactSimplyCarousel>
     </div>
   );
