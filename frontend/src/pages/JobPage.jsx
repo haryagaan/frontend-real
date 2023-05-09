@@ -104,9 +104,11 @@ export const JobPage=()=>{
 
                         freelancerPosts && freelancerPosts.map((post,i)=>{
                             return(
-                                <Link to={`/post/freelancer/${post._id}`} className={style.freelancerClientContainer} key={i}>
-                                    <CarouselCard post={post}></CarouselCard>
-                                </Link>
+                                <div className={style.freelancerClientContainer}>
+                                    <Link to={`/post/freelancer/${post._id}`} className={style.freelancerClient} key={i}>
+                                        <CarouselCard post={post}></CarouselCard>
+                                    </Link>
+                                </div>
                             )
                         })
 
@@ -114,9 +116,11 @@ export const JobPage=()=>{
 
                         clientPosts && clientPosts.map((post,i)=>{
                             return(
-                                <Link to={`/post/client/${post._id}`} className={style.freelancerClientContainer} key={i}>
-                                    <CarouselCard post={post}></CarouselCard>
-                                </Link>
+                                <div className={style.freelancerClientContainer}>
+                                    <Link to={`/post/client/${post._id}`} className={style.freelancerClient} key={i}>
+                                        <CarouselCard post={post}></CarouselCard>
+                                    </Link>
+                                </div>
                             )
                         })
                     }

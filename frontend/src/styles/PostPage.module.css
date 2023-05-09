@@ -1,0 +1,36 @@
+.container{
+    border: 1px solid red;
+    width: 100vw;
+}
+
+.main{
+    border: 1px solid blue;
+    width: 100%;
+}
+
+.categoryContainer{
+    border: 1px solid blue;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.category{
+    color: #404145;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+}
+
+.houseIcon{
+    color: black;
+    font-size: 14px;
+}
+
+.slash{
+    color: #c5c6c9;
+    font-size: 14px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
