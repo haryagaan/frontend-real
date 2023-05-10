@@ -1,0 +1,19 @@
+.container{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.star{
+    color:#ffb33e;
+    font-size: 19px;
+}
+
+.rating{
+    color:#ffb33e;
+    font-weight: 500;
+    margin-left: 5px;
+    margin-right: 5px;
+}

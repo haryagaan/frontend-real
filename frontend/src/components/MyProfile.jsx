@@ -9,7 +9,14 @@ import {HiLocationMarker} from "react-icons/hi"
 import {BiUserPin} from "react-icons/bi"
 import { Link } from "react-router-dom"
 
+import { client } from "../client/client"
+
 export const MyProfile=()=>{
+
+    function fileChangeHandler(){
+
+    }
+
     return(
         <div className={style.container}>
             <Header></Header>
@@ -99,6 +106,8 @@ export const MyProfile=()=>{
                             Text messages are used for personal, family, business and social purposes. Governmental and non-governmental organizations use text messaging for communication between colleagues. In the 2010s, the sending of short
                         </p>
                     </div>
+
+                    <input className={style.fileInput} type="file" onChange={fileChangeHandler}/>
 
                     <div className={style.jobContainer}>
                         <p className={style.jobText}>Jobs</p>
