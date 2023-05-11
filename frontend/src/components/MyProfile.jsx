@@ -10,12 +10,38 @@ import {BiUserPin} from "react-icons/bi"
 import { Link } from "react-router-dom"
 
 import { client } from "../client/client"
+import { useEffect, useState } from "react"
 
 export const MyProfile=()=>{
 
-    function fileChangeHandler(){
+    const [base64,setBase64]=useState();
 
-    }
+    const token=localStorage.getItem("token");
+   
+    function convertToBase64(event) {
+        // console.log(event)
+        var reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]);
+        reader.onload = () => {
+          //console.log(reader.result); //base64 encoded string
+          setBase64(reader.result);
+        //   setUploadImgs((imgs) => [...imgs, reader.result]);
+        };
+        reader.onerror = (error) => {
+          console.log("upload image error:", error);
+        };
+      }
+
+      useEffect(()=>{
+        if(base64){
+            client.post("/user/image/profile/"+token , {base64:base64})
+                .then((res)=>{
+                    console.log(res.data)
+                }).catch((err)=>{
+                    console.log(err)
+                })
+        }
+      },[base64])
 
     return(
         <div className={style.container}>
@@ -107,7 +133,7 @@ export const MyProfile=()=>{
                         </p>
                     </div>
 
-                    <input className={style.fileInput} type="file" onChange={fileChangeHandler}/>
+                    <input type="file" onChange={convertToBase64}/>
 
                     <div className={style.jobContainer}>
                         <p className={style.jobText}>Jobs</p>
