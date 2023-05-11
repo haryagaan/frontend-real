@@ -78,6 +78,7 @@ export const Login = () => {
                     .then(async (res) => {
                         // console.log(res.data);
                         localStorage.setItem("token" , res.data.token)
+                        // localStorage.setItem("id",res.data.id);
                         navigate("/home")
                     })
                     .catch((err) => {
@@ -110,6 +111,7 @@ export const Login = () => {
                     })
                     .then(async (res) => {
                         // console.log(res.data);
+                        // localStorage.setItem("id",res.data.id);
                         localStorage.setItem("token" , res.data.token)
                         navigate("/home")
                     })
@@ -128,6 +130,7 @@ export const Login = () => {
         .then(async(res)=>{
             // console.log(res.data)
             localStorage.setItem("token", res.data.token)
+            // localStorage.setItem("id",res.data.id)
             setIsAuth(true);
             setUser(res.data.user)
             setIsVerified(res.data.isVerified);

@@ -7,12 +7,19 @@ import { ImSearch } from "react-icons/im";
 import logo from "../assets/logo.png";
 import logoCut from "../assets/logoCut.png";
 
+import { useNavigate } from "react-router-dom";
+
+import { client } from "../client/client";
 
 import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
   const headerRef = useRef(null);
+
+  const token=localStorage.getItem("token");
+
+  const navigate=useNavigate();
 
   const handleScroll = (elTopOffset, elHeight) => {
     var yoff = window.pageYOffset;
@@ -68,6 +75,16 @@ export const Header = () => {
     setShowDropdown2(false);
     setShowDropdown3(false);
   };
+
+  async function goToProfile(){
+    await client.post("/user/return/id/"+token )
+      .then(async(res)=>{
+        console.log(res.data);
+        navigate(`/profile/${res.data}`);
+      }).catch((err)=>{
+        console.log(err)
+      })  
+  }
 
   return (
     <>
@@ -164,7 +181,8 @@ export const Header = () => {
                       <hr />
                       <div className={styles.accName1}>
                         {/* <div>My account</div> */}
-                        <Link to="/profile">My profile</Link>
+                        {/* <Link to="/profile">My profile</Link> */}
+                        <div onClick={goToProfile}>My profile</div>
                       </div>
                     </div>
                     <hr />
