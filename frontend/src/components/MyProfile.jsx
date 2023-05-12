@@ -11,14 +11,12 @@ import { Link, useParams } from "react-router-dom"
 
 import editLogo from "../assets/editProfileImg.png"
 import galleryLogo from "../assets/addGalleryImg.webp"
+import saveLogo from "../assets/save.jpg"
 
 import { client } from "../client/client"
 import { useEffect, useState } from "react"
 
 export const MyProfile=()=>{
-
-    const [render,setRender]=useState();
-
     const id=useParams().id;
 
     const [base64,setBase64]=useState();
@@ -26,6 +24,10 @@ export const MyProfile=()=>{
     const [user,setUser]=useState();
 
     const token=localStorage.getItem("token");
+
+    const [editInfo,setEditInfo]=useState(false);
+
+    const [editInfoInput,setEditInfoInput]=useState();
    
     function uploadProfilePic(event) {
         // console.log(event)
@@ -77,7 +79,19 @@ export const MyProfile=()=>{
             })
     },[]);
 
-    console.log(user)
+    async function handleEditInfo(){
+        if(editInfo==true){
+            await client.post("/user/change/info/"+token , {info:editInfoInput})
+                .then(async(res)=>{
+                    window.location.reload();
+                }).catch((err)=>{
+                    console.log(err)
+                })
+        }
+        setEditInfo(prev=>!prev);
+    }
+
+    // console.log(editInfoInput)
 
     return(
         <div className={style.container}>
@@ -89,7 +103,7 @@ export const MyProfile=()=>{
 
                          <div className={style.profileImgUpload}>
                             <label for="file-input">
-                                <img className={style.editProfileImg} src={editLogo}/>
+                                <img className={style.editProfileImg} src={galleryLogo}/>
                             </label>
 
                             <input id="file-input" type="file" onChange={uploadProfilePic} />
@@ -186,10 +200,15 @@ export const MyProfile=()=>{
                     
 
                     <div className={style.infoContainer}>
-                        <p>
-                            he term originally referred to messages sent using the Short Message Service (SMS). It has grown beyond alphanumeric text to include multimedia messages using the Multimedia Messaging Service (MMS) containing digital images, videos, and sound content, as well as ideograms known as emoji (happy faces, sad faces, and other icons), and instant messenger applications (usually the term is used when on mobile devices).
-                            Text messages are used for personal, family, business and social purposes. Governmental and non-governmental organizations use text messaging for communication between colleagues. In the 2010s, the sending of short
-                        </p>
+                        <div className={style.infoText}>
+                            <div className={editInfo ? style.invisible : ""}>{user && user.infoText}</div>
+
+                            <input onChange={(e)=>setEditInfoInput(e.target.value)} className={editInfo ? style.infoInput : style.invisible}/>
+                        </div>
+
+                        <div className={style.editInfoContainer}>
+                            <img onClick={handleEditInfo} className={style.editProfileImg} src={editInfo ? saveLogo : editLogo}/>
+                        </div>
                     </div>
 
                     <div className={style.jobContainer}>

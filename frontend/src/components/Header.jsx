@@ -93,7 +93,7 @@ export const Header = () => {
         ref={headerRef}
       >
         <div className={styles.container}>
-          <a href="/" style={{ display: "flex", gap: 10 }}>
+          <a href="/home" style={{ display: "flex", gap: 10 }}>
             <img src={logo} className={styles.logo} />
             <img src={logoCut} className={styles.logoCut} />
           </a>

@@ -31,6 +31,7 @@ export const Home=()=>{
     const [categories,setCategories]=useState([]);
 
     useEffect(()=>{
+
         client.get("/category/getAll")
             .then(async(res)=>{
                 console.log(res.data)
