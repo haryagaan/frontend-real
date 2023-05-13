@@ -80,7 +80,7 @@ export const Header = () => {
     await client.post("/user/return/id/"+token )
       .then(async(res)=>{
         console.log(res.data);
-        navigate(`/profile/${res.data}`);
+        navigate(`/myprofile/${res.data}`);
       }).catch((err)=>{
         console.log(err)
       })  

@@ -1,6 +1,6 @@
 import style from "../styles/VideoField.module.css";
 import { AiOutlineCheckCircle } from "react-icons/ai";
-import ReactPlayer from "react-player";
+// import ReactPlayer from "react-player";
 
 export const VideoField = () => {
   const VideoPath = "https://youtu.be/mZ5hnNRBFsc";

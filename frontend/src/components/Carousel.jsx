@@ -70,7 +70,6 @@ export const Carousel=({items})=>{
             )
           })
         }
-        <Category item={items[0]}></Category>
       </ReactSimplyCarousel>
     </div>
   );

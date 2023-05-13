@@ -3,7 +3,7 @@ import style from "../styles/JobCard.module.css"
 export const JobCard=({item})=>{
     return(
         <div className={style.container}>
-            <div>
+            <div className={style.imgContainer}>
                 <img className={style.img} src={item.imageUrl}/>
             </div>
 

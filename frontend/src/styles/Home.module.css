@@ -39,14 +39,14 @@
 }
 
 .categories{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: grid;
     grid-template-columns: auto auto auto auto auto;
 }
 
 .categoryContainer{
     display: flex;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     justify-content: center;
     align-items: center;
     text-decoration: none;

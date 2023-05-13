@@ -11,8 +11,11 @@ import { client } from "../client/client"
 import { useParams ,Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 
+import ReactSimplyCarousel from "react-simply-carousel"
 
 export const PostPage=()=>{
+    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+
     const type=useParams().type;
 
     const postId=useParams().post;
@@ -31,7 +34,7 @@ export const PostPage=()=>{
             })
     },[]);
 
-    console.log(post , creator)
+    // console.log(post , creator)
     
     return (
         <div className={style.container}>
@@ -42,9 +45,9 @@ export const PostPage=()=>{
                     <div className={style.categoryContainer}>
                         <BsHouseDoor className={style.houseIcon}></BsHouseDoor>
                         <p className={style.slash}>/</p>
-                        <p className={style.category}>{post && post.jobId.category.category}</p>
+                        <a href={`/category/${post && post.jobId.category._id}`} className={style.category}>{post && post.jobId.category.category}</a>
                         <p className={style.slash}>/</p>
-                        <p className={style.category}>{post && post.jobId.name}</p>
+                        <a href={`/job/${post && post.jobId._id}`} className={style.category}>{post && post.jobId.name}</a>
                     </div>
                 </div>
 
@@ -56,26 +59,36 @@ export const PostPage=()=>{
                     <hr></hr>
 
                     <div className={style.creatorContainer}>
-                        <div className={style.creatorImgContainer}>
+                        <a href={`/profile/${creator && creator._id}`} className={style.creatorImgContainer}>
                             <img className={style.creatorImg} src={creator && creator.imageUrl}/>
-                        </div>
+                        </a>
 
-                        <div className={style.creatorNameContainer}>
+                        <a href={`/profile/${creator && creator._id}`} className={style.creatorNameContainer}>
                             {creator && creator.firstName}
-                        </div>
+                        </a>
 
-                        <div className={style.creatorNameContainer}>
+                        <a href={`/profile/${creator && creator._id}`} className={style.creatorNameContainer}>
                             {creator && creator.lastName}
-                        </div>
+                        </a>
 
-                        <div className={style.verticalLine}> </div>
+                        <div className={style.verticalLine}></div>
 
                         <div>
-                            <Stars></Stars>
+                            <Stars creator={creator}></Stars>
                         </div>
                     </div>
 
                     <hr></hr>
+
+                    <div className={style.postInfoContainer}>
+                        <div className={style.postImageContainer}>
+                            <img className={style.postImage} src={post && post.imageUrl}/>
+                        </div>
+
+                        <div className={style.infoContainer}>
+                            <p>{post && post.mainText}</p>
+                        </div>
+                    </div>
 
                 </div>
 

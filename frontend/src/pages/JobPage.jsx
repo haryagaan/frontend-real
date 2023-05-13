@@ -9,7 +9,9 @@ import { client } from "../client/client";
 import { useParams , Link } from "react-router-dom"
 import { useEffect, useState } from "react";
 
-import {BsHouseDoor} from "react-icons/bs"
+import {BsHouseDoor} from "react-icons/bs" 
+
+import addPostImg from "../assets/addPost.png"
 
 export const JobPage=()=>{
     const jobId=useParams().job;
@@ -19,6 +21,8 @@ export const JobPage=()=>{
     const [showClient,setShowClient]=useState(false);
     const [freelancerPosts,setFreelancerPosts]=useState([]);
     const [clientPosts,setClientPosts]=useState([]);
+
+    const [createPost,setCreatePost]=useState(false);
 
     useEffect(()=>{
         client.get("/job/get/"+jobId)
@@ -68,6 +72,12 @@ export const JobPage=()=>{
     }
 
     // console.log(showFreelancer , showClient)
+    // console.log(job)
+
+    function toggleCreatePost(){
+        // console.log(1)
+        setCreatePost(prev=>!prev);
+    }
 
     return(
         <div className={style.container}>
@@ -80,11 +90,17 @@ export const JobPage=()=>{
                     <div className={style.categoryContainer}>
                         <BsHouseDoor className={style.houseIcon}></BsHouseDoor>
                         <p className={style.slash}>/</p>
-                        <p className={style.category}>{job && job.category.category}</p>
+                        <a href={`/category/${job && job.category._id}`} className={style.category}>{job && job.category.category}</a>
                     </div>
 
                     <div className={style.jobNameContainer}>
                         <p className={style.jobName}>{job && job.name}</p>
+
+                        <div onClick={toggleCreatePost} className={style.addPostContainer}>
+                            <p>Create post</p>
+                            <img src={addPostImg} className={style.addPostImage}/>
+                        </div>
+
                     </div>
 
                     <div className={style.modeContainer}>
@@ -131,6 +147,17 @@ export const JobPage=()=>{
             <div>
                 <Footer></Footer>
             </div>
+
+            
+
+            <div className={createPost ? style.createPostContainer : style.categoryContainerInvisible}>
+                <div className={style.createPost}>
+                    <div className={style.createPostMain}>
+                        a
+                    </div> 
+                </div>
+            </div>
+
         </div>
     )
 }

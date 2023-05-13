@@ -7,16 +7,16 @@ import { useParams } from "react-router-dom"
 export const Category=({item})=>{
 
     return(
-        <div className={style.category}>
+        <a href={`/category/${item && item._id}`} className={style.category}>
            <div >
                 <img className={style.img} src={item && item.imageUrl}/>
            </div>
 
            <div className={style.nameContainer}>
-                <p className={style.name}>{item.category}</p>
+                <p className={style.name}>{item &&item.category}</p>
 
-                <p className={style.job}>Jobs: {item.totalJobs}</p>
+                <p className={style.job}>Jobs: {item && item.totalJobs}</p>
            </div>
-        </div>
+        </a>
     )
 }

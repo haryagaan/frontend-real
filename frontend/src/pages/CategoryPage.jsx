@@ -20,85 +20,12 @@ export const CategoryPage=()=>{
     useEffect(()=>{
         client.get("/category/get/"+categoryId)
             .then(async(res)=>{
-                console.log(res.data)
+                // console.log(res.data)
                 setCategory(res.data);
             }).catch((err)=>{
                 console.log(err)
             })
     },[]);
-
-    const mockJobs=[
-        {
-            name:"Engineer",
-            imgUrl:img,
-            totalUsers:124
-        },
-        {
-            name:"Engineer",
-            imgUrl:img,
-            totalUsers:124
-        },
-        {
-            name:"Engineer",
-            imgUrl:img,
-            totalUsers:124
-        },
-        {
-            name:"Engineer",
-            imgUrl:img,
-            totalUsers:124
-        },
-        {
-            name:"Engineer",
-            imgUrl:img,
-            totalUsers:124
-        },
-        {
-            name:"Engineer",
-            imgUrl:img,
-            totalUsers:124
-        },
-        {
-            name:"Engineer",
-            imgUrl:img,
-            totalUsers:124
-        },
-        {
-            name:"Engineer",
-            imgUrl:img,
-            totalUsers:124
-        },
-        {
-            name:"Engineer",
-            imgUrl:img,
-            totalUsers:124
-        },
-        {
-            name:"Engineer",
-            imgUrl:img,
-            totalUsers:124
-        },
-        {
-            name:"Engineer",
-            imgUrl:img,
-            totalUsers:124
-        },
-        {
-            name:"Engineer",
-            imgUrl:img,
-            totalUsers:124
-        },
-        {
-            name:"Engineer",
-            imgUrl:img,
-            totalUsers:124
-        },
-        {
-            name:"Engineer",
-            imgUrl:img,
-            totalUsers:124
-        },
-    ]
 
     return(
         <div className={style.container}>
@@ -108,13 +35,13 @@ export const CategoryPage=()=>{
                 <div className={style.main}>
 
 
-                    <div className={style.imgContainer}>
+                    {/* <div className={style.imgContainer}>
                         <p className={style.categoryName}>{category && category.category}</p>
                         <img className={style.img} src={category && category.imageUrl}/>
-                    </div>
+                    </div> */}
 
                     <div className={style.text1}>
-                        Explore Category name
+                        Explore {category && category.category}
                     </div>
 
                     <div className={style.jobsContainer}>

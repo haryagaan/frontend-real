@@ -35,7 +35,7 @@ export const CarouselCard = ({post}) => {
                 {/* img */}
                 <a className={style.imgBtn}>
                     {/* ene img deer post image urliig bichne */}
-                    <img src="https://picsum.photos/400/300" alt="..." className={style.image} />
+                    <img src={post && post.imageUrl} alt="..." className={style.image} />
                 </a>
                 {/* title */}
                 <div className={style.title}>
@@ -53,15 +53,16 @@ export const CarouselCard = ({post}) => {
 
                 <div className={style.priceContainer}>
                     <p>{post.price}</p>
-                    <MdOutlineAttachMoney></MdOutlineAttachMoney>
+                    <p>Tugrug</p>
+                    {/* <MdOutlineAttachMoney></MdOutlineAttachMoney> */}
                 </div>
 
                 {/* review */}
                 <div className={style.review}>
                     <div className={style.rating}>
                         <BsStarFill className={style.starIcon}></BsStarFill>
-                        5.0
-                        <span>(66)</span>
+                        <p>{creator && creator.current.rating}</p>
+                        <span>({creator && creator.current.ratingCount})</span>
                     </div>
                     <div></div>
                 </div>
