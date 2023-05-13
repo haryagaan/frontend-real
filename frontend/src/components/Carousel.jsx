@@ -3,10 +3,13 @@ import ReactSimplyCarousel from 'react-simply-carousel';
 
 import { CarouselCard } from './CarouselCard.jsx';
 
+import { Category } from './Category.jsx';
 
-export const Carousel=()=>{
+
+export const Carousel=({items})=>{
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
+  // console.log(items)
   return (
     <div>
       <ReactSimplyCarousel
@@ -60,15 +63,14 @@ export const Carousel=()=>{
         speed={400}
         easing="linear"
       >
-       {/* <CarouselCard></CarouselCard>
-       <CarouselCard></CarouselCard>
-       <CarouselCard></CarouselCard>
-       <CarouselCard></CarouselCard>
-       <CarouselCard></CarouselCard>
-       <CarouselCard></CarouselCard>
-       <CarouselCard></CarouselCard>
-       <CarouselCard></CarouselCard>
-       <CarouselCard></CarouselCard> */}
+        {
+          items && items.map((item,i)=>{
+            return(
+              <Category item={item}></Category>
+            )
+          })
+        }
+        <Category item={items[0]}></Category>
       </ReactSimplyCarousel>
     </div>
   );

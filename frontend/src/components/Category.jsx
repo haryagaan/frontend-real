@@ -9,15 +9,13 @@ export const Category=({item})=>{
     return(
         <div className={style.category}>
            <div >
-                <img className={style.img} src={item.imageUrl}/>
+                <img className={style.img} src={item && item.imageUrl}/>
            </div>
 
-           <div>
+           <div className={style.nameContainer}>
                 <p className={style.name}>{item.category}</p>
-           </div>
 
-           <div>
-                <p>Jobs {item.totalJobs}</p>
+                <p className={style.job}>Jobs: {item.totalJobs}</p>
            </div>
         </div>
     )

@@ -16,9 +16,9 @@ import { Carousel } from "./Carousel";
 
 import { Category } from "./Category";
 
-import { Link } from "react-router-dom"
+import { VideoField } from "./VideoField"
 
-import img from "../assets/blackhole.png"
+import { Link } from "react-router-dom"
 
 export const Home=()=>{
     const {
@@ -34,7 +34,7 @@ export const Home=()=>{
 
         client.get("/category/getAll")
             .then(async(res)=>{
-                console.log(res.data)
+                // console.log(res.data)
                 setCategories(res.data)
             }).catch((err)=>{
                 console.log(err)
@@ -50,19 +50,15 @@ export const Home=()=>{
                 <HomePage></HomePage>
             </div>
 
-            <div className={style.popularFreelancers}>
-                Popular Freelancers
-            </div>
-
             <div>
-                <Carousel></Carousel>
+                <Carousel items={categories && categories}></Carousel>
             </div>
 
             <div className={style.popularFreelancers}>
                 Categories
             </div>
 
-            <div className={style.categories}>
+            {/* <div className={style.categories}>
                 {
                     categories && categories.map((item,i)=>{
                         return(
@@ -74,6 +70,10 @@ export const Home=()=>{
                         )
                     })
                 }
+            </div> */}
+
+            <div>
+                <VideoField></VideoField>
             </div>
 
             <Footer></Footer>

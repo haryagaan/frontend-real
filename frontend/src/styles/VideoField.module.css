@@ -1,0 +1,110 @@
+.field {
+    width: 100vw;
+    height: 65vh;
+    background-color: #f1fdf7;
+}
+.mainRow {
+    display: flex;
+    flex-direction: row;
+    width: 1200px;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    margin: auto;
+}
+.column1 {
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+}
+.column2 {
+    display: flex;
+    flex-direction: column;
+    width:50vw;
+    justify-content: center;
+    align-items: center;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.text {
+    color: #62646a;
+    font-size: 16px;
+    margin: 0px;
+}
+.title {
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight:650;
+    color: #404145;
+}
+h1 {
+    color: #404145;
+    font-weight:600;
+}
+.icon {
+    font-size: 22px;
+    color: #404145;
+}
+.video {
+    width: 500px;
+    height: 350px;
+}
+@media only screen and (max-width: 1250px) {
+    .video {
+        width: 400px;
+        height: 265px;
+    }
+    .field {
+        width: 100%;
+    }
+    .mainRow {
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .video {
+        width: 300px;
+        height: 215px;
+    }
+    .column1 {
+        width: 50%;
+    }
+    .mainRow {
+        width: 90%;
+    }
+    .column2 {
+        width: 60%;
+    }
+}
+@media only screen and (max-width: 730px) {
+    .video {
+        width: 500px;
+        height: 315px;
+    }
+    .mainRow {
+        flex-direction: column;
+        height: auto;
+    }
+    .field {
+        height: auto;
+    }
+    .column1 {
+        width: 90%;
+        margin-bottom: 10vh;
+    }
+    
+}
+@media only screen and (max-width: 500px) {
+    .video {
+        width: 90%;
+        height: 200px;
+    }
+    .column2 {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+}
