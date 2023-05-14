@@ -54,9 +54,11 @@ export const Home=()=>{
                 <Carousel items={categories && categories}></Carousel>
             </div>
 
+            <hr></hr>
+            {/* 
             <div className={style.popularFreelancers}>
                 Categories
-            </div>
+            </div> */}
 
             {/* <div className={style.categories}>
                 {

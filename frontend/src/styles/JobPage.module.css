@@ -62,7 +62,7 @@
     align-items: center;
     position: absolute;
     right: 5%;
-    z-index: 20;
+    z-index: 15;
 }
 
 .addPostImage{
@@ -135,18 +135,16 @@
 }
 
 
+/* //// */
+
+
 .createPostContainer{
-    border: 1px solid red;
-    width: 100%;
+    /* border: 10px solid red; */
     position: absolute;
     top: 0;
+    width: 100%;
     height: 100%;
-    z-index: 10;
-    background-color: #404145;
-    opacity: 0.5;
-    display: flex;
-    /* justify-content: center;
-    align-items: center; */
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .createPostContainerInvisible{
@@ -154,23 +152,112 @@
     z-index: -10;
 }
 
-.createPost{
-    position: absolute;
-    border: 3px solid red;
+.innerCreatePostContainer{
+    /* border: 10px solid blue; */
+    position: fixed;
     width: 100%;
-    height: 40%;
+    height: 98%;
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 1;
 }
 
-.createPostMain{
+.whitePost{
+    /* border: 10px solid green; */
+    width: 400px;
+    height: 500px;
+    background:rgba(255, 255, 255,1);
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.createPostInput{
+    background-color: white;
+    border: 1px solid grey;
+    margin: 10px;
+}
+
+.createPostInputMoney{
+    background-color: white;
+    width: 100px;
+    border: 1px solid grey;
+    margin: 10px;
+}
+
+.createPostFile{
+    background-color: white;
+    height: 30px;
+}
+
+textarea{
+    resize: vertical;
+    width: 355px;
+    min-height: 150px;
+    max-height: 250px;
+    margin: 10px;
+}
+
+.createPostButton {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #fa6400;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.createPostButton:hover,
+.createPostButton:focus {
+  background-color: #fb8332;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.createPostButton:hover {
+  transform: translateY(-1px);
+}
+
+.createPostButton:active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+.whitePostTop{
+    /* border: 1px solid red; */
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.returnIcon{
     position: absolute;
-    opacity: 1;
-    background: rgba(255, 255, 255, 1);
-    width: 50%;
-    height: 50%;
+    left: 20px;
+    font-size: 25px;
 }
 
 @media only screen and (max-width: 1640px) {

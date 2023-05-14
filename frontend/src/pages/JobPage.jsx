@@ -1,5 +1,7 @@
 import style from "../styles/JobPage.module.css"
 
+import { DataContext } from "../context/DataProvider";
+
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { CarouselCard } from "../components/CarouselCard";
@@ -7,13 +9,17 @@ import { CarouselCard } from "../components/CarouselCard";
 import { client } from "../client/client";
 
 import { useParams , Link } from "react-router-dom"
-import { useEffect, useState } from "react";
+import { useEffect, useState , useContext } from "react";
 
 import {BsHouseDoor} from "react-icons/bs" 
+import {BsArrowReturnLeft} from "react-icons/bs"
 
 import addPostImg from "../assets/addPost.png"
 
 export const JobPage=()=>{
+
+    const {userId}=useContext(DataContext)
+
     const jobId=useParams().job;
 
     const [job,setJob]=useState();
@@ -23,6 +29,10 @@ export const JobPage=()=>{
     const [clientPosts,setClientPosts]=useState([]);
 
     const [createPost,setCreatePost]=useState(false);
+    const [title,setTitle]=useState();
+    const [mainText,setMainText]=useState();
+    const [price,setPrice]=useState();
+    const [postImageBase64,setPostImageBase64]=useState();
 
     useEffect(()=>{
         client.get("/job/get/"+jobId)
@@ -71,12 +81,50 @@ export const JobPage=()=>{
         })
     }
 
-    // console.log(showFreelancer , showClient)
-    // console.log(job)
-
     function toggleCreatePost(){
-        // console.log(1)
         setCreatePost(prev=>!prev);
+    }
+
+    function uploadPostImage(event){
+        var reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]);
+        reader.onload = () => {
+            setPostImageBase64(reader.result);
+        };
+        reader.onerror = (error) => {
+          console.log("upload image error:", error);
+        };
+    }
+
+    // console.log(postImageBase64)
+
+    
+
+    async function post(){
+        if(showFreelancer==true && showClient==false){
+            await client.post("/post/freelancer/"+userId+"/"+jobId,
+                {title , mainText, base64:postImageBase64 , price}
+            ).then(async(res)=>{
+                console.log(res.data);
+                window.location.reload();
+            }).catch((err)=>{
+                console.log(err)
+            })
+        }else if(showFreelancer==false && showClient==true){
+            await client.post("/post/client/"+userId+"/"+jobId,
+                {title , mainText, base64:postImageBase64 , price}
+            ).then(async(res)=>{
+                console.log(res.data);
+                window.location.reload()
+            }).catch((err)=>{
+                console.log(err)
+            })
+        }
+    }
+
+    function hideCreatePost(){
+        setCreatePost(false)
+        // console.log(1)
     }
 
     return(
@@ -148,15 +196,28 @@ export const JobPage=()=>{
                 <Footer></Footer>
             </div>
 
-            
-
-            <div className={createPost ? style.createPostContainer : style.categoryContainerInvisible}>
-                <div className={style.createPost}>
-                    <div className={style.createPostMain}>
-                        a
-                    </div> 
+            <div className={createPost ? style.createPostContainer : style.createPostContainerInvisible}>
+                <div className={style.innerCreatePostContainer}>
+                    <div className={style.whitePost}>
+                        <div className={style.whitePostTop}>
+                            <BsArrowReturnLeft onClick={hideCreatePost} className={style.returnIcon}></BsArrowReturnLeft>
+                            <h1>Create a post</h1>
+                        </div>
+                        <input onChange={(e)=>{setTitle(e.target.value)}} className={style.createPostInput} placeholder="Title..."/>
+                        <textarea onChange={(e)=>{setMainText(e.target.value)}} placeholder="Main text..."></textarea>
+                        <input className={style.createPostFile} onChange={uploadPostImage} type="file"/>
+                        <div>   
+                            <img style={{width:"auto" , height:"100px"}} src={postImageBase64 && postImageBase64}/>
+                        </div>
+                        <div style={{display:"flex" , flexDirection:"row"}}>
+                            <h4>Your money</h4>
+                            <input onChange={(e)=>{setPrice(e.target.value)}} type="number" min="1" step="any" className={style.createPostInputMoney} placeholder="Money..."/>
+                        </div>
+                        <button onClick={post} className={style.createPostButton}>Create</button>
+                    </div>
                 </div>
             </div>
+
 
         </div>
     )

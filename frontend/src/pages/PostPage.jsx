@@ -11,11 +11,8 @@ import { client } from "../client/client"
 import { useParams ,Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 
-import ReactSimplyCarousel from "react-simply-carousel"
 
 export const PostPage=()=>{
-    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-
     const type=useParams().type;
 
     const postId=useParams().post;
@@ -28,13 +25,13 @@ export const PostPage=()=>{
             .then(async(res)=>{
                 console.log(res.data)
                 setPost(res.data.category);
-                setCreator(res.data.creator);
+                setCreator(res.data.creator)
             }).catch((err)=>{
                 console.log(err)
             })
     },[]);
 
-    // console.log(post , creator)
+    console.log(post , creator)
     
     return (
         <div className={style.container}>

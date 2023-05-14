@@ -106,7 +106,7 @@ hr{
 }
 
 .postInfoContainer{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -114,7 +114,7 @@ hr{
 }
 
 .postImageContainer{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: 30%;
     display: flex;
     justify-content: center;
@@ -128,7 +128,7 @@ hr{
 }
 
 .infoContainer{
-    border:  1px solid rgb(207, 22, 46);    
+    /* border:  1px solid rgb(207, 22, 46);     */
     width: 70%;
     padding: 10px;
     word-break: break-all;

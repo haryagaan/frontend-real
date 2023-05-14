@@ -10,10 +10,21 @@ export const DataProvider = (props) => {
 
     const [user,setUser]=useState();
 
+    const [userId,setUserId]=useState();
+
     const [isAuth,setIsAuth]=useState(false);
 
+    useEffect(()=>{
+      client.post("/user/return/id/"+token)
+        .then(async(res)=>{
+          setUserId(res.data);
+        }).catch((err)=>{
+          console.log(err);
+        })
+    },[])
+
   return (
-    <DataContext.Provider value={{user,setUser,isAuth,setIsAuth}}>
+    <DataContext.Provider value={{user , setUser , isAuth , setIsAuth , userId , setUserId}}>
         {props.children}
     </DataContext.Provider>
   )
