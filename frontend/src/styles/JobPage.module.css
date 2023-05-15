@@ -62,9 +62,51 @@
     align-items: center;
     position: absolute;
     right: 5%;
-    z-index: 15;
+    /* background-color: #7246E5 ; */
+    /* padding: 10px; */
+    /* z-index: 1; */
 }
 
+.addPostButton {
+  align-items: center;
+  background: #f5f5fa;
+  background-color: #fa6400;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: -10px -10px 30px 0 #fff,10px 10px 30px 0 #1d0dca17;
+  box-sizing: border-box;
+  /* color: #2a1f62; */
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font-family: "Cascadia Code",Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;
+  font-size: 1rem;
+  justify-content: center;
+  line-height: 1.5rem;
+  padding: 15px;
+  position: relative;
+  text-align: left;
+  transition: .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: pre;
+  width: max-content;
+  word-break: normal;
+  word-spacing: normal;
+}
+
+.addPostButton:hover {
+  background: #fb8332;
+  box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #1d0dca17;
+}
+
+@media (min-width: 768px) {
+  .addPostButton {
+    padding: 24px;
+  }
+}
+        
 .addPostImage{
     width: 40px;
     height: auto;
@@ -86,7 +128,8 @@
 }
 
 .modeFreelancer{
-    /* border: 1px solid #7246E5; */
+    border: 1px solid #7246E5;
+    padding: 10px;
     background-color:#7246E5;
     width: 200px;
     height: 50px;
@@ -102,6 +145,7 @@
 
 .modeClient{
     border: 1px solid#7246E5;
+    padding: 10px;
     width: 200px;
     height: 50px;
     border-radius: 30px;

@@ -61,10 +61,11 @@
 }
 
 .creatorContainer{
-    /* border: 1px solid blue; */
+    border: 1px solid blue;
     display: flex;
     align-items: center;
     flex-direction: row;
+    position: relative;
 }
 
 .creatorImgContainer{
@@ -101,6 +102,33 @@
     height: 14px;
 }
 
+.likeContainer{
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    right: 30px;
+}
+
+.like{
+    font-size: 30px;
+    margin-left: 20px;
+    color: rgb(55, 180, 176);
+}
+
+.neutral{
+    color: grey;
+    margin-left: 20px;
+    font-size: 30px;
+}
+
+.dislike{
+    color: rgb(252, 92, 92);
+    margin-left: 20px;
+    font-size: 30px;
+}
+
 hr{
     width: 100%;
 }
@@ -123,16 +151,18 @@ hr{
 }
 
 .postImage{
-    width:auto;
-    height: 200px;
+    width:250px;
+    height: auto;
+    border-radius: 10px;
 }
 
 .infoContainer{
-    /* border:  1px solid rgb(207, 22, 46);     */
+    border:  3px solid rgb(152, 148, 149);    
+    border-radius: 30px;
     width: 70%;
     padding: 10px;
     word-break: break-all;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 @media only screen and (width<=1000px) {

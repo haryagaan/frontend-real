@@ -9,7 +9,7 @@ import OTPInput, { ResendOTP } from 'otp-input-react';
 import phoneLogo from '../assets/phone.png';
 import { useNavigate } from 'react-router-dom';
 
-export const OTP = ({ id }) => {
+export const OTP = ({ id } , {phone}) => {
     const navigate=useNavigate();
 
     const [OTP, setOTP] = useState('');
@@ -24,7 +24,7 @@ export const OTP = ({ id }) => {
                 console.log('verification done');
 
                 await client
-                    .post('/auth/verify/' + id)
+                    .post('/auth/verify/' + id , {phone})
                     .then(async (res) => {
                         console.log(res.data);
                         //success phone auth

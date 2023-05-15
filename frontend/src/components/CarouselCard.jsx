@@ -1,6 +1,7 @@
 import style from '../styles/CarouselCard.module.css';
 import React, { useRef, useState } from 'react';
 
+// import ReactSimplyCarousel from 'react-simply-carousel';
 
 import { BsStarFill } from 'react-icons/bs';
 import { BsList } from 'react-icons/bs';
@@ -12,6 +13,8 @@ export const CarouselCard = ({post}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
 
+    // const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+
     const creator=useRef();
 
     if(post.creatorId!=null && post!=undefined){
@@ -20,14 +23,12 @@ export const CarouselCard = ({post}) => {
         creator.current=post.creatorSocialId
     }
 
-    // console.log(post)
-
-    // console.log(creator)
-
     const handleItemClick = (item) => {
         setSelectedItem(item);
         setIsOpen(false);
     };
+
+    console.log(post)
 
     return (
         <>
@@ -35,7 +36,7 @@ export const CarouselCard = ({post}) => {
                 {/* img */}
                 <a className={style.imgBtn}>
                     {/* ene img deer post image urliig bichne */}
-                    <img src={post && post.imageUrl} alt="..." className={style.image} />
+                    <img src={post && post.imageUrl[0]} alt="..." className={style.image} />
                 </a>
                 {/* title */}
                 <div className={style.title}>

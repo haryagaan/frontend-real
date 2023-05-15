@@ -7,6 +7,8 @@ import {BsFacebook} from "react-icons/bs"
 import {BsInstagram} from "react-icons/bs"
 import {HiLocationMarker} from "react-icons/hi"
 import {BiUserPin} from "react-icons/bi"
+import {FcGoogle} from "react-icons/fc"
+
 import { Link, useParams } from "react-router-dom"
 
 import editLogo from "../assets/editProfileImg.png"
@@ -91,15 +93,19 @@ export const Profile=()=>{
                     <div className={style.socialContainer}>
                        <div className={style.socialEl}>
                             <BsFacebook className={style.socialIconFb}></BsFacebook>
-                            <p className={style.socialText}>Munkhtsog Batsukh</p>
+                            <p className={style.socialText}>{user && user.facebookInfo}</p>
                        </div>
                        <div className={style.socialEl}>
                             <BsInstagram className={style.socialIconInsta}></BsInstagram>
-                            <p className={style.socialText}>Munkhtsog@Batsukh</p>
+                            <p className={style.socialText}>{user && user.instagramInfo}</p>
+                       </div>
+                       <div className={style.socialEl}>
+                            <FcGoogle className={style.socialIconInsta}></FcGoogle>
+                            <p className={style.socialText}>{user && user.googleInfo}</p>
                        </div>
                        <div className={style.socialEl}>
                             <BsFillTelephoneFill className={style.socialIconPhone}></BsFillTelephoneFill>
-                            <p className={style.socialText}>99507342</p>
+                            <p className={style.socialText}>{user && user.phoneInfo}</p>
                        </div>
                     </div>
 

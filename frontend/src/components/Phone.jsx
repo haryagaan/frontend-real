@@ -71,7 +71,7 @@ export const Phone = ({ id }) => {
 
 
     return goToOTP ? (
-        <OTP id={id}></OTP>
+        <OTP id={id} phone={phone}></OTP>
     ) : (
         <div className={style.phoneCont}>
             <div className={style.phoneInnerCont}>

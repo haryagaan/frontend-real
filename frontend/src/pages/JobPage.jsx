@@ -32,7 +32,7 @@ export const JobPage=()=>{
     const [title,setTitle]=useState();
     const [mainText,setMainText]=useState();
     const [price,setPrice]=useState();
-    const [postImageBase64,setPostImageBase64]=useState();
+    const [postImageBase64,setPostImageBase64]=useState([]);
 
     useEffect(()=>{
         client.get("/job/get/"+jobId)
@@ -89,15 +89,14 @@ export const JobPage=()=>{
         var reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = () => {
-            setPostImageBase64(reader.result);
+            if(postImageBase64.length<=3){
+                setPostImageBase64((postImageBase64)=>[...postImageBase64 , reader.result]);
+            }
         };
         reader.onerror = (error) => {
           console.log("upload image error:", error);
         };
     }
-
-    // console.log(postImageBase64)
-
     
 
     async function post(){
@@ -122,6 +121,8 @@ export const JobPage=()=>{
         }
     }
 
+    console.log(postImageBase64)
+
     function hideCreatePost(){
         setCreatePost(false)
         // console.log(1)
@@ -145,8 +146,7 @@ export const JobPage=()=>{
                         <p className={style.jobName}>{job && job.name}</p>
 
                         <div onClick={toggleCreatePost} className={style.addPostContainer}>
-                            <p>Create post</p>
-                            <img src={addPostImg} className={style.addPostImage}/>
+                            <button className={style.addPostButton}>Create post</button>
                         </div>
 
                     </div>
@@ -207,7 +207,13 @@ export const JobPage=()=>{
                         <textarea onChange={(e)=>{setMainText(e.target.value)}} placeholder="Main text..."></textarea>
                         <input className={style.createPostFile} onChange={uploadPostImage} type="file"/>
                         <div>   
-                            <img style={{width:"auto" , height:"100px"}} src={postImageBase64 && postImageBase64}/>
+                            {
+                                postImageBase64 && postImageBase64.map((imageSrc,i)=>{
+                                    return(
+                                        <img key={i} style={{width:"auto" , height:"100px"}} src={imageSrc && imageSrc}/>
+                                    )
+                                })
+                            }
                         </div>
                         <div style={{display:"flex" , flexDirection:"row"}}>
                             <h4>Your money</h4>
