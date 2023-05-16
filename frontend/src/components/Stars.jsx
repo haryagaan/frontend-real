@@ -4,7 +4,7 @@ import {AiFillStar} from "react-icons/ai"
 
 export const Stars=({creator})=>{
 
-    console.log(creator)
+    // console.log(creator)
     return(
         <div className={style.container}>
             <AiFillStar className={style.star}></AiFillStar>

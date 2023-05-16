@@ -387,7 +387,7 @@ const HeaderItem = ({ content, title }) => {
   const handleMouseOut = () => {
     setIsHovering(false);
   };
-  console.log(content);
+  // console.log(content);
   return (
     <div>
       <Link

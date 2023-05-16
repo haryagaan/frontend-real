@@ -15,12 +15,14 @@ export const DataProvider = (props) => {
     const [isAuth,setIsAuth]=useState(false);
 
     useEffect(()=>{
-      client.post("/user/return/id/"+token)
+      if(token){
+        client.post("/user/return/id/"+token)
         .then(async(res)=>{
           setUserId(res.data);
         }).catch((err)=>{
           console.log(err);
         })
+      }
     },[])
 
   return (

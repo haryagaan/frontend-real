@@ -23,20 +23,19 @@ export const PostPage=()=>{
 
     const {userId}=useContext(DataContext);
 
-    // const [userId,setUserId]=useState();
-
     const type=useParams().type;
 
     const postId=useParams().post;
 
     const [post,setPost]=useState();
     const [creator,setCreator]=useState();
-
+    const [liked,setLiked]=useState();
+    const [disliked,setDisliked]=useState();
 
     useEffect(()=>{
-            client.get("/post/"+type+"/"+userId+"/"+postId)
+            client.get("/post/"+type+"/"+postId)
             .then(async(res)=>{
-                console.log(res.data)
+                // console.log(res.data)
                 setPost(res.data.category);
                 setCreator(res.data.creator);
             }).catch((err)=>{
@@ -44,13 +43,27 @@ export const PostPage=()=>{
             })
     },[]);
 
+    useEffect(()=>{
+        if(userId && postId){
+            client.get("/post/"+type+"/react/"+userId+"/"+postId)
+            .then(async(res)=>{
+                // console.log(res.data)
+                setLiked(res.data.liked);
+                setDisliked(res.data.disliked)
+            }).catch((err)=>{
+                console.log(err)
+            })
+        }
+    },[]);
+
+    // console.log(liked , disliked)
+
     async function Like(){
         console.log(1)
         client.post("/post/"+type+"/like/"+userId+"/"+postId)
             .then(async(res)=>{
-                console.log(res.data)
-                // setLiked(1111)
-                // window.location.reload()
+                // console.log(res.data)
+                window.location.reload()
             }).catch((err)=>{
                 console.log(err);
             })
@@ -60,9 +73,8 @@ export const PostPage=()=>{
         console.log(1)
         client.post("/post/"+type+"/dislike/"+userId+"/"+postId)
         .then(async(res)=>{
-            console.log(res.data)
-            // setDisliked(111)
-            // window.location.reload()
+            // console.log(res.data)
+            window.location.reload()
         }).catch((err)=>{
             console.log(err);
         })
