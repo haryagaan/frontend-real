@@ -23,14 +23,15 @@ export const PostPage=()=>{
 
     const {userId}=useContext(DataContext);
 
+    // const [userId,setUserId]=useState();
+
     const type=useParams().type;
 
     const postId=useParams().post;
 
     const [post,setPost]=useState();
     const [creator,setCreator]=useState();
-    const [liked,setLiked]=useState();
-    const [disliked,setDisliked]=useState();
+
 
     useEffect(()=>{
             client.get("/post/"+type+"/"+userId+"/"+postId)
@@ -38,20 +39,17 @@ export const PostPage=()=>{
                 console.log(res.data)
                 setPost(res.data.category);
                 setCreator(res.data.creator);
-                setLiked(res.data.liked);
-                setDisliked(res.data.disliked);
             }).catch((err)=>{
                 console.log(err)
             })
     },[]);
 
-
-
     async function Like(){
+        console.log(1)
         client.post("/post/"+type+"/like/"+userId+"/"+postId)
             .then(async(res)=>{
                 console.log(res.data)
-                setLiked(1111)
+                // setLiked(1111)
                 // window.location.reload()
             }).catch((err)=>{
                 console.log(err);
@@ -59,10 +57,11 @@ export const PostPage=()=>{
     }
 
     async function Dislike(){
+        console.log(1)
         client.post("/post/"+type+"/dislike/"+userId+"/"+postId)
         .then(async(res)=>{
             console.log(res.data)
-            setDisliked(111)
+            // setDisliked(111)
             // window.location.reload()
         }).catch((err)=>{
             console.log(err);
@@ -112,9 +111,9 @@ export const PostPage=()=>{
 
                         <div className={style.likeContainer}>
                             <p>Total ({post && post.totalReacts.length})</p>
-                            <AiFillLike onClick={Like} className={liked==-1 ? style.neutral : style.like}></AiFillLike>
+                            <AiFillLike onClick={Like} className={style.like}></AiFillLike>
                             <p>({post && post.likes.length})</p>
-                            <AiFillDislike onClick={Dislike} className={disliked==-1 ? style.neutral : style.dislike}></AiFillDislike>
+                            <AiFillDislike onClick={Dislike} className={style.dislike}></AiFillDislike>
                             <p>({post && post.dislikes.length})</p>
                         </div>
                     </div>
@@ -136,14 +135,16 @@ export const PostPage=()=>{
                                     background: 'black',
                                     border: 'none',
                                     borderRadius: '50%',
-                                    color: 'white',
+                                    color: 'black',
                                     cursor: 'pointer',
                                     fontSize: '20px',
                                     height: 30,
                                     lineHeight: 1,
                                     textAlign: 'center',
                                     width: 30, 
-                                    backgroundColor: "#7246e5"
+                                    backgroundColor: "white",
+                                    boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+                                    marginLeft:"8px"
                                 },
                                 children: <span>{`>`}</span>,
                                 }}
@@ -154,14 +155,16 @@ export const PostPage=()=>{
                                     background: 'black',
                                     border: 'none',
                                     borderRadius: '50%',
-                                    color: 'white',
+                                    color: 'black',
                                     cursor: 'pointer',
                                     fontSize: '20px',
                                     height: 30,
                                     lineHeight: 1,
                                     textAlign: 'center',
                                     width: 30,
-                                    backgroundColor: "#7246e5"
+                                    backgroundColor: "white",
+                                    boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+                                    marginRight:"8px"
                                 },
                                 children: <span>{`<`}</span>,
                                 }}
@@ -169,7 +172,7 @@ export const PostPage=()=>{
                                 {
                                     itemsToShow: 1,
                                     itemsToScroll: 1,
-                                    minWidth: 300,
+                                    minWidth: 2500,
                                 },
                                 ]}
                                 speed={400}

@@ -1,7 +1,7 @@
 .field {
     width: 100vw;
     height: 65vh;
-    background-color: #f1fdf7;
+    /* background-color: #fafafa; */
 }
 .mainRow {
     display: flex;

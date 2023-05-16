@@ -77,7 +77,7 @@ export const Header = () => {
   };
 
   async function goToProfile(){
-    await client.post("/user/return/id/"+token )
+    await client.post("/user/return/id/"+token)
       .then(async(res)=>{
         console.log(res.data);
         navigate(`/myprofile/${res.data}`);
@@ -85,6 +85,164 @@ export const Header = () => {
         console.log(err)
       })  
   }
+
+  const headerData = [
+    {
+      title: "Graphic & Design",
+      content: [
+        {
+          title: "logo Brand Name",
+          content: [
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+          ],
+        },
+        {
+          title: "logo Brand Name",
+          content: [
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Photograhpy",
+      content: [
+        {
+          title: "logo Brand Name",
+          content: [
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+          ],
+        },
+        {
+          title: "logo Brand Name",
+          content: [
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Graphic & Design",
+      content: [
+        {
+          title: "logo Brand Name",
+          content: [
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+          ],
+        },
+        {
+          title: "logo Brand Name",
+          content: [
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Graphic & Design",
+      content: [
+        {
+          title: "logo Brand Name",
+          content: [
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+          ],
+        },
+        {
+          title: "logo Brand Name",
+          content: [
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Graphic & Design",
+      content: [
+        {
+          title: "logo Brand Name",
+          content: [
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+          ],
+        },
+        {
+          title: "logo Brand Name",
+          content: [
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+            {
+              name: "Logo Design",
+              href: "/test",
+            },
+          ],
+        },
+      ],
+    },
+  ];
 
   return (
     <>
@@ -208,7 +366,67 @@ export const Header = () => {
             </div>
           </div>
         </div>
+
+        <div className={styles.container2}>
+            <div className={styles.links}>
+              {headerData.map(({ content, title }) => (
+                <HeaderItem content={content} title={title} />
+              ))}
+            </div>
+        </div>
       </div>
     </>
+  );
+};
+
+const HeaderItem = ({ content, title }) => {
+  const [isHovering, setIsHovering] = useState(false);
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
+  console.log(content);
+  return (
+    <div>
+      <Link
+        to={"/"}
+        className={styles.link1}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+      >
+        {title}
+      </Link>
+      {isHovering && (
+        <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+          <div className={styles.hover1}>
+            <div className={styles.suggest}>
+              {content.map(({ title, content }) => (
+                <div>
+                  <h4>{title}</h4>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    {content.map(({ name, href }) => {
+                      return (
+                        <div className={styles.suggest2}>
+                          <Link to={href} className={styles.to}>
+                            {name}
+                          </Link>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
