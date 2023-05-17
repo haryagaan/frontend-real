@@ -104,7 +104,7 @@ export const JobPage=()=>{
             await client.post("/post/freelancer/"+userId+"/"+jobId,
                 {title , mainText, base64:postImageBase64 , price}
             ).then(async(res)=>{
-                console.log(res.data);
+                // console.log(res.data);
                 window.location.reload();
             }).catch((err)=>{
                 console.log(err)
@@ -113,7 +113,7 @@ export const JobPage=()=>{
             await client.post("/post/client/"+userId+"/"+jobId,
                 {title , mainText, base64:postImageBase64 , price}
             ).then(async(res)=>{
-                console.log(res.data);
+                // console.log(res.data);
                 window.location.reload()
             }).catch((err)=>{
                 console.log(err)
@@ -121,7 +121,9 @@ export const JobPage=()=>{
         }
     }
 
-    console.log(postImageBase64)
+    console.log(freelancerPosts)
+
+    // console.log(postImageBase64)
 
     function hideCreatePost(){
         setCreatePost(false)

@@ -11,9 +11,9 @@ export const JobCard=({item})=>{
                 <p className={style.name}>{item.name}</p>
             </div>
 
-            <div>
+            {/* <div>
                 <p>Freelancers:{item.totalUsers}</p>
-            </div>
+            </div> */}
         </div>
     )
 }

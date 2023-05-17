@@ -28,10 +28,13 @@ export const CarouselCard = ({post}) => {
         setIsOpen(false);
     };
 
-    console.log(post)
+    // console.log(post)
+
+
 
     return (
         <>
+        
             <div className={style.card}>
                 {/* img */}
                 <a className={style.imgBtn}>
@@ -62,8 +65,8 @@ export const CarouselCard = ({post}) => {
                 <div className={style.review}>
                     <div className={style.rating}>
                         <BsStarFill className={style.starIcon}></BsStarFill>
-                        <p>{creator && creator.current.rating}</p>
-                        <span>({creator && creator.current.ratingCount})</span>
+                        <p>{post.likes.length ? post && parseFloat(post.likes.length*5/post.totalReacts.length) : 0}</p>
+                        <span>({post && post.totalReacts.length})</span>
                     </div>
                     <div></div>
                 </div>

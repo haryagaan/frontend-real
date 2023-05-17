@@ -55,12 +55,12 @@ export const Home=()=>{
             </div>
 
             <hr></hr>
-            {/* 
+            
             <div className={style.popularFreelancers}>
                 Categories
-            </div> */}
+            </div>
 
-            {/* <div className={style.categories}>
+            <div className={style.categories}>
                 {
                     categories && categories.map((item,i)=>{
                         return(
@@ -72,7 +72,7 @@ export const Home=()=>{
                         )
                     })
                 }
-            </div> */}
+            </div>
 
             <div>
                 <VideoField></VideoField>

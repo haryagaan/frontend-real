@@ -27,6 +27,8 @@ export const CategoryPage=()=>{
             })
     },[]);
 
+    // console.log(category)
+
     return(
         <div className={style.container}>
            <Header></Header>
