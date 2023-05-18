@@ -59,7 +59,7 @@ export const PostPage=()=>{
     // console.log(liked , disliked)
 
     async function Like(){
-        console.log(1)
+        // console.log(1)
         client.post("/post/"+type+"/like/"+userId+"/"+postId)
             .then(async(res)=>{
                 // console.log(res.data)
@@ -70,7 +70,7 @@ export const PostPage=()=>{
     }
 
     async function Dislike(){
-        console.log(1)
+        // console.log(1)
         client.post("/post/"+type+"/dislike/"+userId+"/"+postId)
         .then(async(res)=>{
             // console.log(res.data)

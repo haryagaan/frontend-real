@@ -25,11 +25,15 @@ import { auth, providerFacebook, providerGoogle } from '../firebaseConfig/fireba
 import { DataContext } from "../context/DataProvider"
 import { useContext } from "react"
 
+import HashLoader from "react-spinners/HashLoader";
+
 export const Login = () => {
     const {
         isAuth,
         setIsAuth
     }=useContext(DataContext);
+
+    const [loading,setLoading]=useState(false);
 
     const navigate=useNavigate()
 
@@ -67,6 +71,8 @@ export const Login = () => {
                 const imageUrl = base.photoURL;
                 const socialUid = base.uid;
 
+                setLoading(true);
+
                 client
                     .post('/auth/social/create', {
                         email,
@@ -78,6 +84,7 @@ export const Login = () => {
                     .then(async (res) => {
                         // console.log(res.data);
                         localStorage.setItem("token" , res.data.token)
+                        setLoading(false);
                         // localStorage.setItem("id",res.data.id);
                         navigate("/home")
                     })
@@ -101,6 +108,8 @@ export const Login = () => {
                 const imageUrl = base.photoURL;
                 const socialUid = base.uid;
 
+                setLoading(true);
+
                 client
                     .post('/auth/social/create', {
                         displayName,
@@ -112,6 +121,7 @@ export const Login = () => {
                     .then(async (res) => {
                         // console.log(res.data);
                         // localStorage.setItem("id",res.data.id);
+                        setLoading(false);
                         localStorage.setItem("token" , res.data.token)
                         navigate("/home")
                     })
@@ -126,6 +136,7 @@ export const Login = () => {
     }
 
     async function Login() {
+        setLoading(true);
        await client.post("/auth/login" , {email , password})
         .then(async(res)=>{
             // console.log(res.data)
@@ -140,6 +151,9 @@ export const Login = () => {
         }).catch((err)=>{
             // console.log(err)
             // console.log(err.response.data)
+            if(!err){
+                setLoading(false);
+            }
             setErr(err.response.data);
             toastError(err.response.data)
         })
@@ -166,6 +180,20 @@ export const Login = () => {
     // console.log(isAuth)
 
     return (
+        loading ? 
+
+            <div style={{width:"100vw" , height:"100vh" , display:"flex" , justifyContent:"center" ,alignItems:"center"}}>
+            <HashLoader
+            color={'#7246e5'}
+            loading={loading}
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+            />
+            </div>
+
+        :
+
         isVerified ==null ?
         <div className={style.container}>
 

@@ -16,7 +16,11 @@ import {BsArrowReturnLeft} from "react-icons/bs"
 
 import addPostImg from "../assets/addPost.png"
 
+import HashLoader from "react-spinners/HashLoader";
+
 export const JobPage=()=>{
+
+    const [loading,setLoading]=useState(false);
 
     const {userId}=useContext(DataContext)
 
@@ -58,10 +62,12 @@ export const JobPage=()=>{
     function Freelancer(){
         setShowFreelancer(true);
         setShowClient(false);
+        setLoading(true);
 
         client.get("/job/get/freelancer/"+jobId)
         .then(async(res)=>{
             // console.log(res.data);
+            setLoading(false)
             setFreelancerPosts(res.data);
         }).catch((err)=>{ 
             console.log(err);
@@ -71,10 +77,12 @@ export const JobPage=()=>{
     function Client(){
         setShowFreelancer(false);
         setShowClient(true);
+        setLoading(true);
 
         client.get("/job/get/client/"+jobId)
         .then(async(res)=>{
             // console.log(res.data);
+            setLoading(false)
             setClientPosts(res.data);
         }).catch((err)=>{
             console.log(err);
@@ -100,11 +108,13 @@ export const JobPage=()=>{
     
 
     async function post(){
+        setLoading(true);
         if(showFreelancer==true && showClient==false){
             await client.post("/post/freelancer/"+userId+"/"+jobId,
                 {title , mainText, base64:postImageBase64 , price}
             ).then(async(res)=>{
                 // console.log(res.data);
+                setLoading(false)
                 window.location.reload();
             }).catch((err)=>{
                 console.log(err)
@@ -114,6 +124,7 @@ export const JobPage=()=>{
                 {title , mainText, base64:postImageBase64 , price}
             ).then(async(res)=>{
                 // console.log(res.data);
+                setLoading(false)
                 window.location.reload()
             }).catch((err)=>{
                 console.log(err)
@@ -121,7 +132,7 @@ export const JobPage=()=>{
         }
     }
 
-    console.log(freelancerPosts)
+    // console.log(freelancerPosts)
 
     // console.log(postImageBase64)
 
@@ -131,102 +142,123 @@ export const JobPage=()=>{
     }
 
     return(
-        <div className={style.container}>
-            <div>
-                <Header></Header>
-            </div>
+        <div>
+            {
+                loading ?
 
-            <div className={style.main}>
-                <div className={style.innerContainer}>
-                    <div className={style.categoryContainer}>
-                        <BsHouseDoor className={style.houseIcon}></BsHouseDoor>
-                        <p className={style.slash}>/</p>
-                        <a href={`/category/${job && job.category._id}`} className={style.category}>{job && job.category.category}</a>
-                    </div>
-
-                    <div className={style.jobNameContainer}>
-                        <p className={style.jobName}>{job && job.name}</p>
-
-                        <div onClick={toggleCreatePost} className={style.addPostContainer}>
-                            <button className={style.addPostButton}>Create post</button>
-                        </div>
-
-                    </div>
-
-                    <div className={style.modeContainer}>
-                        <div onClick={Freelancer} className={style.modeFreelancer}>
-                            <p>Freelancer</p>
-                        </div>
-
-                        <div onClick={Client} className={style.modeClient}>
-                            <p>Client</p>
-                        </div>
-                    </div>
+                <div style={{width:"100vw" , height:"100vh" , display:"flex" , justifyContent:"center" ,alignItems:"center"}}>
+                    <HashLoader
+                    color={'#7246e5'}
+                    loading={loading}
+                    size={150}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                    />
                 </div>
 
-                <div className={style.postContainer}>
-                    {
-                        showFreelancer ?
+                :
 
-                        freelancerPosts && freelancerPosts.map((post,i)=>{
-                            return(
-                                <div className={style.freelancerClientContainer}>
-                                    <Link to={`/post/freelancer/${post._id}`} className={style.freelancerClient} key={i}>
-                                        <CarouselCard post={post}></CarouselCard>
-                                    </Link>
+                <div className={style.container}>
+                    <div>
+                    <div>
+                        <Header></Header>
+                    </div>
+
+                    <div className={style.main}>
+                        <div className={style.innerContainer}>
+                            <div className={style.categoryContainer}>
+                                <BsHouseDoor className={style.houseIcon}></BsHouseDoor>
+                                <p className={style.slash}>/</p>
+                                <a href={`/category/${job && job.category._id}`} className={style.category}>{job && job.category.category}</a>
+                            </div>
+
+                            <div className={style.jobNameContainer}>
+                                <p className={style.jobName}>{job && job.name}</p>
+
+                                <div onClick={toggleCreatePost} className={style.addPostContainer}>
+                                    <button className={style.addPostButton}>Create post</button>
                                 </div>
-                            )
-                        })
 
-                        :
+                            </div>
 
-                        clientPosts && clientPosts.map((post,i)=>{
-                            return(
-                                <div className={style.freelancerClientContainer}>
-                                    <Link to={`/post/client/${post._id}`} className={style.freelancerClient} key={i}>
-                                        <CarouselCard post={post}></CarouselCard>
-                                    </Link>
+                            <div className={style.modeContainer}>
+                                <div onClick={Freelancer} className={style.modeFreelancer}>
+                                    <p>Freelancer</p>
                                 </div>
-                            )
-                        })
-                    }
-                </div>
 
-            </div>
-
-            <div>
-                <Footer></Footer>
-            </div>
-
-            <div className={createPost ? style.createPostContainer : style.createPostContainerInvisible}>
-                <div className={style.innerCreatePostContainer}>
-                    <div className={style.whitePost}>
-                        <div className={style.whitePostTop}>
-                            <BsArrowReturnLeft onClick={hideCreatePost} className={style.returnIcon}></BsArrowReturnLeft>
-                            <h1>Create a post</h1>
+                                <div onClick={Client} className={style.modeClient}>
+                                    <p>Client</p>
+                                </div>
+                            </div>
                         </div>
-                        <input onChange={(e)=>{setTitle(e.target.value)}} className={style.createPostInput} placeholder="Title..."/>
-                        <textarea onChange={(e)=>{setMainText(e.target.value)}} placeholder="Main text..."></textarea>
-                        <input className={style.createPostFile} onChange={uploadPostImage} type="file"/>
-                        <div>   
+
+                        <div className={style.postContainer}>
                             {
-                                postImageBase64 && postImageBase64.map((imageSrc,i)=>{
+                                showFreelancer ?
+
+                                freelancerPosts && freelancerPosts.map((post,i)=>{
                                     return(
-                                        <img key={i} style={{width:"auto" , height:"100px"}} src={imageSrc && imageSrc}/>
+                                        <div className={style.freelancerClientContainer}>
+                                            <Link to={`/post/freelancer/${post._id}`} className={style.freelancerClient} key={i}>
+                                                <CarouselCard post={post}></CarouselCard>
+                                            </Link>
+                                        </div>
+                                    )
+                                })
+
+                                :
+
+                                clientPosts && clientPosts.map((post,i)=>{
+                                    return(
+                                        <div className={style.freelancerClientContainer}>
+                                            <Link to={`/post/client/${post._id}`} className={style.freelancerClient} key={i}>
+                                                <CarouselCard post={post}></CarouselCard>
+                                            </Link>
+                                        </div>
                                     )
                                 })
                             }
                         </div>
-                        <div style={{display:"flex" , flexDirection:"row"}}>
-                            <h4>Your money</h4>
-                            <input onChange={(e)=>{setPrice(e.target.value)}} type="number" min="1" step="any" className={style.createPostInputMoney} placeholder="Money..."/>
-                        </div>
-                        <button onClick={post} className={style.createPostButton}>Create</button>
+
                     </div>
+
+                    <div>
+                        <Footer></Footer>
+                    </div>
+
+                    <div className={createPost ? style.createPostContainer : style.createPostContainerInvisible}>
+                        <div className={style.innerCreatePostContainer}>
+                            <div className={style.whitePost}>
+                                <div className={style.whitePostTop}>
+                                    <BsArrowReturnLeft onClick={hideCreatePost} className={style.returnIcon}></BsArrowReturnLeft>
+                                    <h1>Create a post</h1>
+                                </div>
+                                <input onChange={(e)=>{setTitle(e.target.value)}} className={style.createPostInput} placeholder="Title..."/>
+                                <textarea onChange={(e)=>{setMainText(e.target.value)}} placeholder="Main text..."></textarea>
+                                <input className={style.createPostFile} onChange={uploadPostImage} type="file"/>
+                                <div>   
+                                    {
+                                        postImageBase64 && postImageBase64.map((imageSrc,i)=>{
+                                            return(
+                                                <img key={i} style={{width:"auto" , height:"100px"}} src={imageSrc && imageSrc}/>
+                                            )
+                                        })
+                                    }
+                                </div>
+                                <div style={{display:"flex" , flexDirection:"row"}}>
+                                    <h4>Your money</h4>
+                                    <input onChange={(e)=>{setPrice(e.target.value)}} type="number" min="1" step="any" className={style.createPostInputMoney} placeholder="Money..."/>
+                                </div>
+                                <button onClick={post} className={style.createPostButton}>Create</button>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
-            </div>
+                </div>
 
-
+            }
         </div>
     )
 }

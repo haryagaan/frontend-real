@@ -20,6 +20,8 @@ import { VideoField } from "./VideoField"
 
 import { Link } from "react-router-dom"
 
+import addCategory from "../assets/addPost.png"
+
 export const Home=()=>{
     const {
         user,
@@ -30,6 +32,7 @@ export const Home=()=>{
 
     const [categories,setCategories]=useState([]);
 
+
     useEffect(()=>{
 
         client.get("/category/getAll")
@@ -38,6 +41,9 @@ export const Home=()=>{
                 setCategories(res.data)
             }).catch((err)=>{
                 console.log(err)
+                if(err.response.data=="Forbidden"){
+                    window.location.reload();
+                }
             })
     },[])
 
@@ -72,6 +78,17 @@ export const Home=()=>{
                         )
                     })
                 }
+
+                <Link style={{textDecoration:"none"}} to="/request/category">
+                    <div className={style.addCategory}>
+                        <div className={style.addCategoryText}>Cant find the category you are looking? Click here</div>
+
+                        <div className={style.addCategoryImgCont}>
+                            <img className={style.addCategoryImg} src={addCategory}/>
+                        </div>
+                    </div>  
+                </Link>
+
             </div>
 
             <div>

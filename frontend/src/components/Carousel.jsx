@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import ReactSimplyCarousel from 'react-simply-carousel';
 
+import style from "../styles/Carousel.module.css"
+
 import { CarouselCard } from './CarouselCard.jsx';
 
 import { Category } from './Category.jsx';
-
 
 export const Carousel=({items})=>{
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);

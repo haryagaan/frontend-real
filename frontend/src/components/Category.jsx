@@ -8,7 +8,7 @@ export const Category=({item})=>{
 
     return(
         <a href={`/category/${item && item._id}`} className={style.category}>
-           <div >
+           <div className={style.imgParent}>
                 <img className={style.img} src={item && item.imageUrl}/>
            </div>
 

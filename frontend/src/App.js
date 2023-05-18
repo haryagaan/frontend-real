@@ -13,6 +13,7 @@ import { Profile } from "./components/Profile";
 import { CategoryPage } from "./pages/CategoryPage";
 import { JobPage } from "./pages/JobPage";
 import { PostPage } from "./pages/PostPage";
+import { MakeCategoryRequest } from "./pages/MakeCategoryRequest";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                     <Route path="/category/:category" element={<CategoryPage/>}/>
                     <Route path="/job/:job" element={<JobPage/>}/>
                     <Route path="/post/:type/:post" element={<PostPage/>}/>
+                    <Route path="/request/category" element={<MakeCategoryRequest/>}/>
                 </Routes>
             </BrowserRouter>
         </DataProvider>
