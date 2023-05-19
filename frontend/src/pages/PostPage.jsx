@@ -32,6 +32,9 @@ export const PostPage=()=>{
     const [liked,setLiked]=useState();
     const [disliked,setDisliked]=useState();
 
+    const [comment,setComment]=useState();
+    const [comments,setComments]=useState();
+
     useEffect(()=>{
             client.get("/post/"+type+"/"+postId)
             .then(async(res)=>{
@@ -56,7 +59,25 @@ export const PostPage=()=>{
         }
     },[]);
 
+    useEffect(()=>{
+        const token=localStorage.getItem("token");
+
+        if(token){
+            client.get("/post/"+type+"/comment/"+postId)
+                .then(async(res)=>{
+                    // console.log(res.data);
+                    setComments(res.data);
+                }).catch((err)=>{
+                    console.log(err)
+                })
+        }
+    },[])
+
+    // console.log(post)
+
     // console.log(liked , disliked)
+
+    // console.log(comments)
 
     async function Like(){
         // console.log(1)
@@ -78,6 +99,17 @@ export const PostPage=()=>{
         }).catch((err)=>{
             console.log(err);
         })
+    }
+
+    async function WriteComment(){
+        const token=localStorage.getItem("token");
+
+        await client.post("/post/"+type+"/comment/"+token+"/"+postId , {text:comment})
+            .then(async(res)=>{
+                // console.log(res.data);
+            }).catch((err)=>{
+                console.log(err);
+            })
     }
     
     return (
@@ -203,6 +235,49 @@ export const PostPage=()=>{
                         <div className={style.infoContainer}>
                             <p>{post && post.mainText}</p>
                         </div>
+
+                        <h1>Comments</h1>
+
+                        <div className={style.commentsContainer}>
+                            <div className={style.commentsInnerContainer}>
+                                <div className={style.scrollComments}>
+                                    {
+                                        comments && comments.map((comment,i)=>{
+                                            let creator;
+                                            if(typeof comment.creatorId==="object" && comment.creatorId!==null){
+                                                creator=comment.creatorId;
+                                            }else if(typeof comment.creatorSocialId==="object" && comment.creatorSocialId!==null){
+                                                creator=comment.creatorSocialId;
+                                            }
+                                            // console.log(creator)
+
+                                            return (
+                                                <div className={style.comment}>
+                                                    <Link style={{textDecoration:"none" , color:"black"}} to={`/profile/`+creator._id}>
+                                                        <div className={style.commentCreatorContainer}>
+                                                            <div className={style.commentCreatorImgCont}>   
+                                                                <img className={style.commentCreatorImg} src={creator.imageUrl}/>
+                                                            </div>
+                                                            <p className={style.commentCreatorName}>{creator.firstName} {creator.lastName}</p>
+                                                        </div>
+                                                    </Link>
+
+                                                    <div className={style.commentText}>
+                                                        {comment.text}
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={style.writeCommentContainer}>
+                            <input onChange={(e)=>{setComment(e.target.value)}} placeholder="Write a comment..." className={style.writeCommentInput}/>
+                            <button onClick={WriteComment} className={style.writeCommentButton}>Create</button>
+                        </div>
+
                     </div>
 
                 </div>

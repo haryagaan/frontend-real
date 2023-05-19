@@ -14,6 +14,7 @@ import { CategoryPage } from "./pages/CategoryPage";
 import { JobPage } from "./pages/JobPage";
 import { PostPage } from "./pages/PostPage";
 import { MakeCategoryRequest } from "./pages/MakeCategoryRequest";
+import { MakeJobRequest } from "./pages/MakeJobRequest";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
                     <Route path="/job/:job" element={<JobPage/>}/>
                     <Route path="/post/:type/:post" element={<PostPage/>}/>
                     <Route path="/request/category" element={<MakeCategoryRequest/>}/>
+                    <Route path="/request/job/:category" element={<MakeJobRequest/>}/>
                 </Routes>
             </BrowserRouter>
         </DataProvider>

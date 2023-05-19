@@ -81,7 +81,7 @@ export const Home=()=>{
 
                 <Link style={{textDecoration:"none"}} to="/request/category">
                     <div className={style.addCategory}>
-                        <div className={style.addCategoryText}>Cant find the category you are looking? Click here</div>
+                        <div className={style.addCategoryText}>Cant find the category you are looking?</div>
 
                         <div className={style.addCategoryImgCont}>
                             <img className={style.addCategoryImg} src={addCategory}/>

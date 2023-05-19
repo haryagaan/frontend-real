@@ -15,7 +15,7 @@ export const Category=({item})=>{
            <div className={style.nameContainer}>
                 <p className={style.name}>{item &&item.category}</p>
 
-                <p className={style.job}>Jobs: {item && item.totalJobs}</p>
+                {/* <p className={style.job}>Jobs: {item && item.totalJobs}</p> */}
            </div>
         </a>
     )

@@ -13,6 +13,7 @@
 .main{
     /* border: 1px solid red; */
     width: 85%;
+    /* position: relative; */
 }
 
 .imgContainer{
@@ -45,6 +46,14 @@
     font-family: Macan,Helvetica Neue,Helvetica,Arial,sans-serif;
     font-weight: 700;
     font-size: 24px;
+}
+
+.addJobContainer{
+    /* border: 1px solid red; */
+    /* position: absolute; */
+    /* top: 20px;
+    right: 20px; */
+    padding-left: 20px;
 }
 
 .jobsContainer{

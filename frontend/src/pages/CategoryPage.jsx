@@ -43,7 +43,11 @@ export const CategoryPage=()=>{
                     </div> */}
 
                     <div className={style.text1}>
-                        Explore {category && category.category}
+                        {category && category.category}
+                    </div>
+                    
+                    <div className={style.addJobContainer}>
+                        <Link to={`/request/job/${category && category._id}`}>Cant find a job you'r looking for ? Click here</Link>
                     </div>
 
                     <div className={style.jobsContainer}>
