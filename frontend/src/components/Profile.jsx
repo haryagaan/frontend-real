@@ -14,30 +14,81 @@ import { Link, useParams } from "react-router-dom"
 import editLogo from "../assets/editProfileImg.png"
 import galleryLogo from "../assets/addGalleryImg.webp"
 import saveLogo from "../assets/save.jpg"
+import {AiFillLike} from "react-icons/ai"
+import {AiFillDislike} from "react-icons/ai"
+
+import { ToastContainer, toast } from 'react-toastify';
 
 import { client } from "../client/client"
-import { useEffect, useState } from "react"
+import { useEffect, useState , useContext } from "react"
+
+import { DataContext } from "../context/DataProvider"
+
 
 export const Profile=()=>{
+    const {userId}=useContext(DataContext);
+
     const id=useParams().id;
 
     const [user,setUser]=useState();
 
-    const token=localStorage.getItem("token");
+    const toastWarning = (string) => toast.warning(string);
+
+    // const token=localStorage.getItem("token");
 
     useEffect(()=>{
         client.get("/user/"+id)
             .then(async(res)=>{
-                // console.log(res.data);
+                // console.log(res.data.user);
                 setUser(res.data.user)
             }).catch((err)=>{
                 console.log(err)
             })
     },[]);
 
+    async function Like(){
+        await client.post("/user/like/"+userId+"/"+id)
+            .then(async(res)=>{
+                console.log(res.data);
+                window.location.reload();
+            }).catch((err)=>{
+                console.log(err);
+                if(err.response.data=="You cant Like to your own profile"){
+                    toastWarning(err.response.data)
+                }
+            })
+    }
+
+    async function Dislike(){
+        await client.post("/user/dislike/"+userId+"/"+id)
+            .then(async(res)=>{
+                console.log(res.data);
+                window.location.reload();
+            }).catch((err)=>{
+                console.log(err);
+                if(err.response.data=="You cant dislike to your own profile"){
+                    toastWarning(err.response.data)
+                }
+            })
+    }
+
     return(
         <div className={style.container}>
+
             <Header></Header>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                />
+            <ToastContainer />
+
             <div className={style.main}>
                 <div className={style.leftSide}>
                     <div className={style.imgContainer}>
@@ -52,10 +103,22 @@ export const Profile=()=>{
                                 <p>{user && user.lastName}</p>
                             </p>
 
+                            <div className={style.reactContainer}>
+                                <div style={{display:"flex" , alignItems:"center"}}>
+                                    <AiFillLike onClick={Like} className={style.like}></AiFillLike>
+                                    ({user &&user.likes.length})
+                                </div>
+
+                                <div style={{display:"flex" , alignItems:"center" , marginLeft:"20px"}}>
+                                    <AiFillDislike onClick={Dislike} className={style.dislike}></AiFillDislike>
+                                    ({user && user.dislikes.length})
+                                </div>
+                            </div>
+
                             <div className={style.ratingContainer}>
                                 <AiFillStar className={style.ratingIcon}></AiFillStar>
-                                <p className={style.rating}>8.6</p>
-                                <p>(19)</p>
+                                <p className={style.rating}>{user && user.likes.length!=0 ? parseInt(user.likes.length*10/user.totalReacts.length) : 0}</p>
+                                <p>({user && user.totalReacts.length})</p>
                             </div>
                     </div>
                     

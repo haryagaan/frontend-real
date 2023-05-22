@@ -56,6 +56,23 @@
     flex-direction: row;
 }
 
+.reactContainer{
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+}
+
+.like{
+    font-size: 30px;
+    color: rgb(38, 89, 184);
+    /* margin-right: 20px; */
+}
+
+.dislike{
+    color: rgb(255, 81, 81);
+    font-size: 30px;
+}
+
 .ratingContainer{
     /* border: 1px solid red; */
     display: flex;

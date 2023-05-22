@@ -25,14 +25,14 @@ export const MyProfile=()=>{
 
     const [user,setUser]=useState();
 
-    const token=localStorage.getItem("token");
-
     const [editInfo,setEditInfo]=useState(false);
 
     const [editInfoInput,setEditInfoInput]=useState();
    
     function uploadProfilePic(event) {
         // console.log(event)
+        const token=localStorage.getItem("token");
+
         var reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = () => {
@@ -54,6 +54,8 @@ export const MyProfile=()=>{
 
     function uploadGalleryPic(event) {
         // console.log(event)
+        const token=localStorage.getItem("token");
+
         var reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = () => {
@@ -82,6 +84,8 @@ export const MyProfile=()=>{
     },[]);
 
     async function handleEditInfo(){
+        const token=localStorage.getItem("token");
+
         if(editInfo==true){
             await client.post("/user/change/info/"+token , {info:editInfoInput})
                 .then(async(res)=>{
