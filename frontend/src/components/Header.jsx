@@ -151,6 +151,12 @@ export const Header = () => {
     },
   ];
 
+  function Logout(){
+    localStorage.removeItem("token");
+
+    navigate("/")
+  }
+
   return (
     <>
       <div
@@ -264,9 +270,9 @@ export const Header = () => {
                       <div>Help center</div>
                     </div>
                     <hr />
-                    <a href="/" className={styles.logout}>
+                    <div onClick={Logout} className={styles.logout}>
                       Log out
-                    </a>
+                    </div>
                   </div>
                 </div>
               )}

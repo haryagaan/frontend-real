@@ -12,6 +12,8 @@ export const DataProvider = (props) => {
 
     const [userId,setUserId]=useState();
 
+    const [topUsers,setTopUsers]=useState([])
+
     const [isAuth,setIsAuth]=useState(false);
 
     useEffect(()=>{
@@ -25,8 +27,20 @@ export const DataProvider = (props) => {
       }
     },[])
 
+    useEffect(()=>{
+      if(token){
+        client.get("/user/")
+          .then(async(res)=>{
+            // console.log(res.data);
+            setTopUsers(res.data)
+          }).catch((err)=>{
+            console.log(err);
+          })
+      }
+    },[])
+
   return (
-    <DataContext.Provider value={{user , setUser , isAuth , setIsAuth , userId , setUserId}}>
+    <DataContext.Provider value={{user , setUser , isAuth , setIsAuth , userId , setUserId , topUsers , setTopUsers}}>
         {props.children}
     </DataContext.Provider>
   )

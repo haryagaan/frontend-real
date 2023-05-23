@@ -136,7 +136,7 @@ export const Login = () => {
     }
 
     async function Login() {
-        setLoading(true);
+        // setLoading(true);
        await client.post("/auth/login" , {email , password})
         .then(async(res)=>{
             // console.log(res.data)
@@ -152,7 +152,7 @@ export const Login = () => {
             // console.log(err)
             // console.log(err.response.data)
             if(!err){
-                setLoading(false);
+                setLoading(true);
             }
             setErr(err.response.data);
             toastError(err.response.data)

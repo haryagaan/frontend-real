@@ -1,5 +1,5 @@
-
 import { DataContext } from "../context/DataProvider"
+
 import { useContext, useEffect, useState } from "react"
 
 import { client } from "../client/client"
@@ -14,6 +14,8 @@ import { HomePage } from "./Home1";
 
 import { Carousel } from "./Carousel";
 
+import { TopUserCarousel } from "./TopUserCarousel"
+
 import { Category } from "./Category";
 
 import { VideoField } from "./VideoField"
@@ -27,11 +29,14 @@ export const Home=()=>{
         user,
         setUser,
         isAuth,
-        setIsAuth
+        setIsAuth,
+        topUsers,
+        setTopUsers
     }=useContext(DataContext);
 
-    const [categories,setCategories]=useState([]);
+    // console.log(topUsers)
 
+    const [categories,setCategories]=useState([]);
 
     useEffect(()=>{
 
@@ -45,7 +50,8 @@ export const Home=()=>{
                     window.location.reload();
                 }
             })
-    },[])
+    },[]);
+
 
     return(
         // isAuth?
@@ -60,7 +66,15 @@ export const Home=()=>{
                 <Carousel items={categories && categories}></Carousel>
             </div>
 
+            <div>
+                <TopUserCarousel users={topUsers && topUsers}></TopUserCarousel>
+            </div>
+
             <hr></hr>
+
+            <div>
+                <VideoField></VideoField>
+            </div>
             
             <div className={style.popularFreelancers}>
                 Categories
@@ -89,10 +103,6 @@ export const Home=()=>{
                     </div>  
                 </Link>
 
-            </div>
-
-            <div>
-                <VideoField></VideoField>
             </div>
 
             <Footer></Footer>
