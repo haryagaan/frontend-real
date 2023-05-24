@@ -171,7 +171,8 @@
 .rightSide{
     /* border: 1px solid red; */
     width: 68vw;
-    height: 100%;
+    /* height: 100%; */
+    height: fit-content;
     display: flex;
     justify-content: center;
     /* align-items: center; */
@@ -276,7 +277,9 @@
 
 .jobContainer{
     /* border: 1px solid blue; */
-    padding: 10px;
+
+    height: fit-content;
+    /* padding: 10px; */
 }
 
 .jobText{
@@ -287,11 +290,30 @@
 
 .jobList{
     /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: auto auto auto auto;
 }
 
-.job{
-    margin: 5px;
-    /* display: inline; */
+.post{
+    /* border: 1px solid grey; */
+    border-radius: 30px;
+    width: 240px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 2px 2px 23px 11px rgba(0,0,0,0.08);
+    -webkit-box-shadow: 2px 2px 23px 11px rgba(0,0,0,0.08);
+    -moz-box-shadow: 2px 2px 23px 11px rgba(0,0,0,0.08);
+    text-decoration: none;
+    margin: 10px;
+}
+
+.postImg{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
 }
 
 @media only screen and (width<=1285.6px) {
@@ -313,16 +335,28 @@
        justify-content: center;
        align-items: center;
     }
+
+    .jobList{
+        grid-template-columns: auto auto auto;
+    }
 }
 
 @media only screen and (width<=860px) {
     .picContainer{
         grid-template-columns: auto auto auto;
     }
+
+    .jobList{
+        grid-template-columns: auto auto;
+    }
 }
 
 @media only screen and (width<=643px) {
     .picContainer{
         grid-template-columns: auto auto;
+    }
+
+    .jobList{
+        grid-template-columns: auto;
     }
 }

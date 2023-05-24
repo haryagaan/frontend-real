@@ -23,6 +23,7 @@ import { VideoField } from "./VideoField"
 import { Link } from "react-router-dom"
 
 import addCategory from "../assets/addPost.png"
+import gif from "../assets/customizeAccGif.gif"
 
 export const Home=()=>{
     const {
@@ -31,7 +32,8 @@ export const Home=()=>{
         isAuth,
         setIsAuth,
         topUsers,
-        setTopUsers
+        setTopUsers,
+        userId
     }=useContext(DataContext);
 
     // console.log(topUsers)
@@ -64,6 +66,23 @@ export const Home=()=>{
 
             <div>
                 <Carousel items={categories && categories}></Carousel>
+            </div>
+
+            <div className={style.customizeAccContainer}>
+                <div className={style.customizeAccInnerCont}>
+                    <div>
+                        <img className={style.gif} src={gif}/>
+                    </div>
+
+                    <div className={style.customizeAccText}>
+                        <p>Customize your account now!!!</p>
+                        <Link to={`/myProfile/${userId}`} className={style.customizeAccButton}>Customize</Link>
+                    </div>
+                </div>
+            </div>
+
+            <div className={style.popularFreelancers}>
+                Our top reliable users
             </div>
 
             <div>

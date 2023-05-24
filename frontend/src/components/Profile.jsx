@@ -32,6 +32,10 @@ export const Profile=()=>{
 
     const [user,setUser]=useState();
 
+    const [freelancerPosts,setFreelancerPosts]=useState([]);
+
+    const [clientPosts,setClientPosts]=useState([]);
+
     const toastWarning = (string) => toast.warning(string);
 
     // const token=localStorage.getItem("token");
@@ -39,7 +43,9 @@ export const Profile=()=>{
     useEffect(()=>{
         client.get("/user/"+id)
             .then(async(res)=>{
-                // console.log(res.data.user);
+                console.log(res.data);
+                setClientPosts(res.data.postClients)
+                setFreelancerPosts(res.data.postFreelancers)
                 setUser(res.data.user)
             }).catch((err)=>{
                 console.log(err)
@@ -198,14 +204,61 @@ export const Profile=()=>{
                     </div>
 
                     <div className={style.jobContainer}>
-                        <p className={style.jobText}>Jobs</p>
-                        
-                        <div className={style.jobList}>
-                            
-                        </div>
-                    </div>
-                </div>
 
+                        <p className={style.jobText}>Freelancer posts made by me</p>
+                        
+                            <div className={style.jobList}>
+                                {
+                                    freelancerPosts && freelancerPosts.length==0?
+
+                                    <div>No freelancerPosts</div>
+
+                                    :
+
+                                    freelancerPosts && freelancerPosts.map((post,i)=>{
+                                        return(
+                                            <Link to={`/post/freelancer/${post._id}`} className={style.post}>
+                                                <div>
+                                                    <img className={style.postImg} src={post.imageUrl[0]}/>
+                                                </div>
+
+                                                <div>
+                                                    <p>{post.title}</p>
+                                                </div>
+                                            </Link>
+                                        )
+                                    })
+                                }
+                            </div>
+
+                            <p className={style.jobText}>Client posts made by me</p>
+
+                            <div className={style.jobList}>
+                                {
+                                    clientPosts && clientPosts.length==0 ?
+
+                                    <div>No client posts</div>
+
+                                    :
+
+                                    clientPosts && clientPosts.map((post,i)=>{
+                                        return(
+                                            <Link to={`/post/client/${post._id}`} className={style.post}>
+                                                <div>
+                                                    <img className={style.postImg} src={post.imageUrl[0]}/>
+                                                </div>
+
+                                                <div>
+                                                    <p>{post.title}</p>
+                                                </div>
+                                            </Link>
+                                        )
+                                    })
+                                }
+                            </div>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     )

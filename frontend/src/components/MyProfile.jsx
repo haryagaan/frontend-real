@@ -28,6 +28,10 @@ export const MyProfile=()=>{
     const [editInfo,setEditInfo]=useState(false);
 
     const [editInfoInput,setEditInfoInput]=useState();
+
+    const [freelancerPosts,setFreelancerPosts]=useState([]);
+
+    const [clientPosts,setClientPosts]=useState([]);
    
     function uploadProfilePic(event) {
         // console.log(event)
@@ -76,7 +80,9 @@ export const MyProfile=()=>{
     useEffect(()=>{
         client.get("/user/"+id)
             .then(async(res)=>{
-                // console.log(res.data);
+                console.log(res.data);
+                setClientPosts(res.data.postClients)
+                setFreelancerPosts(res.data.postFreelancers)
                 setUser(res.data.user)
             }).catch((err)=>{
                 console.log(err)
@@ -222,10 +228,56 @@ export const MyProfile=()=>{
                     </div>
 
                     <div className={style.jobContainer}>
-                        <p className={style.jobText}>Jobs</p>
+                        <p className={style.jobText}>Freelancer posts made by me</p>
                         
                         <div className={style.jobList}>
-                            
+                            {
+                                freelancerPosts && freelancerPosts.length==0?
+
+                                <div>No freelancerPosts</div>
+
+                                :
+
+                                freelancerPosts && freelancerPosts.map((post,i)=>{
+                                    return(
+                                        <Link to={`/post/freelancer/${post._id}`} className={style.post}>
+                                            <div>
+                                                <img className={style.postImg} src={post.imageUrl[0]}/>
+                                            </div>
+
+                                            <div>
+                                                <p>{post.title}</p>
+                                            </div>
+                                        </Link>
+                                    )
+                                })
+                            }
+                        </div>
+
+                        <p className={style.jobText}>Client posts made by me</p>
+
+                        <div className={style.jobList}>
+                            {
+                                clientPosts && clientPosts.length==0 ?
+
+                                <div>No client posts</div>
+
+                                :
+
+                                clientPosts && clientPosts.map((post,i)=>{
+                                    return(
+                                        <Link to={`/post/client/${post._id}`} className={style.post}>
+                                            <div>
+                                                <img className={style.postImg} src={post.imageUrl[0]}/>
+                                            </div>
+
+                                            <div>
+                                                <p>{post.title}</p>
+                                            </div>
+                                        </Link>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                 </div>
