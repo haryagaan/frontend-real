@@ -27,7 +27,17 @@ export const MyProfile=()=>{
 
     const [editInfo,setEditInfo]=useState(false);
 
+    const [editSocial,setEditSocial]=useState(false);
+
     const [editInfoInput,setEditInfoInput]=useState();
+
+    const [facebookInfoInput,setFacebookInfoInput]=useState();
+
+    const [instagramInfoInput,setInstagramInfoInput]=useState();
+
+    const [googleInfoInput,setGoogleInfoInput]=useState();
+
+    const [phoneInfoInput,setPhoneInfoInput]=useState();
 
     const [freelancerPosts,setFreelancerPosts]=useState([]);
 
@@ -80,7 +90,7 @@ export const MyProfile=()=>{
     useEffect(()=>{
         client.get("/user/"+id)
             .then(async(res)=>{
-                console.log(res.data);
+                // console.log(res.data.user);
                 setClientPosts(res.data.postClients)
                 setFreelancerPosts(res.data.postFreelancers)
                 setUser(res.data.user)
@@ -90,17 +100,25 @@ export const MyProfile=()=>{
     },[]);
 
     async function handleEditInfo(){
-        const token=localStorage.getItem("token");
-
         if(editInfo==true){
-            await client.post("/user/change/info/"+token , {info:editInfoInput})
-                .then(async(res)=>{
-                    window.location.reload();
-                }).catch((err)=>{
-                    console.log(err)
-                })
+            const token=localStorage.getItem("token");
+
+            await client.post("/user/change/info/"+token , {
+                info:editInfoInput,
+                facebook:facebookInfoInput,
+                instagram:instagramInfoInput,
+                google:googleInfoInput,
+                phone:phoneInfoInput
+            })
+            .then(async(res)=>{
+                // console.log(res.data)
+                window.location.reload();
+            }).catch((err)=>{
+                console.log(err)
+            })
         }
         setEditInfo(prev=>!prev);
+        setEditSocial(prev=>!prev);
     }
 
     // console.log(editInfoInput)
@@ -133,8 +151,8 @@ export const MyProfile=()=>{
 
                             <div className={style.ratingContainer}>
                                 <AiFillStar className={style.ratingIcon}></AiFillStar>
-                                <p className={style.rating}>8.6</p>
-                                <p>(19)</p>
+                                <p className={style.rating}>{user && user.likes.length!=0 ? parseInt(user.likes.length*10/user.totalReacts.length) : 0}</p>
+                                <p>({user && user.totalReacts.length})</p>
                             </div>
                     </div>
                     
@@ -162,7 +180,7 @@ export const MyProfile=()=>{
                             </p>
 
                             <p className={style.text2}>
-                                May 2023
+                                {user && user.createdAt.slice(0,10)}
                             </p>
                         </div>
                     </div>
@@ -172,19 +190,55 @@ export const MyProfile=()=>{
                     <div className={style.socialContainer}>
                        <div className={style.socialEl}>
                             <BsFacebook className={style.socialIconFb}></BsFacebook>
-                            <p className={style.socialText}>{user && user.facebookInfo}</p>
+                            {
+                                editSocial ? 
+
+                                <input className={style.infoInput} onChange={(e)=>{setFacebookInfoInput(e.target.value)}} />
+
+                                :
+
+                                <p className={style.socialText}>{user && user.facebookInfo}</p>
+                            }
+                            <img onClick={handleEditInfo} style={{marginLeft:"10px"}}  className={style.editProfileImg} src={editSocial ? saveLogo : editLogo}/> 
                        </div>
                        <div className={style.socialEl}>
                             <BsInstagram className={style.socialIconInsta}></BsInstagram>
-                            <p className={style.socialText}>{user && user.instagramInfo}</p>
+                            {
+                                editSocial ? 
+
+                                <input className={style.infoInput} onChange={(e)=>{setInstagramInfoInput(e.target.value)}} />
+
+                                :
+
+                                <p className={style.socialText}>{user && user.instagramInfo}</p>
+                            }
+                            <img onClick={handleEditInfo} style={{marginLeft:"10px"}}  className={style.editProfileImg} src={editSocial ? saveLogo : editLogo}/> 
                        </div>
                        <div className={style.socialEl}>
                             <FcGoogle className={style.socialIconInsta}></FcGoogle>
-                            <p className={style.socialText}>{user && user.googleInfo}</p>
+                            {
+                                editSocial ? 
+
+                                <input className={style.infoInput} onChange={(e)=>{setGoogleInfoInput(e.target.value)}} />
+
+                                :
+
+                                <p className={style.socialText}>{user && user.googleInfo}</p>
+                            }
+                            <img onClick={handleEditInfo} style={{marginLeft:"10px"}}  className={style.editProfileImg} src={editSocial ? saveLogo : editLogo}/> 
                        </div>
                        <div className={style.socialEl}>
                             <BsFillTelephoneFill className={style.socialIconPhone}></BsFillTelephoneFill>
-                            <p className={style.socialText}>{user && user.phoneInfo}</p>
+                            {
+                                editSocial ? 
+
+                                <input className={style.infoInput} onChange={(e)=>{setPhoneInfoInput(e.target.value)}} />
+
+                                :
+
+                                <p className={style.socialText}>{user && user.phoneInfo}</p>
+                            }
+                            <img onClick={handleEditInfo} style={{marginLeft:"10px"}}  className={style.editProfileImg} src={editSocial ? saveLogo : editLogo}/> 
                        </div>
                     </div>
 
@@ -199,7 +253,7 @@ export const MyProfile=()=>{
                         {
                             user && user.galleryUrls.map((item , i)=>{
                                 return(
-                                    <img className={style.pic} src={item}/>
+                                    <img key={i} className={style.pic} src={item}/>
                                 )
                             })
                         }
@@ -240,7 +294,7 @@ export const MyProfile=()=>{
 
                                 freelancerPosts && freelancerPosts.map((post,i)=>{
                                     return(
-                                        <Link to={`/post/freelancer/${post._id}`} className={style.post}>
+                                        <Link key={i} to={`/post/freelancer/${post._id}`} className={style.post}>
                                             <div>
                                                 <img className={style.postImg} src={post.imageUrl[0]}/>
                                             </div>
@@ -266,7 +320,7 @@ export const MyProfile=()=>{
 
                                 clientPosts && clientPosts.map((post,i)=>{
                                     return(
-                                        <Link to={`/post/client/${post._id}`} className={style.post}>
+                                        <Link key={i} to={`/post/client/${post._id}`} className={style.post}>
                                             <div>
                                                 <img className={style.postImg} src={post.imageUrl[0]}/>
                                             </div>

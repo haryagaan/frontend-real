@@ -152,7 +152,7 @@ export const Profile=()=>{
                             </p>
 
                             <p className={style.text2}>
-                                May 2023
+                                {user && user.createdAt.slice(0,10)}
                             </p>
                         </div>
                     </div>

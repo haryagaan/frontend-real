@@ -31,13 +31,15 @@
 .row {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    height: 50px;
-    margin-bottom: 20px;
+    line-height: normal;
+    /* align-items: center; */
+    /* height: 50px; */
+    /* margin-bottom: 20px; */
 }
 .title2 {
     font-style: italic;
 }
+
 .input {
     width: 30vw;
     height: 48px;
@@ -46,12 +48,19 @@
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
     border: none;
-
 }
+
+.dropdown{
+    border: 1px solid blue;
+    background-color: white;
+    height: 30vh;
+}
+
+
 .button {
     background-color: #7246E5;
     height:50px;
-    padding: 12 24px;
+    /* padding: 12 24px; */
     width: 50px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
