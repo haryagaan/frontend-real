@@ -50,7 +50,7 @@ export const DataProvider = (props) => {
             }).catch((err)=>{
                 console.log(err)
                 if(err.response.data=="Forbidden"){
-                    window.location.reload();
+                    // window.location.reload();
                 }
             })
     },[]);
