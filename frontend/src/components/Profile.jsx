@@ -135,11 +135,11 @@ export const Profile=()=>{
                             <HiLocationMarker className={style.Icon1}></HiLocationMarker>
 
                             <p className={style.text1}>
-                                From
+                                Байршил
                             </p>
 
                             <p className={style.text2}>
-                                Mongolia
+                                Монгол
                             </p>
 
                         </div>
@@ -183,7 +183,7 @@ export const Profile=()=>{
 
 
                 <div className={style.rightSide}>
-                    <div className={style.text3}>About me</div>
+                    <div className={style.text3}>Миний тухай</div>
 
                     <div className={style.picContainer}>
                         {
@@ -205,7 +205,7 @@ export const Profile=()=>{
 
                     <div className={style.jobContainer}>
 
-                        <p className={style.jobText}>Freelancer posts made by me</p>
+                        <p className={style.jobText}>Миний хийсэн чөлөөт нийтлэлүүд</p>
                         
                             <div className={style.jobList}>
                                 {
@@ -231,7 +231,7 @@ export const Profile=()=>{
                                 }
                             </div>
 
-                            <p className={style.jobText}>Client posts made by me</p>
+                            <p className={style.jobText}>Миний хийсэн үйлчлүүлэгчийн нийтлэл</p>
 
                             <div className={style.jobList}>
                                 {

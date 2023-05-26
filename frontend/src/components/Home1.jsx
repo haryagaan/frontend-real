@@ -17,8 +17,8 @@ export const HomePage = () => {
       <div className={style.bckgrnd}>
         <div className={style.col1}>
           <h1 className={style.title}>
-            Find the right{" "}
-            <span className={style.title2}>freelance service</span>, right away
+            Зөв чөлөөт үйлчилгээг , {" "}
+            <span className={style.title2}>хурдан</span> олоорой
           </h1>
           <div className={style.row}>
             <div>

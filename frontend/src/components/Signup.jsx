@@ -172,7 +172,7 @@ export const Signup = () => {
                 toastError(err.response.data)
             })
         }else{
-            toastError("Pls agree to our terms and conditions");
+            toastError("Манай нөхцөл, болзлыг зөвшөөрнө үү?");
         }
     }
 
@@ -260,59 +260,59 @@ export const Signup = () => {
                         </div>
 
                         <div className={style.main}>
-                            <div className={style.bigText}>Create an account</div>
+                            <div className={style.bigText}>Бүртгүүлэх</div>
 
                             <div className={style.socialContainer}>
                                 <div onClick={facebookAuth} className={style.facebook}>
                                     <AiFillFacebook className={style.Icon}></AiFillFacebook>
-                                    <div className={style.socialText}>Continue with Facebook</div>
+                                    <div className={style.socialText}>Facebook-ээр нэвтрэх</div>
                                 </div>
 
                                 <div onClick={googleAuth} className={style.google}>
                                     <FcGoogle className={style.Icon}></FcGoogle>
-                                    <div className={style.socialTextBlack}>Continue with Google</div>
+                                    <div className={style.socialTextBlack}>Google-ээр нэвтрэх</div>
                                 </div>
 
                                 <div className={style.apple}>
                                     <AiFillApple className={style.Icon}></AiFillApple>
-                                    <div className={style.socialText}>Continue with Apple</div>
+                                    <div className={style.socialText}>Apple-ээр нэвтрэх</div>
                                 </div>
                             </div>
 
                             <div className={style.lineContainer}>
                                 <div className={style.line}></div>
-                                <div className={style.lineText}>Or</div>
+                                <div className={style.lineText}>Эсвэл</div>
                                 <div className={style.line}></div>
                             </div>
 
                             <div className={style.signupContainer}>
-                                <input value={firstname} onChange={e=>setFirstname(e.target.value)} className={ allErr || firstnameErr ? style.inputErr : style.input} placeholder="Firstname"/>
-                                <div className={firstnameErr || allErr ? style.errDivVisible : style.errDivInvisible}>{allErr ? "This field is required" : firstnameErr ? "Firstname must be longer than 2 characters and less than 30 characters" : ""}</div>
-                                <input value={lastname} onChange={e=>setLastname(e.target.value)} className={allErr || lastnameErr ? style.inputErr : style.input} placeholder='Lastname'/>
-                                <div className={lastnameErr || allErr ? style.errDivVisible : style.errDivInvisible}>{allErr ? "This is a required field" : lastnameErr ? "Lastname must be longer than 2 characters and less than 30 characters" : ""}</div>
-                                <input type="email" value={email} onChange={e=>setEmail(e.target.value)} className={allErr || emailErr || emailExistErr ? style.inputErr : style.input}  placeholder='Email'/>
-                                <div className={emailExistErr || allErr || emailErr ? style.errDivVisible : style.errDivInvisible}>{allErr ? "This is a required field" : emailErr ? "Invalid email" : emailExistErr ? "Email already registered" : ""}</div>
+                                <input value={firstname} onChange={e=>setFirstname(e.target.value)} className={ allErr || firstnameErr ? style.inputErr : style.input} placeholder="Нэр"/>
+                                <div className={firstnameErr || allErr ? style.errDivVisible : style.errDivInvisible}>{allErr ? "Энэ талбар шаардлагатай" : firstnameErr ? "Нэр нь 2 тэмдэгтээс урт, 30 тэмдэгтээс бага байх ёстой" : ""}</div>
+                                <input value={lastname} onChange={e=>setLastname(e.target.value)} className={allErr || lastnameErr ? style.inputErr : style.input} placeholder='Овог'/>
+                                <div className={lastnameErr || allErr ? style.errDivVisible : style.errDivInvisible}>{allErr ? "Энэ талбар шаардлагатай" : lastnameErr ? "Овог нь 2 тэмдэгтээс урт, 30 тэмдэгтээс бага байх ёстой" : ""}</div>
+                                <input type="email" value={email} onChange={e=>setEmail(e.target.value)} className={allErr || emailErr || emailExistErr ? style.inputErr : style.input}  placeholder='Имэйл'/>
+                                <div className={emailExistErr || allErr || emailErr ? style.errDivVisible : style.errDivInvisible}>{allErr ? "Энэ талбар шаардлагатай" : emailErr ? "Хүчингүй и-мэйл" : emailExistErr ? "Имэйл аль хэдийн бүртгэгдсэн байна" : ""}</div>
                                 <div className={style.passwordContainer}>
-                                    <input type={togglePassword ? "password" : "text"} value={password} onChange={e=>setPassword(e.target.value)} className={allErr || passwordErr ? style.inputPasswordErr : style.inputPassword}  placeholder='Password'/>
+                                    <input type={togglePassword ? "password" : "text"} value={password} onChange={e=>setPassword(e.target.value)} className={allErr || passwordErr ? style.inputPasswordErr : style.inputPassword}  placeholder='Нууц үг'/>
 
                                     <div onClick={changePassword} className={style.eyeIconContainer}>
                                     <AiFillEye className={togglePassword ? style.eyeShow : style.eyeHide}></AiFillEye>
                                     <AiFillEyeInvisible className={togglePassword ? style.eyeHide : style.eyeShow}></AiFillEyeInvisible>
                                     </div>
                                 </div>
-                                <div className={passwordErr || allErr ? style.errDivVisible : style.errDivInvisible}>{ allErr ? "This is a required field" : passwordErr ? "Password must be longer than 6 characters and less than 30 characters" : ""}</div>
+                                <div className={passwordErr || allErr ? style.errDivVisible : style.errDivInvisible}>{ allErr ? "Энэ талбар шаардлагатай" : passwordErr ? "Password must be longer than 6 characters and less than 30 characters" : ""}</div>
 
                                 <div onClick={toggleCheckbox} className={style.checkboxContainer}>
                                     <input className={style.checkbox} type='checkbox'/>
                                     <div className={style.termsandpolicytext}>
-                                        By creating an account, you agree to MEET's terms of Service and Privacy Policy
+                                    Бүртгэл үүсгэснээр та MEET-н Үйлчилгээний нөхцөл болон Нууцлалын бодлогыг зөвшөөрч байна
                                     </div>
                                 </div>
 
                             </div>
 
                             <div className={style.buttonContainer}>
-                                <button onClick={Signup} className={style.button}>Create your account</button>
+                                <button onClick={Signup} className={style.button}>Бүртгүүлэх</button>
                             </div>
 
                             <div className={style.lineContainer}>
@@ -320,8 +320,8 @@ export const Signup = () => {
                             </div>
 
                             <div className={style.loggedinContainer}>
-                                <div className={style.text}>Are you already registered?</div>
-                                <Link to="/login">Login</Link>
+                                <div className={style.text}>Та аль хэдийн бүртгүүлсэн үү?</div>
+                                <Link to="/login">Нэвтрэх</Link>
                             </div>
                         </div>
 

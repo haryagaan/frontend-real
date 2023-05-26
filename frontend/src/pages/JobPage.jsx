@@ -176,18 +176,18 @@ export const JobPage=()=>{
                                 <p className={style.jobName}>{job && job.name}</p>
 
                                 <div onClick={toggleCreatePost} className={style.addPostContainer}>
-                                    <button className={style.addPostButton}>Create post</button>
+                                    <button className={style.addPostButton}>Нийтлэл үүсгэх</button>
                                 </div>
 
                             </div>
 
                             <div className={style.modeContainer}>
                                 <div onClick={Freelancer} className={style.modeFreelancer}>
-                                    <p>Freelancer</p>
+                                    <p>Чөлөөт ажилтан</p>
                                 </div>
 
                                 <div onClick={Client} className={style.modeClient}>
-                                    <p>Client</p>
+                                    <p>Үйлчлүүлэгч</p>
                                 </div>
                             </div>
                         </div>
@@ -231,10 +231,10 @@ export const JobPage=()=>{
                             <div className={style.whitePost}>
                                 <div className={style.whitePostTop}>
                                     <BsArrowReturnLeft onClick={hideCreatePost} className={style.returnIcon}></BsArrowReturnLeft>
-                                    <h1>Create a post</h1>
+                                    <h1>Нийтлэл үүсгэх</h1>
                                 </div>
-                                <input onChange={(e)=>{setTitle(e.target.value)}} className={style.createPostInput} placeholder="Title..."/>
-                                <textarea onChange={(e)=>{setMainText(e.target.value)}} placeholder="Main text..."></textarea>
+                                <input onChange={(e)=>{setTitle(e.target.value)}} className={style.createPostInput} placeholder="Гарчиг..."/>
+                                <textarea onChange={(e)=>{setMainText(e.target.value)}} placeholder="Нэмэлт текст..."></textarea>
                                 <input className={style.createPostFile} onChange={uploadPostImage} type="file"/>
                                 <div>   
                                     {
@@ -246,10 +246,11 @@ export const JobPage=()=>{
                                     }
                                 </div>
                                 <div style={{display:"flex" , flexDirection:"row"}}>
-                                    <h4>Your money</h4>
-                                    <input onChange={(e)=>{setPrice(e.target.value)}} type="number" min="1" step="any" className={style.createPostInputMoney} placeholder="Money..."/>
+                                    <h4>Мөнгөн дүн</h4>
+                                    <input onChange={(e)=>{setPrice(e.target.value)}} type="number" min="1" step="any" className={style.createPostInputMoney} placeholder="Мөнгөн дүнгийн утга..."/>
+                                    <h4>Төгрөг</h4>
                                 </div>
-                                <button onClick={post} className={style.createPostButton}>Create</button>
+                                <button onClick={post} className={style.createPostButton}>Үүсгэх</button>
                             </div>
                         </div>
                     </div>

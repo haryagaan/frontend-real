@@ -111,6 +111,8 @@ export const PostPage=()=>{
         await client.post("/post/"+type+"/comment/"+token+"/"+postId , {text:comment})
             .then(async(res)=>{
                 // console.log(res.data);
+                // setComments(res.data)
+                window.location.reload()
             }).catch((err)=>{
                 console.log(err);
             })
@@ -203,7 +205,7 @@ export const PostPage=()=>{
                                 </div>
 
                                 <div className={style.likeContainer}>
-                                    <p>Total ({post && post.totalReacts.length})</p>
+                                    <p>Нийт хандалт ({post && post.totalReacts.length})</p>
                                     <AiFillLike onClick={Like} className={style.like}></AiFillLike>
                                     <p>({post && post.likes.length})</p>
                                     <AiFillDislike onClick={Dislike} className={style.dislike}></AiFillDislike>
@@ -295,7 +297,7 @@ export const PostPage=()=>{
                                                     <div style={{display:"flex" , justifyContent:"center" , color:"grey"}}>No comments</div>
                                                 :
 
-                                                comments && comments.map((comment,i)=>{
+                                                comments!=null && comments.map((comment,i)=>{
                                                     let creator;
                                                     if(typeof comment.creatorId==="object" && comment.creatorId!==null){
                                                         creator=comment.creatorId;
@@ -392,7 +394,7 @@ export const PostPage=()=>{
 
                                 <div className={style.writeCommentContainer}>
                                     <input onChange={(e)=>{setComment(e.target.value)}} placeholder="Write a comment..." className={style.writeCommentInput}/>
-                                    <button onClick={WriteComment} className={style.writeCommentButton}>Comment</button>
+                                    <button onClick={WriteComment} className={style.writeCommentButton}>Үүсгэх</button>
                                 </div>
 
                             </div>

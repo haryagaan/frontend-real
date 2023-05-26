@@ -50,17 +50,17 @@ export const MakeCategoryRequest = () => {
 
                 <div className={style.whiteBox}>
                     <div>
-                        Make Category Request
+                        Биднээс оруулахыг хүссэн ажлын ангилал
                     </div>
 
                     <div>
-                        <input onChange={(e)=>{setCategory(e.target.value)}} placeholder="Category name ..." className={style.input}/>
+                        <input onChange={(e)=>{setCategory(e.target.value)}} placeholder="Ажлын ангилалын нэр ..." className={style.input}/>
                     </div>
 
-                    <textarea className={style.textArea} onChange={(e)=>{setText(e.target.value)}} placeholder='Description...'></textarea>
+                    <textarea className={style.textArea} onChange={(e)=>{setText(e.target.value)}} placeholder='Тодорхойлолт...'></textarea>
 
                     <div>
-                        <button onClick={SubmitCategory} className={style.button}>Submit</button>
+                        <button onClick={SubmitCategory} className={style.button}>Илгээх</button>
                     </div>
                 </div>
             }

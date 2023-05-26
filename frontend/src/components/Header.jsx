@@ -1,5 +1,5 @@
 import styles from "../styles/Header.module.css";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import { BsFillBellFill } from "react-icons/bs";
 import { BsFillChatDotsFill } from "react-icons/bs";
 import { TbMoodSmileBeam } from "react-icons/tb";
@@ -13,7 +13,15 @@ import { client } from "../client/client";
 
 import { Link } from "react-router-dom";
 
+import { DataContext } from "../context/DataProvider"
+
 export const Header = () => {
+  const {
+    providerCategories
+  }=useContext(DataContext);
+
+  // console.log(providerCategories)
+
   const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
   const headerRef = useRef(null);
 
@@ -194,14 +202,14 @@ export const Header = () => {
                 <div>
                   <div>
                     <div className={styles.view}>
-                      <div>Notifications</div>
+                      <div>Мэдэгдэл</div>
                       <a href="/" className={styles.a}>
-                        View all
+                        Бүгдийг харах
                       </a>
                     </div>
                     <hr />
                     <div className={styles.message}>
-                      <div>No notifications</div>
+                      <div>Мэдэгдэл алга</div>
                     </div>
                   </div>
                 </div>
@@ -220,14 +228,14 @@ export const Header = () => {
                 <div>
                   <div>
                     <div className={styles.view}>
-                      <div>Messages</div>
+                      <div>Мессежүүд</div>
                       <a href="/" className={styles.a}>
-                        View all
+                        Бүгдийг харах
                       </a>
                     </div>
                     <hr />
                     <div className={styles.message}>
-                      <div>No messages</div>
+                      <div>Мессежүүд алга</div>
                     </div>
                   </div>
                 </div>
@@ -248,30 +256,30 @@ export const Header = () => {
                 <div className={styles.settings}>
                   <div className={styles.set}>
                     <div>
-                      <h4>Account name</h4>
+                      <h4>Нүүр хуудас</h4>
                       <hr />
                       <div className={styles.accName1}>
                         {/* <div>My account</div> */}
                         {/* <Link to="/profile">My profile</Link> */}
-                        <div onClick={goToProfile}>My profile</div>
+                        <div onClick={goToProfile}>Миний Нүүр хуудас</div>
                       </div>
                     </div>
                     <hr />
                     <div>
-                      <h4>Find work</h4>
+                      <h4>Ажил олох</h4>
                       <div className={styles.accName2}>
-                        <div>Work as freelance</div>
-                        <div>Find Projects</div>
+                        <div>Чөлөөт ажил хийх</div>
+                        <div>Төсөл хайх</div>
                       </div>
                     </div>
                     <hr />
                     <div>
-                      <h4>Help</h4>
-                      <div>Help center</div>
+                      <h4>Тусламж</h4>
+                      <div>Тусламжийн төв</div>
                     </div>
                     <hr />
                     <div onClick={Logout} className={styles.logout}>
-                      Log out
+                      Гарах
                     </div>
                   </div>
                 </div>
@@ -282,9 +290,9 @@ export const Header = () => {
 
         <div className={styles.container2}>
             <div className={styles.links}>
-              {headerData.map(({ content, title }) => (
-                <HeaderItem content={content} title={title} />
-              ))}
+              {/* {providerCategories && providerCategories.slice(0,4).map((category , i) => (
+                <HeaderItem content={category.jobs} title={category.category} />
+              ))} */}
             </div>
         </div>
       </div>
@@ -315,20 +323,20 @@ const HeaderItem = ({ content, title }) => {
         <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
           <div className={styles.hover1}>
             <div className={styles.suggest}>
-              {content.map(({ title, content }) => (
+              {content && content.map((job,i) => (
                 <div>
-                  <h4>{title}</h4>
+                  <h4>{job.name}</h4>
                   <div
                     style={{
                       display: "flex",
                       flexDirection: "column",
                     }}
                   >
-                    {content.map(({ name, href }) => {
+                    {content && content.map((job,i) => {
                       return (
                         <div className={styles.suggest2}>
-                          <Link to={href} className={styles.to}>
-                            {name}
+                          <Link to="" className={styles.to}>
+                            {job.name}
                           </Link>
                         </div>
                       );

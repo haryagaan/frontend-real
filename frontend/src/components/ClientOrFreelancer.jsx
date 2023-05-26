@@ -34,14 +34,14 @@ export const Client = () => {
       </div>
 
       <div className={style.headerTextDiv}>
-        <Link to="/login" className={style.headerText}>Login</Link>
+        <Link to="/login" className={style.headerText}>Нэвтрэх</Link>
       </div>
     </div>
 
     <div className={style.home}>
       <div className={style.main}>
         <div className={style.column1}>
-          <h1 className>Ажлын шинэ эринд</h1>
+          <p className={style.title1}>Ажлын шинэ эринд</p>
           <span className={style.title}>тавтай морил.</span>
           <p className={style.font1}>
             Бид хамгийн сайн ажилчдыг шилдэг компаниудад холбодог.
@@ -78,7 +78,7 @@ export const Client = () => {
                 <p className={style.font1}>
                   Бидэнтэй нэгдсэнээр өөртөө цоо шинэ боломжуудыг олж аваарай
                 </p>
-                <button className={style.button1}>Бүртгүүлэх</button>
+                <Link className={style.button1}>Бүртгүүлэх</Link>
               </div>
             </div>
             <div className={style.row}>

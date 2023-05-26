@@ -56,17 +56,17 @@ export const MakeJobRequest = () => {
 
                 <div className={style.whiteBox}>
                     <div>
-                        Make Category Request
+                    Биднээс оруулахыг хүссэн ажлын нэр
                     </div>
 
                     <div>
-                        <input onChange={(e)=>{setJobName(e.target.value)}} placeholder="Job name ..." className={style.input}/>
+                        <input onChange={(e)=>{setJobName(e.target.value)}} placeholder="Ажлын нэр..." className={style.input}/>
                     </div>
 
-                    <textarea onChange={(e)=>{setText(e.target.value)}} className={style.textArea} placeholder='Description...'></textarea>
+                    <textarea onChange={(e)=>{setText(e.target.value)}} className={style.textArea} placeholder='Тодорхойлолт...'></textarea>
 
                     <div>
-                        <button onClick={MakeJobRequest} className={style.button}>Submit</button>
+                        <button onClick={MakeJobRequest} className={style.button}>Илгээх</button>
                     </div>
                 </div>
             }

@@ -47,7 +47,7 @@ export const CategoryPage=()=>{
                     </div>
                     
                     <div className={style.addJobContainer}>
-                        <Link to={`/request/job/${category && category._id}`}>Cant find a job you'r looking for ? Click here</Link>
+                        <Link to={`/request/job/${category && category._id}`}>Та хайж байгаа ажилаа олж чадахгүй байна уу? Энд дарна уу?</Link>
                     </div>
 
                     <div className={style.jobsContainer}>

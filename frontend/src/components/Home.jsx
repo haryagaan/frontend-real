@@ -33,7 +33,9 @@ export const Home=()=>{
         setIsAuth,
         topUsers,
         setTopUsers,
-        userId
+        userId,
+        providerCategories,
+        setProviderCategories
     }=useContext(DataContext);
 
     // console.log(topUsers)
@@ -46,6 +48,7 @@ export const Home=()=>{
             .then(async(res)=>{
                 // console.log(res.data)
                 setCategories(res.data)
+                setProviderCategories(res.data)
             }).catch((err)=>{
                 console.log(err)
                 if(err.response.data=="Forbidden"){
@@ -75,14 +78,14 @@ export const Home=()=>{
                     </div>
 
                     <div className={style.customizeAccText}>
-                        <p>Customize your account now!!!</p>
-                        <Link to={`/myProfile/${userId}`} className={style.customizeAccButton}>Customize</Link>
+                        <p>Нүүр хуудасаа яг одоо шинэчлэ!!!</p>
+                        <Link to={`/myProfile/${userId}`} className={style.customizeAccButton}>Шинэчлэх</Link>
                     </div>
                 </div>
             </div>
 
             <div className={style.popularFreelancers}>
-                Our top reliable users
+                Манай шилдэг найдвартай хэрэглэгчид
             </div>
 
             <div>
@@ -96,7 +99,7 @@ export const Home=()=>{
             </div>
             
             <div className={style.popularFreelancers}>
-                Categories
+                Ажлын ангилал
             </div>
 
             <div className={style.categories}>
@@ -114,7 +117,7 @@ export const Home=()=>{
 
                 <Link style={{textDecoration:"none"}} to="/request/category">
                     <div className={style.addCategory}>
-                        <div className={style.addCategoryText}>Cant find the category you are looking?</div>
+                        <div className={style.addCategoryText}>Хайж буй ажлынхаа ангиллыг олж чадахгүй байна уу?</div>
 
                         <div className={style.addCategoryImgCont}>
                             <img className={style.addCategoryImg} src={addCategory}/>

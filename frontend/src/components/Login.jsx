@@ -218,56 +218,56 @@ export const Login = () => {
                 <div className={style.main}>
 
                     <div className={style.bigText}>
-                        Login
+                        Нэвтрэх
                     </div>
 
                     <div className={style.socialContainer}>
                         <div onClick={facebookAuth} className={style.facebook}>
                             <AiFillFacebook className={style.Icon}></AiFillFacebook>
-                            <div className={style.socialText}>Continue with Facebook</div>
+                            <div className={style.socialText}>Facebook-ээр нэвтрэх</div>
                         </div>
 
                         <div onClick={googleAuth} className={style.google}>
                             <FcGoogle className={style.Icon}></FcGoogle>
-                            <div className={style.socialTextBlack}>Continue with Google</div>
+                            <div className={style.socialTextBlack}>Google-ээр нэвтрэх</div>
                         </div>
 
                         <div className={style.apple}>
                             <AiFillApple className={style.Icon}></AiFillApple>
-                            <div className={style.socialText}>Continue with Apple</div>
+                            <div className={style.socialText}>Apple-ээр нэвтрэх</div>
                         </div>
                     </div>
 
                     <div className={style.lineContainer}>
                         <div className={style.line}></div>
-                        <div className={style.lineText}>Or</div>
+                        <div className={style.lineText}>Эсвэл</div>
                         <div className={style.line}></div>
                     </div>
 
                     <div className={style.login}>
-                        <input type='email' value={email} onChange={e=>setEmail(e.target.value)} placeholder='Email' className={emailErr ? style.inputErr : style.input}/>
+                        <input type='email' value={email} onChange={e=>setEmail(e.target.value)} placeholder='Имэйл' className={emailErr ? style.inputErr : style.input}/>
 
-                        <div className={allErr || emailErr ? style.errDivVisible : style.errDivInvisible}>{allErr ? "This field is required" : emailErr ? "Couldn't find user" : ""}</div>
+                        <div className={allErr || emailErr ? style.errDivVisible : style.errDivInvisible}>{allErr ? "Энэ талбар шаардлагатай" : emailErr ? "Хэрэглэгч олдсонгүй" : ""}</div>
 
                         <div className={style.passwordContainer}>
-                            <input type={togglePassword ? "password" : "text"} value={password} onChange={e=>setPassword(e.target.value)} placeholder='Password' className={passwordErr ? style.inputPasswordErr : style.inputPassword}/>
+                            <input type={togglePassword ? "password" : "text"} value={password} onChange={e=>setPassword(e.target.value)} placeholder='Нууц үг' className={passwordErr ? style.inputPasswordErr : style.inputPassword}/>
 
                             <div onClick={changePassword} className={style.eyeIconContainer}>
                                <AiFillEye className={togglePassword ? style.eyeShow : style.eyeHide}></AiFillEye>
                                <AiFillEyeInvisible className={togglePassword ? style.eyeHide : style.eyeShow}></AiFillEyeInvisible>
                             </div>
 
-                            <div className={allErr || passwordErr ? style.errDivVisible : style.errDivInvisible}>{allErr ? "This field is required" : passwordErr ? "Password incorrect" : ""}</div>
+                            <div className={allErr || passwordErr ? style.errDivVisible : style.errDivInvisible}>{allErr ? "Энэ талбар шаардлагатай" : passwordErr ? "Нууц үг буруу" : ""}</div>
                         </div>
 
                     </div>
 
                     <div className={style.forgotPasswordCont}>
-                        <Link className={style.forgotPassword} to="/password">Forgot your password?</Link>
+                        <Link className={style.forgotPassword} to="/password">Нууц үгээ мартсан?</Link>
                     </div>
 
                     <div className={style.buttonContainer}>
-                        <button onClick={Login} className={style.button}>Login</button>
+                        <button onClick={Login} className={style.button}>Нэвтрэх</button>
                     </div>
 
                     <div className={style.lineContainer}>
@@ -275,8 +275,8 @@ export const Login = () => {
                     </div>
 
                     <div className={style.loggedinContainer}>
-                        <div className={style.text}>Still haven’t created a MEET account?</div>
-                        <Link to="/signup">Signup</Link>
+                        <div className={style.text}>Та MEET бүртгэл үүсгээгүй байна уу?</div>
+                        <Link to="/signup">Бүртгүүлэх</Link>
                     </div>
 
                 </div>

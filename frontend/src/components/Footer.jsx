@@ -10,9 +10,21 @@ import { BsPinterest } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { IoMdArrowDropdown } from "react-icons/io";
 
+import { DataContext } from "../context/DataProvider"
+
+import { useContext, useEffect, useState } from "react"
+
 import styles from "../styles/Footer.module.css";
 
+import { Link } from "react-router-dom";
+
 export const Footer = () => {
+  const {
+    providerCategories
+  }=useContext(DataContext);
+
+  // console.log(providerCategories)
+
   return (
     <>
       <div className={styles.all}>
@@ -20,19 +32,19 @@ export const Footer = () => {
           <div className={styles.deed}>
             <div className={styles.column}>
               <div style={{ display: "flex" }} className={styles.title1}>
-                <h4>Categories</h4>
+                <h4>Ангилал</h4>
                 <div className={styles.svgContainer}>
                   <IoMdArrowDropdown className={styles.drop}/>
                 </div>
               </div>
 
-              {categories.map((category , i) => (
-                <div key={i} className={styles.text}>{category}</div>
+              {providerCategories && providerCategories.map((category , i) => (
+                <Link to={`/category/${category._id}`} key={i} className={styles.text}>{category.category}</Link>
               ))}
             </div>
             <div className={styles.column}>
               <div style={{ display: "flex" }} className={styles.title2}>
-                <h4>About</h4>
+                <h4>MEET-ийн тухай</h4>
                 <div className={styles.svgContainer}>
                   <IoMdArrowDropdown className={styles.drop}/>
                 </div>
@@ -44,7 +56,7 @@ export const Footer = () => {
             </div>
             <div className={styles.column}>
               <div style={{ display: "flex" }} className={styles.title3}>
-                <h4>Support</h4>
+                <h4>Дэмжлэг</h4>
                 <div className={styles.svgContainer}>
                   <IoMdArrowDropdown className={styles.drop}/>
                 </div>
@@ -58,7 +70,7 @@ export const Footer = () => {
           <div className={styles.dood}>
             <div className={styles.column}>
               <div style={{ display: "flex" }} className={styles.title4}>
-                <h4>Comminity</h4>
+                <h4>Нийгэмлэг</h4>
                 <div className={styles.svgContainer}>
                   <IoMdArrowDropdown className={styles.drop}/>
                 </div>
@@ -70,7 +82,7 @@ export const Footer = () => {
             </div>
             <div className={styles.column}>
               <div style={{ display: "flex" }} className={styles.title5}>
-                <h4>More about us</h4>
+                <h4>Бидний тухай дэлгэрэнгүй</h4>
                 <div className={styles.svgContainer}>
                   <IoMdArrowDropdown className={styles.drop}/>
                 </div>
