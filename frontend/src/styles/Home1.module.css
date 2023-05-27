@@ -40,6 +40,11 @@
     font-style: italic;
 }
 
+.searchDiv{
+    /* border: 1px solid red; */
+    position: relative;
+}
+
 .input {
     width: 30vw;
     height: 48px;
@@ -51,15 +56,42 @@
 }
 
 .dropdown{
-    border: 1px solid blue;
-    background-color: white;
-    height: 30vh;
+    /* border: 1px solid blue; */
+    background-color: rgb(235, 234, 234);
+    height: 25vh;
+    border-radius: 5px;
+    position: absolute;
+    width: 96%;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
+.dropdownEl{
+    /* border: 1px solid red; */
+    /* display: flex; */
+    text-decoration: none;
+    color: black;
+}
+
+.dropdownCategory{
+    display: flex;
+    align-items: center;
+}
+
+.dropdownImg{
+    width: 50px;
+    height: auto;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
 
 .button {
     background-color: #7246E5;
-    height:50px;
+    height:50.35px;
     /* padding: 12 24px; */
     width: 50px;
     border-top-right-radius: 5px;
@@ -69,6 +101,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 4.8px;
 }
 .search {
     position: relative;
@@ -94,8 +127,16 @@
     border-radius: 20px;
     font-size: 12px;
     font-weight: bolder;
-
+    transition: 0.2s;
 }
+
+.butt:hover{
+    background-color: white;
+    color: #323232;
+    transition: 0.2s;
+}
+
+
 @keyframes example {
     0%   {background-image: url("../assets/homePerson1.webp");}
     25%  {background-image: url("../assets/homePerson2.webp");}

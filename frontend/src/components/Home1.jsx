@@ -1,13 +1,44 @@
-import { useState } from "react";
+import { useState , useContext, useRef } from "react";
 import style from "../styles/Home1.module.css";
 import { AiOutlineSearch } from "react-icons/ai";
+
+import { DataContext } from "../context/DataProvider";
+import { Link } from "react-router-dom";
+
+// import SyncLoader from "react-spinners/SyncLoader"
+
+
 export const HomePage = () => {
+  const {
+    providerCategories
+  }=useContext(DataContext);
+
+  // const [loading,setLoading]=useState(false);
+
+  // const [categories,setCategories]=useState([]);
+
+  // if(providerCategories){
+  //   setCategories(providerCategories);
+  // }
+
   const [showDropdown,setShowDropdown]=useState(false);
 
   const [input,setInput]=useState();
 
+  const dropdown=useRef([])
+
   function ShowDropdown(){
-    console.log(1)
+    providerCategories && providerCategories.map((category,i)=>{
+      if(input!=null){
+        if(input[0]==category.category[0] || input[0].toUpperCase()==category.category[0]){
+          dropdown.current=[]
+          dropdown.current.push(category)
+        }
+      }else if(input==null){
+        dropdown.current=[];
+        dropdown.current=providerCategories;
+      }
+    })
 
     setShowDropdown(prev=>!prev);
   }
@@ -21,7 +52,7 @@ export const HomePage = () => {
             <span className={style.title2}>хурдан</span> олоорой
           </h1>
           <div className={style.row}>
-            <div>
+            <div className={style.searchDiv}>
               <input
                 onChange={(e)=>{setInput(e.target.value)}}
                 className={style.input}
@@ -32,7 +63,19 @@ export const HomePage = () => {
                 showDropdown ?
 
                 <div className={style.dropdown}>
-                  dropdown
+                  {
+                    dropdown && dropdown.current.map((category,i)=>{
+                      return(
+                        <Link to={`/category/${category._id}`} className={style.dropdownEl}>
+                          <div className={style.dropdownCategory}>
+                            <img className={style.dropdownImg} src={category.imageUrl}/>
+                            {category.category}
+                          </div>
+                          <hr></hr>
+                        </Link>
+                      )
+                    })
+                  }
                 </div>
 
                 :
@@ -45,13 +88,15 @@ export const HomePage = () => {
               <AiOutlineSearch className={style.searchIcon}></AiOutlineSearch>
             </div>
           </div>
-          {/* <div className={style.row}>
-            <p className={style.font}>Popular:</p>
-            <div className={style.butt}>Website design</div>
-            <div className={style.butt}>Word press</div>
-            <div className={style.butt}>Logo design</div>
-            <div className={style.butt}>AI services</div>
-          </div> */}
+          <div className={style.row}>
+            <p className={style.font}>Алдартай:</p>
+            <div style={{display:"flex" , width:"50vw" , overflowX:"auto"}}>
+              <div className={style.butt}>{providerCategories && providerCategories[0].category}</div>
+              <div className={style.butt}>{providerCategories && providerCategories[1].category}</div>
+              <div className={style.butt}>{providerCategories && providerCategories[2].category}</div>
+              <div className={style.butt}>{providerCategories && providerCategories[3].category}</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

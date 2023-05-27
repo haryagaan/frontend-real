@@ -23,8 +23,8 @@ export const categories = [
   export const support = [
     "Help & Support",
     "Trust & Safety",
-    "Selling on Fiverr",
-    "Buying on Fiverr",
+    "Selling on MEET",
+    "Buying on MEET",
   ];
   export const comminity = [
     "  Customer Success Stories",
@@ -40,14 +40,14 @@ export const categories = [
     "Community Standards",
   ];
   export const more = [
-    " Fiverr Business",
-    "Fiverr Pro",
-    "Fiverr Logo Maker",
-    "Fiverr Guides",
+    " MEET Business",
+    "MEET Pro",
+    "MEET Logo Maker",
+    "MEET Guides",
     "Get Inspired",
-    "Fiverr Select",
+    "MEET Select",
     "ClearVoice",
-    "Fiverr Workspace",
+    "MEET Workspace",
     "Learn",
     "Working Not Working",
   ];
