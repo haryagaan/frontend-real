@@ -42,9 +42,9 @@ export const Client = () => {
       <div className={style.main}>
         <div className={style.column1}>
           <p className={style.title1}>Ажлын шинэ эринд</p>
-          <span className={style.title}>тавтай морил.</span>
+          <span className={style.title}>тавтай морил</span>
           <p className={style.font1}>
-            Бид хамгийн сайн ажилчдыг шилдэг компаниудад холбодог.
+            Бид хамгийн сайн ажилчдыг шилдэг компаниудад холбодог
           </p>
           <div className={style.row}>
             <div onClick={SignupFreelancer} className={style.button1}>Чөлөөт ажилчнаар элсэх</div>

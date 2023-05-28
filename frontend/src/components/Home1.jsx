@@ -2,16 +2,16 @@ import { useState , useContext, useRef } from "react";
 import style from "../styles/Home1.module.css";
 import { AiOutlineSearch } from "react-icons/ai";
 
-import { DataContext } from "../context/DataProvider";
+// import { DataContext } from "../context/DataProvider";
 import { Link } from "react-router-dom";
 
 // import SyncLoader from "react-spinners/SyncLoader"
 
 
 export const HomePage = () => {
-  const {
-    providerCategories
-  }=useContext(DataContext);
+  // const {
+  //   providerCategories
+  // }=useContext(DataContext);
 
   // const [loading,setLoading]=useState(false);
 
@@ -28,17 +28,17 @@ export const HomePage = () => {
   const dropdown=useRef([])
 
   function ShowDropdown(){
-    providerCategories && providerCategories.map((category,i)=>{
-      if(input!=null){
-        if(input[0]==category.category[0] || input[0].toUpperCase()==category.category[0]){
-          dropdown.current=[]
-          dropdown.current.push(category)
-        }
-      }else if(input==null){
-        dropdown.current=[];
-        dropdown.current=providerCategories;
-      }
-    })
+    // providerCategories && providerCategories.map((category,i)=>{
+    //   if(input!=null){
+    //     if(input[0]==category.category[0] || input[0].toUpperCase()==category.category[0]){
+    //       dropdown.current=[]
+    //       dropdown.current.push(category)
+    //     }
+    //   }else if(input==null){
+    //     dropdown.current=[];
+    //     dropdown.current=providerCategories;
+    //   }
+    // })
 
     setShowDropdown(prev=>!prev);
   }
@@ -63,8 +63,8 @@ export const HomePage = () => {
                 showDropdown ?
 
                 <div className={style.dropdown}>
-                  {
-                    dropdown && dropdown.current.map((category,i)=>{
+                  {/* {
+                    providerCategories && providerCategories.map((category,i)=>{
                       return(
                         <Link to={`/category/${category._id}`} className={style.dropdownEl}>
                           <div className={style.dropdownCategory}>
@@ -75,7 +75,7 @@ export const HomePage = () => {
                         </Link>
                       )
                     })
-                  }
+                  } */}
                 </div>
 
                 :
@@ -91,10 +91,10 @@ export const HomePage = () => {
           <div className={style.row}>
             <p className={style.font}>Алдартай:</p>
             <div style={{display:"flex" , width:"50vw" , overflowX:"auto"}}>
-              <div className={style.butt}>{providerCategories && providerCategories[0].category}</div>
+              {/* <div className={style.butt}>{providerCategories && providerCategories[0].category}</div>
               <div className={style.butt}>{providerCategories && providerCategories[1].category}</div>
               <div className={style.butt}>{providerCategories && providerCategories[2].category}</div>
-              <div className={style.butt}>{providerCategories && providerCategories[3].category}</div>
+              <div className={style.butt}>{providerCategories && providerCategories[3].category}</div> */}
             </div>
           </div>
         </div>
